@@ -1,0 +1,9 @@
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+target/
+pom.xml
+vinarna.iml
