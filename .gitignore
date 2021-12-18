@@ -5,3 +5,6 @@ out/
 *.iws
 target/
 vinarna.iml
+
+# The application log4j logger file
+application.log

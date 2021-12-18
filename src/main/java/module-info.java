@@ -9,6 +9,7 @@ module bg.tu_varna.sit.vinarna {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires log4j;
 
 
     exports bg.tu_varna.sit.vinarna.application;
