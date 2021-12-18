@@ -4,5 +4,4 @@ out/
 *.ipr
 *.iws
 target/
-pom.xml
 vinarna.iml
