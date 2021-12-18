@@ -112,7 +112,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>bg.tu_varna.sit.vinarna/bg.tu_varna.sit.vinarna.HelloApplication</mainClass>
+                            <mainClass>bg.tu_varna.sit.vinarna/bg.tu_varna.sit.vinarna.application.HelloApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>

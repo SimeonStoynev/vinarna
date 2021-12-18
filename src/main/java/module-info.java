@@ -10,6 +10,10 @@ module bg.tu_varna.sit.vinarna {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens bg.tu_varna.sit.vinarna to javafx.fxml;
-    exports bg.tu_varna.sit.vinarna;
+
+    exports bg.tu_varna.sit.vinarna.application;
+    opens bg.tu_varna.sit.vinarna.application to javafx.fxml;
+
+    exports bg.tu_varna.sit.vinarna.presentation.controllers;
+    opens bg.tu_varna.sit.vinarna.presentation.controllers to javafx.fxml;
 }
