@@ -10,6 +10,7 @@ module bg.tu_varna.sit.vinarna {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires log4j;
+    requires org.hibernate.orm.core;
 
 
     exports bg.tu_varna.sit.vinarna.application;
