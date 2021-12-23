@@ -26,7 +26,8 @@ public class UserService {
                 users.stream().map(u -> new UserListViewModel(
                     u.getUsername(),
                     u.getFirstName(),
-                    u.getLastName()
+                    u.getLastName(),
+                    u.getRole()
                 )).collect(Collectors.toList())
         );
     }

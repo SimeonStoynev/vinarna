@@ -16,6 +16,10 @@ public class User implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @OneToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
     @Column(name = "username", nullable = false)
     private String username;
 
@@ -112,6 +116,14 @@ public class User implements Serializable {
         this.updated_at = updated_at;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if(getClass() != o.getClass()) return false;
@@ -132,6 +144,7 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", role=" + role +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
