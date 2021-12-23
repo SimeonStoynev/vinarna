@@ -97,4 +97,20 @@ public class UserRepository implements DAORepository<User> {
         }
         return users;
     }
+
+    public User getByUsernameAndPassword(String username, String password) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        User user = null;
+        try{
+            String jpql = "SELECT u FROM User u WHERE username = '" + username + "' AND password = '" + password + "'";
+            user = (User) session.createQuery(jpql).getSingleResult();
+            log.info("Get User by username & password successfully.");
+        } catch (Exception ex) {
+            log.error("Get user by username & password error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+        return user;
+    }
 }
