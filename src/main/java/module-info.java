@@ -11,6 +11,15 @@ module bg.tu_varna.sit.vinarna {
     requires eu.hansolo.tilesfx;
     requires log4j;
     requires org.hibernate.orm.core;
+    requires java.persistence;
+    requires java.naming;
+    requires java.sql;
+
+    opens bg.tu_varna.sit.vinarna.data.entities to org.hibernate.orm.core;
+    exports bg.tu_varna.sit.vinarna.data.entities;
+
+    opens bg.tu_varna.sit.vinarna.data.mysql to org.hibernate.orm.core;
+    exports bg.tu_varna.sit.vinarna.data.mysql;
 
 
     exports bg.tu_varna.sit.vinarna.application;
