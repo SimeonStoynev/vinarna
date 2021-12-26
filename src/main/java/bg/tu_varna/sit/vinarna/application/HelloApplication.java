@@ -1,19 +1,12 @@
 package bg.tu_varna.sit.vinarna.application;
 
 import bg.tu_varna.sit.vinarna.common.Constants;
+import bg.tu_varna.sit.vinarna.common.ViewsManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class HelloApplication extends Application {
 
@@ -21,31 +14,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Font.loadFont(HelloApplication.class.getResource("/bg/tu_varna/sit/vinarna/presentation/fonts/fa-solid-900.ttf").
-                toExternalForm(), 12);
-        PropertyConfigurator.configure(HelloApplication.class.getResource(Constants.Configurations.LOG4J_PROPERTIES));
-        URL path = getClass().getResource(Constants.View.LOGIN_VIEW);
-
-        if(path != null) {
-            Parent root = FXMLLoader.load(path);
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/bg/tu_varna/sit/vinarna/presentation/media/icon.png")));
-            stage.setTitle(Constants.Values.TITLE);
-            stage.setScene(scene);
-            stage.setResizable(true);
-            stage.setMinWidth(918);
-            stage.setMinHeight(600);
-            stage.setWidth(918);
-            stage.setHeight(600);
-            stage.show();
-        } else {
-            log.error("The login fxml could not be loaded.");
-            System.exit(-1);
-        }
-
+        ViewsManager.changeView(Constants.Values.TITLE, Constants.View.LOGIN_VIEW, HelloApplication.class, stage);
     }
 
     public static void main(String[] args) {
