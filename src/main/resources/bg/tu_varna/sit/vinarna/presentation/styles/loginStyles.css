@@ -1,0 +1,30 @@
+.Login {
+    -fx-background-image: url('../media/bg.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-opacity: 100%;
+}
+.mainPanel{
+    -fx-background-color: rgba(220, 214, 178, 0.6);
+
+    -fx-hgap: 20px;
+    -fx-padding: 40px;
+
+    -fx-background-radius: 50;
+
+    -fx-border-radius: 50;
+
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.mainPanelWhite {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+
+    -fx-hgap: 20px;
+    -fx-padding: 40px;
+
+    -fx-border-radius: 0 50 50 0;
+    -fx-background-radius: 0 50 50 0;
+}

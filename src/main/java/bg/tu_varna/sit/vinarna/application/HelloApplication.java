@@ -31,11 +31,11 @@ public class HelloApplication extends Application {
 
             stage.setTitle(Constants.Values.TITLE);
             stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setMaxWidth(780);
-            stage.setMaxHeight(630);
-            stage.setWidth(320);
-            stage.setHeight(240);
+            stage.setResizable(true);
+            stage.setMinWidth(918);
+            stage.setMinHeight(600);
+            stage.setWidth(918);
+            stage.setHeight(600);
             stage.show();
         } else {
             log.error("The main fxml is not found.");
