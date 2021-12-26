@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="918.0" styleClass="Login" stylesheets="@../../styles/loginStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.LoginController">
+<AnchorPane fx:id="mainAnchorPanel" prefHeight="600.0" prefWidth="918.0" styleClass="Login" stylesheets="@../../styles/loginStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.LoginController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="925.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -31,11 +31,16 @@
                                     <Font size="45.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="299.0" layoutY="233.0" mnemonicParsing="false" text="Sign In" />
-                              <TextField layoutX="144.0" layoutY="118.0" prefHeight="31.0" prefWidth="208.0" promptText="Username" />
-                              <TextField layoutX="144.0" layoutY="180.0" prefHeight="31.0" prefWidth="208.0" promptText="Password" />
+                              <Button fx:id="loginButton" layoutX="299.0" layoutY="233.0" mnemonicParsing="false" onAction="#loginProcedure" text="Sign In" />
+                              <TextField fx:id="usernameTextField" layoutX="144.0" layoutY="118.0" prefHeight="31.0" prefWidth="208.0" promptText="Username" />
+                              <TextField fx:id="passwordTextField" layoutX="144.0" layoutY="180.0" prefHeight="31.0" prefWidth="208.0" promptText="Password" />
                               <Label layoutX="144.0" layoutY="94.0" text="Username" />
                               <Label layoutX="144.0" layoutY="157.0" text="Password" />
+                              <HBox alignment="TOP_CENTER" layoutX="14.0" layoutY="277.0" prefHeight="100.0" prefWidth="468.0">
+                                 <children>
+                                    <Label fx:id="messageLabel" text="{message}" />
+                                 </children>
+                              </HBox>
                            </children>
                         </Pane>
                      </children>
