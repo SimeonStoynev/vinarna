@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
@@ -21,7 +22,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         PropertyConfigurator.configure(HelloApplication.class.getResource(Constants.Configurations.LOG4J_PROPERTIES));
-        URL path = getClass().getResource(Constants.View.HELLO_VIEW);
+        URL path = getClass().getResource(Constants.View.LOGIN_VIEW);
 
         if(path != null) {
             Parent root = FXMLLoader.load(path);
@@ -29,6 +30,7 @@ public class HelloApplication extends Application {
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
 
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/bg/tu_varna/sit/vinarna/presentation/media/icon.png")));
             stage.setTitle(Constants.Values.TITLE);
             stage.setScene(scene);
             stage.setResizable(true);
@@ -38,7 +40,8 @@ public class HelloApplication extends Application {
             stage.setHeight(600);
             stage.show();
         } else {
-            log.error("The main fxml is not found.");
+            log.error("The login fxml could not be loaded.");
+            System.exit(-1);
         }
 
     }
