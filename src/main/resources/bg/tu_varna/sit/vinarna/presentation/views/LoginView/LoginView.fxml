@@ -46,9 +46,9 @@
                                  <padding>
                                     <Insets left="40.0" />
                                  </padding></TextField>
-                              <HBox alignment="TOP_CENTER" layoutX="14.0" layoutY="294.0" prefHeight="83.0" prefWidth="468.0">
+                              <HBox fx:id="alertBox" alignment="CENTER" layoutX="14.0" layoutY="292.0" prefHeight="41.0" prefWidth="468.0">
                                  <children>
-                                    <Label fx:id="messageLabel" text="{message}" />
+                                    <Label fx:id="messageLabel" alignment="CENTER" prefHeight="46.0" prefWidth="460.0" text="{message}" />
                                  </children>
                               </HBox>
                               <FontAwesomeIconView glyphName="USER" layoutX="134.0" layoutY="146.0" size="30" wrappingWidth="23.714285850524902">
