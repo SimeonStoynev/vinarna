@@ -29,6 +29,43 @@
     -fx-background-radius: 0 50 50 0;
 }
 
-.txtError {
+.text-field {
+    -fx-border-radius: 13 13 13 13;
+    -fx-background-radius: 13 13 13 13;
+    -fx-font-size: 15;
+}
 
+.text-field:focused {
+    -fx-background-color: #5d5c55, #FFFFFF;
+    -fx-effect: dropshadow(gaussian, #676664, 10, 0, 0, 0);
+}
+
+.button {
+    -fx-border-radius: 13 13 13 13;
+    -fx-background-radius: 13 13 13 13;
+    -fx-font-size: 15;
+    -fx-cursor: hand;
+}
+
+.errorColor {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: #8c0b31;
+}
+
+.errorColor:hover {
+    -fx-background-color: #5e061f;
+}
+
+.errorColor:pressed {
+    -fx-effect: dropshadow(gaussian, #4b4b4b, 20, 0, 0, 0);
+}
+
+.label {
+    -fx-text-fill: rgb(66, 65, 54);
+    -fx-font-size: 15;
+}
+
+.glyph-icon{
+    -fx-text-fill: rgb(66, 65, 54);
+    -fx-fill: rgb(66, 65, 54);
 }

@@ -52,11 +52,11 @@ public class LoginController {
         String password = passwordTextField.getText();
 
         if(username.length() == 0 || password.length() == 0) {
-            messageLabel.setStyle("-fx-text-fill: #f54c38;");
+            messageLabel.setStyle("-fx-text-fill: #8C0B31FF;");
             messageLabel.setText("The fields must be filled.");
             return;
         }else if(!usernameValidate(username) || !passwordValidate(password)) {
-            messageLabel.setStyle("-fx-text-fill: #f54c38;");
+            messageLabel.setStyle("-fx-text-fill: #8C0B31FF;");
             messageLabel.setText("There is no user with the entered data.");
             return;
         }
@@ -64,7 +64,7 @@ public class LoginController {
         password = Hasher.MD5.hash(password);
         User user = userRepository.getByUsernameAndPassword(username, password);
         if(user == null) {
-            messageLabel.setStyle("-fx-text-fill: #f54c38;");
+            messageLabel.setStyle("-fx-text-fill: #8C0B31FF;");
             messageLabel.setText("There is no user with the entered data.");
             return;
         } else {

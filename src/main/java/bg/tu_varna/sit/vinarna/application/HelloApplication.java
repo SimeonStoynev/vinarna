@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -20,7 +21,8 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
+        Font.loadFont(HelloApplication.class.getResource("/bg/tu_varna/sit/vinarna/presentation/fonts/fa-solid-900.ttf").
+                toExternalForm(), 12);
         PropertyConfigurator.configure(HelloApplication.class.getResource(Constants.Configurations.LOG4J_PROPERTIES));
         URL path = getClass().getResource(Constants.View.LOGIN_VIEW);
 
