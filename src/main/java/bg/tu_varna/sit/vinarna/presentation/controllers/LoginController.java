@@ -6,6 +6,7 @@ import bg.tu_varna.sit.vinarna.data.repositories.UserRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -29,7 +30,7 @@ public class LoginController {
     TextField usernameTextField;
 
     @FXML
-    TextField passwordTextField;
+    PasswordField passwordTextField;
 
     @FXML
     Label messageLabel;
