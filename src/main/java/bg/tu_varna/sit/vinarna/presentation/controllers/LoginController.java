@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.vinarna.presentation.controllers;
 
+import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.common.Hasher;
 import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.repositories.UserRepository;
@@ -53,11 +54,11 @@ public class LoginController {
         String password = passwordTextField.getText();
 
         if(username.length() == 0 || password.length() == 0) {
-            messageLabel.setStyle("-fx-text-fill: #8C0B31FF;");
+            messageLabel.setStyle("-fx-text-fill: " + Constants.Values.ERROR_COLOR + ";");
             messageLabel.setText("The fields must be filled.");
             return;
         }else if(!usernameValidate(username) || !passwordValidate(password)) {
-            messageLabel.setStyle("-fx-text-fill: #8C0B31FF;");
+            messageLabel.setStyle("-fx-text-fill: " + Constants.Values.ERROR_COLOR + ";");
             messageLabel.setText("There is no user with the entered data.");
             return;
         }
@@ -65,7 +66,7 @@ public class LoginController {
         password = Hasher.MD5.hash(password);
         User user = userRepository.getByUsernameAndPassword(username, password);
         if(user == null) {
-            messageLabel.setStyle("-fx-text-fill: #8C0B31FF;");
+            messageLabel.setStyle("-fx-text-fill: " + Constants.Values.ERROR_COLOR + ";");
             messageLabel.setText("There is no user with the entered data.");
             return;
         } else {
