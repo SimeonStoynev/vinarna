@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -164,6 +165,29 @@ public class ViewsManager {
         } catch (Throwable ex) {
             log.error("Error in loading the AnchorPane view: " + ex);
         }
+    }
+
+    public static void openDialog(Stage parentStage, String viewDir, Class cl) {
+        try {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(parentStage);
+
+            URL path = cl.getResource(viewDir);
+            if (path != null) {
+                Parent root = FXMLLoader.load(path);
+                Scene scene = new Scene(root);
+                dialog.getIcons().add(new Image(Objects.requireNonNull(cl.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.setScene(scene);
+                dialog.show();
+            } else {
+                log.error("Dialog couldn't be loaded: " + viewDir);
+            }
+        } catch (Exception ex) {
+            log.error("Dialog couldn't be loaded: " + ex);
+        }
+
+
     }
 
     public static void leftMenuGenerate(AnchorPane menuPane, AnchorPane contentPane, Class viewClass) {
