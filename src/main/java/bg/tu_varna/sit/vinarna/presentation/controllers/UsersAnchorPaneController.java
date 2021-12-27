@@ -43,6 +43,8 @@ public class UsersAnchorPaneController {
             controller.emailLabel.setText(user.getEmail());
             controller.phoneLabel.setText(user.getPhone());
             controller.roleLabel.setText(user.getRole().getName());
+            if(user.getRole().getId() == 1)
+                controller.settingsMenuButton.setVisible(false);
 
             AnchorPane.setRightAnchor(userRow, 0.0);
             AnchorPane.setLeftAnchor(userRow, 0.0);
@@ -54,6 +56,5 @@ public class UsersAnchorPaneController {
             y+=45;
             bg=!bg;
         }
-
     }
 }
