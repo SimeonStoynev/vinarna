@@ -31,7 +31,7 @@ public class UsersAnchorPaneController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bg/tu_varna/sit/vinarna/presentation/views/Users/UsersTableRow.fxml"));
             AnchorPane user = loader.load();
             UsersTableRowController controller = loader.getController();
-            controller.idLabel.setText("1");
+            controller.idLabel.setText(String.valueOf(i));
 
             AnchorPane.setRightAnchor(user, 0.0);
             AnchorPane.setLeftAnchor(user, 0.0);

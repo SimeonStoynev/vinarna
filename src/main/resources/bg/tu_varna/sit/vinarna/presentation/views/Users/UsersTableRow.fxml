@@ -34,12 +34,12 @@
                   <Insets left="5.0" />
                </GridPane.margin>
             </Label>
-            <Label prefWidth="80.0" text="Username" GridPane.columnIndex="1" />
-            <Label text="First Name" GridPane.columnIndex="2" />
-            <Label text="Last Name" GridPane.columnIndex="3" />
-            <Label text="Email" GridPane.columnIndex="4" />
-            <Label text="Role" GridPane.columnIndex="5" />
-            <Label text="Role" GridPane.columnIndex="6" />
+            <Label fx:id="usernameLabel" prefWidth="80.0" text="Username" GridPane.columnIndex="1" />
+            <Label fx:id="firstNameLabel" text="First Name" GridPane.columnIndex="2" />
+            <Label fx:id="lastNameLabel" text="Last Name" GridPane.columnIndex="3" />
+            <Label fx:id="emailLabel" text="Email" GridPane.columnIndex="4" />
+            <Label fx:id="phoneLabel" text="Phone" GridPane.columnIndex="5" />
+            <Label fx:id="roleLabel" text="Role" GridPane.columnIndex="6" />
             <MenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="7">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
@@ -56,6 +56,9 @@
                      </children>
                   </HBox>
                </graphic>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
             </MenuButton>
          </children>
       </GridPane>
