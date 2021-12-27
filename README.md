@@ -9,23 +9,18 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/SimeonStoynev/vinarna">
     <img src="src/main/resources/bg/tu_varna/sit/vinarna/presentation/media/Logo.png" alt="Logo" height="250">
   </a>
 
-<h3 align="center">Best-README-Template</h3>
+<h3 align="center">Vinarna</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    OOP2 Course Work, 2021/2022, TU Varna
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/SimeonStoynev/vinarna/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/SimeonStoynev/vinarna/issues">Request Feature</a>
   </p>
 </div>
 
