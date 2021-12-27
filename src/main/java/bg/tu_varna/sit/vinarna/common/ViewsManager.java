@@ -17,7 +17,7 @@ import java.net.URL;
 public class ViewsManager {
     private static final Logger log = Logger.getLogger(ViewsManager.class);
 
-    public static void changeView(String viewDir, Class cl, Stage... st) throws IOException {
+    public static void changeView(String title, String viewDir, Class cl, Stage... st) throws IOException {
         if(st.length > 0)
             closeView(st[0]);
         Stage stage = new Stage();
@@ -36,12 +36,17 @@ public class ViewsManager {
                 System.exit(1);
             });
 
+            stage.setTitle(title);
+            stage.setResizable(true);
+            stage.setMinWidth(918);
+            stage.setMinHeight(600);
             if(st.length > 0) {
-                stage.setMinWidth(st[0].getMinWidth());
-                stage.setMinHeight(st[0].getMinHeight());
                 stage.setWidth(st[0].getWidth());
                 stage.setHeight(st[0].getHeight());
                 stage.setMaximized(st[0].isMaximized());
+            } else {
+                stage.setWidth(918);
+                stage.setHeight(600);
             }
 
             stage.show();

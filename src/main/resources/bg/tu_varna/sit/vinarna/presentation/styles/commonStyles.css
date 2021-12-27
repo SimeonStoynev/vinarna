@@ -1,0 +1,194 @@
+.mainAnchorPanel {
+    -fx-background-image: url('../media/bg.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-opacity: 100%;
+}
+.mainPanel{
+    -fx-background-color: rgba(220, 214, 178, 0.6);
+
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.mainPanelWhite {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-border-radius: 0 50 50 0;
+    -fx-background-radius: 0 50 50 0;
+}
+
+.text-field {
+    -fx-border-radius: 13 13 13 13;
+    -fx-background-radius: 13 13 13 13;
+    -fx-font-size: 15;
+}
+
+.text-field:focused {
+    -fx-background-color: #5d5c55, #FFFFFF;
+    -fx-effect: dropshadow(gaussian, #676664, 10, 0, 0, 0);
+}
+
+.button {
+    -fx-border-radius: 13 13 13 13;
+    -fx-background-radius: 13 13 13 13;
+    -fx-font-size: 15;
+    -fx-cursor: hand;
+}
+
+.errorColor {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: #8c0b31;
+}
+
+.errorColor:hover {
+    -fx-background-color: #5e061f;
+}
+
+.errorColor:pressed {
+    -fx-effect: dropshadow(gaussian, #4b4b4b, 20, 0, 0, 0);
+}
+
+.label {
+    -fx-text-fill: rgb(66, 65, 54);
+    -fx-font-size: 15;
+}
+
+.MenuButton .label{
+    -fx-text-fill: #c5c5c5;
+    -fx-font-size: 20;
+}
+
+.MenuButton .menu-item .label{
+    -fx-text-fill: rgb(66, 65, 54);
+    -fx-font-size: 15;
+}
+
+.MenuButton .menu-item:hover, .MenuButton .menu-item:focused{
+    -fx-background-color: rgba(157, 154, 113, 0.89);
+}
+.context-menu {
+    -fx-padding: 10 5 10 5;
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
+.context-menu {
+    -fx-border-radius: 13 13 13 13;
+    -fx-background-radius: 13 13 13 13;
+}
+
+.glyph-icon{
+    -fx-text-fill: rgb(66, 65, 54);
+    -fx-fill: rgb(66, 65, 54);
+}
+
+.alert {
+    -fx-border-radius: 13 13 13 13;
+    -fx-background-radius: 13 13 13 13;
+    -fx-background-color: #a6a6a6;
+}
+
+.alert.error {
+    -fx-background-color: rgba(222, 95, 129, 0.84);
+    -fx-border-color: rgba(175, 76, 104, 0.84);
+}
+
+.alert.error > .label {
+    -fx-text-fill: rgb(255, 233, 233);
+}
+
+.alert.success {
+    -fx-background-color: rgba(142, 192, 102, 0.84);
+    -fx-border-color: rgba(129, 171, 90, 0.84);
+}
+
+.alert.success > .label {
+    -fx-text-fill: rgb(255, 233, 233);
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.leftMenuButton .label, .leftMenuButton .glyph-icon {
+    -fx-text-fill: rgb(66, 65, 54);
+    -fx-fill: rgb(66, 65, 54);
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.leftMenuButton {
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: rgba(79, 78, 57, 0.32);
+}
+
+.leftMenuButton.selected {
+    -fx-background-color: rgba(140, 11, 49, 0.39);
+}
+
+.leftMenuButton:hover {
+    -fx-background-color: rgba(119, 118, 79, 0.32);
+}
+
+.leftMenuButton:pressed {
+    -fx-background-color: rgba(173, 11, 57, 0.39);
+}
+
+.scroll-bar {
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+}
+
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 0.0 10.0 0.0;
+
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 10.0 0.0 0.0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.15em 0.0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.0 0.15em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(79, 78, 57, 0.49);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+    -fx-cursor: hand;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(75, 74, 49, 0.67);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+}

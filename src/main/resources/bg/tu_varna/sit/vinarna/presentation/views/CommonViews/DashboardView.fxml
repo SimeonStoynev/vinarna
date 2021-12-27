@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainAnchorPanel" minHeight="600.0" minWidth="918.0" prefHeight="636.0" prefWidth="1190.0" styleClass="mainAnchorPanel" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.DashboardController">
+   <children>
+      <AnchorPane layoutX="286.0" layoutY="140.0" prefHeight="200.0" prefWidth="200.0" styleClass="mainPanel" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <AnchorPane layoutX="242.0" layoutY="64.0" prefHeight="556.0" prefWidth="861.0" style="-fx-background-radius: 0 0 50 0; -fx-border-radius: 0;" styleClass="mainPanelWhite" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0" />
+            <ImageView fitHeight="140.0" fitWidth="138.0" layoutX="70.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../media/Logo_Minified.png" />
+               </image>
+            </ImageView>
+            <MenuButton ellipsisString=".." layoutX="940.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="177.0" style="-fx-background-color: rgba(0,0,0,0.15); -fx-border-radius: 0 50 0 0; -fx-background-radius: 0 50 0 0;" styleClass="MenuButton" text="Tsvetelin Petrov" textFill="RED" wrapText="true" AnchorPane.rightAnchor="0.0">
+              <items>
+                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                     <content>
+                        <GridPane prefHeight="30.0" prefWidth="157.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="36.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="121.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <FontAwesomeIconView glyphName="USER" size="30" wrappingWidth="23.714285850524902">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </FontAwesomeIconView>
+                              <Label text="Profile" GridPane.columnIndex="1" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </GridPane>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                     <content>
+                        <GridPane prefHeight="30.0" prefWidth="157.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="36.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="121.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <FontAwesomeIconView glyphName="COG" size="30" wrappingWidth="23.714285850524902">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </FontAwesomeIconView>
+                              <Label text="Settings" GridPane.columnIndex="1" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </GridPane>
+                     </content>
+                  </CustomMenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                     <content>
+                        <GridPane prefHeight="30.0" prefWidth="157.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="36.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="121.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <FontAwesomeIconView glyphName="SIGN_OUT" size="30" wrappingWidth="23.714285850524902">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </FontAwesomeIconView>
+                              <Label text="Sign out" GridPane.columnIndex="1" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </GridPane>
+                     </content>
+                  </CustomMenuItem>
+              </items>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets right="25.0" />
+               </padding>
+            </MenuButton>
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="161.0" prefHeight="355.0" prefWidth="248.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
+               <content>
+                  <AnchorPane fx:id="menuPane" prefHeight="189.0" prefWidth="233.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <Button layoutY="4.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="233.0" styleClass="leftMenuButton">
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
+                                 <children>
+                                    <FontAwesomeIconView glyphName="USER" size="30" wrappingWidth="23.714285850524902">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </FontAwesomeIconView>
+                                    <Label contentDisplay="TOP" prefHeight="29.0" prefWidth="162.0" text="Известия">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
+                           </graphic></Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

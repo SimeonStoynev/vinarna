@@ -2,6 +2,7 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.common.Hasher;
+import bg.tu_varna.sit.vinarna.common.ViewsManager;
 import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.repositories.UserRepository;
 import javafx.fxml.FXML;
@@ -12,14 +13,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginController {
     private static final Logger log = Logger.getLogger(LoginController.class);
     private final UserRepository userRepository = UserRepository.getInstance();
+
 
     @FXML
     AnchorPane mainAnchorPanel;
@@ -47,7 +51,7 @@ public class LoginController {
         });
     }
 
-    public void loginProcedure() {
+    public void loginProcedure() throws IOException {
         messageLabel.setText("");
 
         String username = usernameTextField.getText();
@@ -70,6 +74,8 @@ public class LoginController {
             messageLabel.setText("There is no user with the entered data.");
             return;
         } else {
+            Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+            ViewsManager.changeView("Dashboard", Constants.View.DASHBOARD_VIEW, DashboardController.class, stage);
             System.out.println("Successful login.");
         }
     }
@@ -97,8 +103,4 @@ public class LoginController {
 
         return m.matches();
     }
-
-
-
-
 }

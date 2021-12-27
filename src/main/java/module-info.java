@@ -14,6 +14,7 @@ module bg.tu_varna.sit.vinarna {
     requires java.persistence;
     requires java.naming;
     requires java.sql;
+    requires de.jensd.fx.glyphs.fontawesome;
 
     opens bg.tu_varna.sit.vinarna.data.entities to org.hibernate.orm.core;
     exports bg.tu_varna.sit.vinarna.data.entities;
