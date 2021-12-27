@@ -79,7 +79,7 @@
             <Label style="-fx-font-size: 18;" text="Role" GridPane.columnIndex="6" />
          </children>
       </GridPane>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="97.0" prefHeight="299.0" prefWidth="989.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="97.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="97.0" prefHeight="299.0" prefWidth="989.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="97.0">
         <content>
           <AnchorPane fx:id="userRowsAnchorPane">
                <children>
