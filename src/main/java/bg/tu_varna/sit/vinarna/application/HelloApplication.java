@@ -2,6 +2,8 @@ package bg.tu_varna.sit.vinarna.application;
 
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.common.ViewsManager;
+import bg.tu_varna.sit.vinarna.presentation.controllers.DashboardController;
+import bg.tu_varna.sit.vinarna.presentation.controllers.LoginController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
@@ -14,7 +16,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        ViewsManager.changeView(Constants.Values.TITLE, Constants.View.LOGIN_VIEW, HelloApplication.class, stage);
+        ViewsManager.changeView(Constants.Values.TITLE, Constants.View.LOGIN_VIEW, LoginController.class, stage);
     }
 
     public static void main(String[] args) {

@@ -16,4 +16,9 @@ public class Constants {
         public static final String SUCCESS_COLOR = "#2B8C0BFF";
         public static final String ERROR_COLOR = "#8C0B31FF";
     }
+
+    public static class Media {
+        public static final String LEFTMENU_GRAPE = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_grape.png";
+        public static final String LEFTMENU_BOOK = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_book.png";
+    }
 }
