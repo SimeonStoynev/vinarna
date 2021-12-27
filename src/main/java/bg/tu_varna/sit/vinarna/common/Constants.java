@@ -5,6 +5,7 @@ public class Constants {
         public static final String HELLO_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/hello-view.fxml";
         public static final String LOGIN_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/LoginView/LoginView.fxml";
         public static final String DASHBOARD_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/CommonViews/DashboardView.fxml";
+        public static final String USERSANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Users/UsersAnchorPane.fxml";
     }
 
     public static class Configurations {

@@ -2,6 +2,7 @@ package bg.tu_varna.sit.vinarna.common;
 
 import bg.tu_varna.sit.vinarna.presentation.controllers.DashboardController;
 import bg.tu_varna.sit.vinarna.presentation.controllers.LoginController;
+import bg.tu_varna.sit.vinarna.presentation.controllers.UsersAnchorPaneController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
@@ -37,14 +38,16 @@ public class ViewsManager {
         public String imageDir;
         public String viewDir;
         public Class viewClass;
+        public AnchorPane contentPane;
 
-        public MenuItem(String label, FontAwesomeIcon icon, int iconType, String imageDir, String viewDir, Class viewClass) {
+        public MenuItem(String label, FontAwesomeIcon icon, int iconType, String imageDir, String viewDir, Class viewClass, AnchorPane contentPane) {
             this.label = label;
             this.icon = icon;
             this.iconType = iconType;
             this.imageDir = imageDir;
             this.viewDir = viewDir;
             this.viewClass = viewClass;
+            this.contentPane = contentPane;
         }
 
         public String getLabel() {
@@ -94,6 +97,14 @@ public class ViewsManager {
         public void setViewClass(Class viewClass) {
             this.viewClass = viewClass;
         }
+
+        public AnchorPane getContentPane() {
+            return contentPane;
+        }
+
+        public void setContentPane(AnchorPane contentPane) {
+            this.contentPane = contentPane;
+        }
     }
 
     public static void changeView(String title, String viewDir, Class cl, Stage... st) throws IOException {
@@ -135,23 +146,43 @@ public class ViewsManager {
         }
     }
 
-    public static void leftMenuGenerate(AnchorPane pane, Class viewClass) {
+    public static void loadAnchorPane(AnchorPane anchorPane, AnchorPane contentAnchorPane) {
+        try {
+            if (!contentAnchorPane.getChildren().isEmpty()) {
+                contentAnchorPane.getChildren().clear();
+            }
+            contentAnchorPane.getChildren().add(anchorPane);
+            anchorPane.setPrefWidth(contentAnchorPane.getWidth());
+            anchorPane.setPrefHeight(contentAnchorPane.getHeight());
+            contentAnchorPane.widthProperty().addListener(event -> {
+                anchorPane.setPrefWidth(contentAnchorPane.getWidth());
+            });
+
+            contentAnchorPane.heightProperty().addListener(event -> {
+                anchorPane.setPrefHeight(contentAnchorPane.getHeight());
+            });
+        } catch (Throwable ex) {
+            log.error("Error in loading the AnchorPane view: " + ex);
+        }
+    }
+
+    public static void leftMenuGenerate(AnchorPane menuPane, AnchorPane contentPane, Class viewClass) {
         List<MenuItem> menuItems = new ArrayList<>();
 
         menuItems.add(new MenuItem("Dashboard", FontAwesomeIcon.HOME, 0, "",
-                Constants.View.DASHBOARD_VIEW, DashboardController.class));
+                Constants.View.DASHBOARD_VIEW, DashboardController.class, contentPane));
 
         menuItems.add(new MenuItem("Users", FontAwesomeIcon.USERS, 0, "",
-                Constants.View.LOGIN_VIEW, LoginController.class));
+                "/bg/tu_varna/sit/vinarna/presentation/views/Users/UsersAnchorPane.fxml", UsersAnchorPaneController.class, contentPane));
 
         menuItems.add(new MenuItem("Grape", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_GRAPE,
-                Constants.View.LOGIN_VIEW, LoginController.class));
+                Constants.View.LOGIN_VIEW, LoginController.class, contentPane));
 
         menuItems.add(new MenuItem("Wine recipes", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
-                Constants.View.LOGIN_VIEW, LoginController.class));
+                Constants.View.LOGIN_VIEW, LoginController.class, contentPane));
 
         int y = 0;
-        pane.getChildren().remove(0);
+        menuPane.getChildren().remove(0);
         for (MenuItem item : menuItems) {
             Button button = new Button("");
             HBox hbox = new HBox();
@@ -194,24 +225,36 @@ public class ViewsManager {
 
             if (item.getViewClass().equals(viewClass)) {
                 button.getStyleClass().add("selected");
-            } else {
-                button.setOnAction(event -> {
-                    try {
-                        leftMenuItemPressEvent(button, item);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
             }
 
-            pane.getChildren().add(button);
+            button.setOnAction(event -> {
+                try {
+                    leftMenuItemPressEvent(menuPane, button, item);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            menuPane.getChildren().add(button);
             y += 55;
         }
     }
 
-    private static void leftMenuItemPressEvent(Button button, MenuItem item) throws IOException {
-        Stage stage = (Stage) button.getScene().getWindow();
-        changeView(item.getLabel(), item.getViewDir(), item.getViewClass(), stage);
+    private static void leftMenuItemPressEvent(AnchorPane menuPane, Button button, MenuItem item) throws IOException {
+        try {
+            if(button.getStyleClass().contains("selected")) {
+                return;
+            }
+            AnchorPane sp = FXMLLoader.load(Objects.requireNonNull(item.getViewClass().getResource(item.getViewDir())));
+            ViewsManager.loadAnchorPane(sp, item.getContentPane());
+
+            for (var test:menuPane.getChildren()) {
+                test.getStyleClass().removeAll("selected");
+            }
+            button.getStyleClass().add("selected");
+        } catch (Exception ex) {
+            log.error("Error in loading the AnchorPane view: " + ex);
+        }
     }
 
     public static void closeView(Stage st) {
