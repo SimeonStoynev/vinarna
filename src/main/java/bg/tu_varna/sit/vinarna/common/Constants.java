@@ -18,6 +18,7 @@ public class Constants {
     }
 
     public static class Media {
+        public static final String APP_ICON = "/bg/tu_varna/sit/vinarna/presentation/media/icon.png";
         public static final String LEFTMENU_GRAPE = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_grape.png";
         public static final String LEFTMENU_BOOK = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_book.png";
     }

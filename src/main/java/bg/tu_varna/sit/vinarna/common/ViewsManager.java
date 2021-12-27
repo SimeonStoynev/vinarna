@@ -107,7 +107,7 @@ public class ViewsManager {
             Parent root = FXMLLoader.load(path);
 
             Scene scene = new Scene(root);
-            stage.getIcons().add(new Image(Objects.requireNonNull(LoginController.class.getResourceAsStream("/bg/tu_varna/sit/vinarna/presentation/media/icon.png"))));
+            stage.getIcons().add(new Image(Objects.requireNonNull(LoginController.class.getResourceAsStream(Constants.Media.APP_ICON))));
             stage.setScene(scene);
 
             stage.setOnCloseRequest(e -> {

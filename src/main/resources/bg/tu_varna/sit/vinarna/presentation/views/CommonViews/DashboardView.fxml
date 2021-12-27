@@ -22,7 +22,7 @@
    <children>
       <AnchorPane layoutX="286.0" layoutY="140.0" prefHeight="200.0" prefWidth="200.0" styleClass="mainPanel" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
          <children>
-            <AnchorPane layoutX="242.0" layoutY="64.0" prefHeight="556.0" prefWidth="861.0" style="-fx-background-radius: 0 0 50 0; -fx-border-radius: 0;" styleClass="mainPanelWhite" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0" />
+            <AnchorPane layoutX="242.0" layoutY="64.0" prefHeight="556.0" prefWidth="861.0" style="-fx-background-radius: 50 0 50 0; -fx-border-radius: 0;" styleClass="mainPanelWhite" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0" />
             <ImageView fitHeight="140.0" fitWidth="138.0" layoutX="70.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../media/Logo_Minified.png" />
@@ -96,6 +96,30 @@
                                  </font>
                               </FontAwesomeIconView>
                               <Label text="Sign out" GridPane.columnIndex="1" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </GridPane>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                     <content>
+                        <GridPane prefHeight="30.0" prefWidth="157.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="36.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="121.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <FontAwesomeIconView glyphName="CLOSE" size="30" wrappingWidth="23.714285850524902">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </FontAwesomeIconView>
+                              <Label text="Exit" GridPane.columnIndex="1" />
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />
