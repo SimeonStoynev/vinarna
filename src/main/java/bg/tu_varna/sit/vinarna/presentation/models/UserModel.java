@@ -4,7 +4,7 @@ import bg.tu_varna.sit.vinarna.data.entities.User;
 
 import java.sql.Timestamp;
 
-public class UserModel {
+public class UserModel implements EntityModel<User> {
     private int id;
     private RoleModel role;
     private String username;
@@ -143,6 +143,7 @@ public class UserModel {
         return String.format("%s | %s | %s | %s", this.username, this.firstName, this.lastName, this.role.getName());
     }
 
+    @Override
     public User toEntity() {
         User userTemp = new User();
         userTemp.setId(this.id);

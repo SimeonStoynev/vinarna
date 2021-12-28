@@ -4,7 +4,7 @@ import bg.tu_varna.sit.vinarna.data.entities.Role;
 
 import java.sql.Timestamp;
 
-public class RoleModel {
+public class RoleModel implements EntityModel<Role> {
     private int id;
     private String name;
     private Timestamp created_at;
@@ -58,6 +58,7 @@ public class RoleModel {
         this.updated_at = updated_at;
     }
 
+    @Override
     public Role toEntity() {
         Role temp = new Role();
         temp.setId(this.id);
