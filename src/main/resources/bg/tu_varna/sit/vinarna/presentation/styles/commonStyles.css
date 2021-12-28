@@ -267,3 +267,8 @@
 .text-error {
     -fx-text-fill: rgba(140, 11, 49, 0.76);
 }
+
+.tooltip {
+    -fx-opacity: 0.9;
+    -fx-background-color: #333228;
+}
