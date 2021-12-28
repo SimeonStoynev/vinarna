@@ -13,6 +13,13 @@
 
         <mapping class="bg.tu_varna.sit.vinarna.data.entities.User"/>
         <mapping class="bg.tu_varna.sit.vinarna.data.entities.Role"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.Bottle"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.BottleType"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.GrapeCategory"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.GrapeSort"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.GrapeStorage"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.WineRecipe"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.WineType"/>
 
     </session-factory>
 </hibernate-configuration>

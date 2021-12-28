@@ -38,10 +38,11 @@ public class UserRepository implements DAORepository<User> {
     public void update(User obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
+
         try {
             session.update(obj);
             log.info("User updated successfully.");
-        } catch (Exception ex) {
+        } catch(Exception ex) {
             log.error("User update error: " + ex);
         } finally {
             transaction.commit();
@@ -52,10 +53,11 @@ public class UserRepository implements DAORepository<User> {
     public void delete(User obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
+
         try {
             session.delete(obj);
             log.info("User deleted successfully.");
-        } catch (Exception ex) {
+        } catch(Exception ex) {
             log.error("User delete error: " + ex);
         } finally {
             transaction.commit();
@@ -67,10 +69,11 @@ public class UserRepository implements DAORepository<User> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<User> user = null;
-        try{
+
+        try {
             user = session.byId(User.class).loadOptional(id);
             log.info("Get User by id successfully.");
-        } catch (Exception ex) {
+        } catch(Exception ex) {
             log.error("Get all users error: " + ex.getMessage());
         } finally {
             transaction.commit();
@@ -83,6 +86,7 @@ public class UserRepository implements DAORepository<User> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         List<User> users = new LinkedList<>();
+
         try{
             String jpql = "SELECT u FROM User u";
             users.addAll(session.createQuery(jpql, User.class).getResultList());
@@ -92,6 +96,7 @@ public class UserRepository implements DAORepository<User> {
         } finally {
             transaction.commit();
         }
+
         return users;
     }
 
@@ -99,6 +104,7 @@ public class UserRepository implements DAORepository<User> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         User user = null;
+
         try{
             String jpql = "SELECT u FROM User u WHERE username = '" + username + "' AND password = '" + password + "'";
             user = (User) session.createQuery(jpql).getSingleResult();
@@ -108,6 +114,7 @@ public class UserRepository implements DAORepository<User> {
         } finally {
             transaction.commit();
         }
+
         return user;
     }
 
@@ -115,15 +122,17 @@ public class UserRepository implements DAORepository<User> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         User user = null;
-        try{
+
+        try {
             String jpql = "SELECT u FROM User u WHERE username = '" + username + "'";
             user = (User) session.createQuery(jpql).getSingleResult();
             log.info("Get User by username successfully.");
-        } catch (Exception ex) {
+        } catch(Exception ex) {
             log.error("Get user by username error: " + ex.getMessage());
         } finally {
             transaction.commit();
         }
+
         return user;
     }
 
@@ -131,15 +140,17 @@ public class UserRepository implements DAORepository<User> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         User user = null;
+
         try{
             String jpql = "SELECT u FROM User u WHERE email = '" + email + "'";
             user = (User) session.createQuery(jpql).getSingleResult();
             log.info("Get User by email successfully.");
-        } catch (Exception ex) {
+        } catch(Exception ex) {
             log.error("Get user by email error: " + ex.getMessage());
         } finally {
             transaction.commit();
         }
+
         return user;
     }
 }
