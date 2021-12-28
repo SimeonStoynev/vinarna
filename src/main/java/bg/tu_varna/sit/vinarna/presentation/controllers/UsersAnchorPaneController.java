@@ -3,6 +3,8 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 import bg.tu_varna.sit.vinarna.business.UserService;
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
+import javafx.beans.InvalidationListener;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
@@ -27,16 +30,24 @@ public class UsersAnchorPaneController {
     @FXML
     AnchorPane userRowsAnchorPane;
 
+    ObservableList<UserModel> users;
+
     @FXML
     private void initialize() {
         userTableViewReload();
     }
 
+    public void getUsers() {
+        users = userService.getAllUser();
+    }
+
+
+
+
     public void userTableViewReload() {
         try {
+            getUsers();
             userRowsAnchorPane.getChildren().clear();
-            ObservableList<UserModel> users = userService.getAllUser();
-
             int y = 0;
             boolean bg = false;
             for(UserModel user : users) {
@@ -102,6 +113,14 @@ public class UsersAnchorPaneController {
                 UsersAddEditDialogController controller = loader.getController();
                 controller.formInit(user);
                 dialog.show();
+
+                dialog.setOnHiding(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        dialog.close();
+                        userTableViewReload();
+                    }
+
+                });
 
             } else {
                 log.error("Dialog couldn't be loaded: " + Constants.View.USERSADDEDITDIALOG_VIEW);

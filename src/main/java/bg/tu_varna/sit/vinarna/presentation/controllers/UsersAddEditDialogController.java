@@ -8,7 +8,10 @@ import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -20,6 +23,9 @@ public class UsersAddEditDialogController {
 
     @FXML
     AnchorPane mainAnchorPanel;
+
+    @FXML
+    AnchorPane formAnchorPane;
 
     @FXML
     Label titleLabel;
@@ -82,6 +88,12 @@ public class UsersAddEditDialogController {
     @FXML
     private void initialize() {
         errorLabelsClear();
+        mainAnchorPanel.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if(keyEvent.getCode() == KeyCode.ENTER){
+                submitButton.fire();
+                keyEvent.consume();
+            }
+        });
     }
 
     public void formInit(UserModel... user) {
@@ -116,14 +128,14 @@ public class UsersAddEditDialogController {
         errorLabelsClear();
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-        String passwordRepeat = passwordRepeatTextField.toString();
         RoleModel role = (RoleModel)rolesComboBox.getValue();
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
         String email = emailTextField.getText();
         String phone = phoneTextField.getText();
 
-        if(formValidate()) {
+        boolean valid = (action == 0) ? formAddValidate() : formEditValidate();
+        if(valid) {
             if(user == null) {
                 user = new UserModel();
                 user.setId(0);
@@ -134,51 +146,30 @@ public class UsersAddEditDialogController {
             user.setEmail(email);
             user.setFirstName(firstName);
             user.setLastName(lastName);
-            user.setPassword(Hasher.MD5.hash(password));
             user.setPhone(phone);
             Date date = new Date();
             user.setCreated_at(new Timestamp(date.getTime()));
             user.setUpdated_at(new Timestamp(date.getTime()));
 
-            if(action == 0)
+            if(action == 0) {
+                user.setPassword(Hasher.MD5.hash(password));
                 userService.userAdd(user);
-            else
+            }
+            else {
+                if(password.length() != 0)
+                    user.setPassword(Hasher.MD5.hash(password));
                 userService.userUpdate(user);
+            }
+            Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+            stage.hide();
         }
-
-        /*if(this.user == null){
-
-            UserModel userTemp = new UserModel();
-
-            RoleRepository rep = RoleRepository.getInstance();
-
-
-            userTemp.setId(0);
-            userTemp.setRole(role.toEntity());
-            userTemp.setUsername("test");
-            userTemp.setEmail("test3");
-            userTemp.setFirstName("test1");
-            userTemp.setLastName("test2");
-            userTemp.setPassword("test4");
-            userTemp.setPhone("359");
-            Date date = new Date();
-            userTemp.setCreated_at(new Timestamp(date.getTime()));
-            userTemp.setUpdated_at(new Timestamp(date.getTime()));
-
-            userService.userAdd(userTemp);
-
-
-            System.out.println("Nqma");
-        } else {
-            System.out.println("Ima");
-        }*/
     }
 
-    private boolean formValidate() {
+    private boolean formAddValidate() {
         boolean valid = true;
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-        String passwordRepeat = passwordRepeatTextField.toString();
+        String passwordRepeat = passwordRepeatTextField.getText();
         RoleModel role = (RoleModel)rolesComboBox.getValue();
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
@@ -196,6 +187,9 @@ public class UsersAddEditDialogController {
         if(!userService.passwordValidate(password)){
             passwordErrorLabel.setText("Password is not valid.");
             valid = false;
+        } else if(!passwordRepeat.equals(password)) {
+            passwordErrorLabel.setText("The repeat password do not match.");
+            valid = false;
         }
 
         if(!userService.emailValidate(email)) {
@@ -208,6 +202,79 @@ public class UsersAddEditDialogController {
 
         if(role == null) {
             roleErrorLabel.setText("Role is not selected.");
+            valid = false;
+        }
+
+        if(firstName.length() == 0) {
+            fnameErrorLabel.setText("The first name is required.");
+            valid = false;
+        }
+
+        if(lastName.length() == 0) {
+            lnameErrorLabel.setText("The last name is required.");
+            valid = false;
+        }
+
+        if(phone.length() == 0) {
+            phoneErrorLabel.setText("The phone is required.");
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    private boolean formEditValidate() {
+        boolean valid = true;
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        String passwordRepeat = passwordRepeatTextField.getText();
+        RoleModel role = (RoleModel)rolesComboBox.getValue();
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String email = emailTextField.getText();
+        String phone = phoneTextField.getText();
+
+        if(!userService.usernameValidate(username)) {
+            usernameErrorLabel.setText("Username is not valid.");
+            valid = false;
+        } else if (!user.getUsername().equals(username) && userService.isUsernameExists(username)) {
+            usernameErrorLabel.setText("Username is already in use.");
+            valid = false;
+        }
+
+        if(password.length() != 0 && !userService.passwordValidate(password)){
+            passwordErrorLabel.setText("Password is not valid.");
+            valid = false;
+        } else if(!passwordRepeat.equals(password)) {
+            passwordErrorLabel.setText("The repeat password do not match.");
+            valid = false;
+        }
+
+        if(!userService.emailValidate(email)) {
+            emailErrorLabel.setText("Email is not valid.");
+            valid = false;
+        } else if(!user.getEmail().equals(email) && userService.isEmailExists(email)) {
+            emailErrorLabel.setText("Email is already in use.");
+            valid = false;
+        }
+
+        if(role == null) {
+            roleErrorLabel.setText("Role is not selected.");
+            valid = false;
+        }
+
+        if(firstName.length() == 0) {
+            fnameErrorLabel.setText("The first name is required.");
+            valid = false;
+        }
+
+        if(lastName.length() == 0) {
+            lnameErrorLabel.setText("The last name is required.");
+            valid = false;
+        }
+
+        if(phone.length() == 0) {
+            phoneErrorLabel.setText("The phone is required.");
             valid = false;
         }
 

@@ -14,7 +14,8 @@
 <AnchorPane fx:id="mainAnchorPanel" prefHeight="685.0" prefWidth="468.0" styleClass="mainAnchorPanel" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.UsersAddEditDialogController">
    <children>
       <AnchorPane layoutX="38.0" layoutY="32.0" prefHeight="465.0" prefWidth="412.0" styleClass="mainPanel" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0" />
-      <AnchorPane layoutX="28.0" layoutY="22.0" prefHeight="465.0" prefWidth="380.0" style="-fx-background-radius: 50 50 50 50; -fx-border-radius: 0;" styleClass="mainPanelWhite" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0">
+      <AnchorPane prefHeight="200.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="formAnchorPane" layoutX="28.0" layoutY="22.0" prefHeight="465.0" prefWidth="380.0" style="-fx-background-radius: 50 50 50 50; -fx-border-radius: 0;" styleClass="mainPanelWhite" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0">
          <children>
             <Label fx:id="titleLabel" alignment="CENTER" layoutX="16.0" layoutY="14.0" prefHeight="66.0" prefWidth="382.0" style="-fx-font-size: 45;" text="label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                <font>
