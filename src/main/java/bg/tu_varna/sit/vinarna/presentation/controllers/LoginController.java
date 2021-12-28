@@ -1,10 +1,12 @@
 package bg.tu_varna.sit.vinarna.presentation.controllers;
 
+import bg.tu_varna.sit.vinarna.business.UserService;
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.common.Hasher;
 import bg.tu_varna.sit.vinarna.common.ViewsManager;
 import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.repositories.UserRepository;
+import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,7 +24,7 @@ import java.util.regex.Pattern;
 
 public class LoginController {
     private static final Logger log = Logger.getLogger(LoginController.class);
-    private final UserRepository userRepository = UserRepository.getInstance();
+    public final UserService userService = UserService.getInstance();
 
 
     @FXML
@@ -68,8 +70,9 @@ public class LoginController {
         }
 
         password = Hasher.MD5.hash(password);
-        User user = userRepository.getByUsernameAndPassword(username, password);
-        if(user == null) {
+        boolean loginAuth = userService.userAuth(username, password);
+
+        if(!loginAuth) {
             messageLabel.setStyle("-fx-text-fill: " + Constants.Values.ERROR_COLOR + ";");
             messageLabel.setText("There is no user with the entered data.");
             return;

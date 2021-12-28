@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,9 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="432.0" minWidth="553.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.UsersAnchorPaneController">
+<AnchorPane minHeight="432.0" minWidth="553.0" prefWidth="1000.0" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.UsersAnchorPaneController">
    <children>
-      <Button layoutX="784.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: green;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <Button onAction="#userAddDialog" layoutX="867.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="116.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
                <children>
@@ -35,8 +36,12 @@
                   </Label>
                </children>
             </HBox>
-         </graphic></Button>
-      <Button onAction="#userTableViewReload" layoutX="373.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: #2a6cd3;" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="14.0">
+         </graphic>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="success" />
+         </styleClass></Button>
+      <Button layoutX="373.0" layoutY="14.0" mnemonicParsing="false" onAction="#userTableViewReload" prefHeight="38.0" prefWidth="53.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
                <children>
@@ -48,6 +53,10 @@
                </children>
             </HBox>
          </graphic>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="info" />
+         </styleClass>
       </Button>
       <GridPane layoutX="10.0" layoutY="66.0" prefHeight="31.0" prefWidth="973.0" style="-fx-background-color: rgba(79,78,47,0.56); -fx-background-radius: 13 13 0 0;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="66.0">
          <columnConstraints>

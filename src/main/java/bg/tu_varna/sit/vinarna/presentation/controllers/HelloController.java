@@ -2,8 +2,7 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.business.UserService;
 import bg.tu_varna.sit.vinarna.presentation.models.HelloModel;
-import bg.tu_varna.sit.vinarna.presentation.models.UserListViewModel;
-import javafx.collections.ObservableList;
+import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,7 +20,7 @@ public class HelloController implements EventHandler<MouseEvent> {
     private Button helloButton;
 
     @FXML
-    private ListView<UserListViewModel> listView;
+    private ListView<UserModel> listView;
 
     private final HelloModel model;
 
@@ -37,9 +36,9 @@ public class HelloController implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
 
-        welcomeText.setText(model.getWelcomeMessage());
+        /*welcomeText.setText(model.getWelcomeMessage());
 
         ObservableList<UserListViewModel> userListViewModels = service.getAllUser();
-        listView.setItems(userListViewModels);
+        listView.setItems(userListViewModels);*/
     }
 }

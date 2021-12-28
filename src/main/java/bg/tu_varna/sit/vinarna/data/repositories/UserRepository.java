@@ -2,7 +2,6 @@ package bg.tu_varna.sit.vinarna.data.repositories;
 
 import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.mysql.Connection;
-import bg.tu_varna.sit.vinarna.presentation.models.UserListViewModel;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,7 +9,6 @@ import org.hibernate.Transaction;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class UserRepository implements DAORepository<User> {
 

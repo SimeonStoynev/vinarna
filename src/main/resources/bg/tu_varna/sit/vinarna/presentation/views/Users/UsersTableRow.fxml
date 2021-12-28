@@ -43,7 +43,7 @@
             <Label fx:id="roleLabel" text="Role" GridPane.columnIndex="6" />
             <MenuButton fx:id="settingsMenuButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="7">
                <items>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                  <CustomMenuItem fx:id="editCustomMenuItem" mnemonicParsing="false" text="Unspecified Action">
                      <content>
                         <GridPane prefHeight="30.0" prefWidth="157.0">
                            <columnConstraints>

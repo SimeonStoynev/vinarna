@@ -2,6 +2,7 @@ package bg.tu_varna.sit.vinarna.common;
 
 import bg.tu_varna.sit.vinarna.presentation.controllers.DashboardController;
 import bg.tu_varna.sit.vinarna.presentation.controllers.LoginController;
+import bg.tu_varna.sit.vinarna.presentation.controllers.UsersAddEditDialogController;
 import bg.tu_varna.sit.vinarna.presentation.controllers.UsersAnchorPaneController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -167,7 +168,7 @@ public class ViewsManager {
         }
     }
 
-    public static void openDialog(Stage parentStage, String viewDir, Class cl) {
+    public static void openDialog(Stage parentStage, String viewDir, Class cl, String title, boolean resizable) {
         try {
             final Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
@@ -175,11 +176,15 @@ public class ViewsManager {
 
             URL path = cl.getResource(viewDir);
             if (path != null) {
-                Parent root = FXMLLoader.load(path);
+                FXMLLoader loader = new FXMLLoader(cl.getResource(viewDir));
+                Parent root = (Parent)loader.load();
                 Scene scene = new Scene(root);
                 dialog.getIcons().add(new Image(Objects.requireNonNull(cl.getResourceAsStream(Constants.Media.APP_ICON))));
                 dialog.setScene(scene);
+                dialog.setResizable(resizable);
+                dialog.setTitle(title);
                 dialog.show();
+
             } else {
                 log.error("Dialog couldn't be loaded: " + viewDir);
             }

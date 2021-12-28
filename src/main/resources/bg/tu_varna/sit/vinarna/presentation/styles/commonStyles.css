@@ -19,15 +19,39 @@
     -fx-background-radius: 0 50 50 0;
 }
 
-.text-field {
+.dialog.mainPanelWhite {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+}
+
+.text-field, .combo-box {
     -fx-border-radius: 13 13 13 13;
     -fx-background-radius: 13 13 13 13;
     -fx-font-size: 15;
 }
 
-.text-field:focused {
+.combo-box {
+    -fx-background-color: rgba(255, 255, 255);
+    -fx-cursor: hand;
+}
+
+.text-field:focused, .combo-box:focused {
     -fx-background-color: #5d5c55, #FFFFFF;
     -fx-effect: dropshadow(gaussian, #676664, 10, 0, 0, 0);
+}
+
+.combo-box .combo-box-popup .list-view, .combo-box .combo-box-popup .list-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 9 9 9 9;
+    -fx-background-radius: 9 9 9 9;
+    -fx-cursor: hand;
+    -fx-text-fill: rgb(66, 65, 54);
+}
+.combo-box .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgba(157, 154, 113, 0.89);
+}
+
+.combo-box .combo-box-popup .list-cell:selected {
+    -fx-background-color: rgba(157, 154, 113, 0.89);
 }
 
 .button {
@@ -35,6 +59,49 @@
     -fx-background-radius: 13 13 13 13;
     -fx-font-size: 15;
     -fx-cursor: hand;
+}
+
+.btn {
+    -fx-border-radius: 13 13 13 13;
+    -fx-background-radius: 13 13 13 13;
+    -fx-font-size: 15;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.btn.primary {
+    -fx-background-color: rgba(56, 52, 47, 0.6);
+    -fx-text-fill: rgb(222, 222, 222);
+}
+
+.btn.primary:hover {
+    -fx-background-color: rgba(37, 36, 30, 0.6);
+    -fx-text-fill: rgb(222, 222, 222);
+}
+
+.btn.primary:pressed {
+    -fx-background-color: rgba(63, 62, 51, 0.6);
+    -fx-text-fill: rgb(222, 222, 222);
+}
+
+.btn.info {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(11, 110, 140, 0.76);
+}
+
+.btn.success {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(59, 136, 58, 0.76);
+}
+
+.btn.warning {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(143, 141, 30, 0.76);
+}
+
+.btn.error {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(140, 11, 49, 0.76);
 }
 
 .errorColor {
