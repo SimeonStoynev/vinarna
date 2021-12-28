@@ -19,6 +19,11 @@
     -fx-background-radius: 0 50 50 0;
 }
 
+.label {
+    -fx-text-fill: rgb(66, 65, 54);
+    -fx-font-size: 15;
+}
+
 .dialog.mainPanelWhite {
     -fx-background-color: rgba(255, 255, 255, 0.8);
 }
@@ -89,14 +94,44 @@
     -fx-background-color: rgba(11, 110, 140, 0.76);
 }
 
+.btn.info:hover {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(13, 92, 121, 0.76);
+}
+
+.btn.info:pressed {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(21, 113, 148, 0.76);
+}
+
 .btn.success {
     -fx-text-fill: rgb(229, 229, 229);
     -fx-background-color: rgba(59, 136, 58, 0.76);
 }
 
+.btn.success:hover {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(33, 108, 33, 0.76);
+}
+
+.btn.success:pressed {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(54, 150, 54, 0.76);
+}
+
 .btn.warning {
     -fx-text-fill: rgb(229, 229, 229);
     -fx-background-color: rgba(143, 141, 30, 0.76);
+}
+
+.btn.warning:hover {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(112, 111, 14, 0.76);
+}
+
+.btn.warning:pressed {
+    -fx-text-fill: rgb(229, 229, 229);
+    -fx-background-color: rgba(154, 152, 22, 0.76);
 }
 
 .btn.error {
@@ -117,23 +152,20 @@
     -fx-effect: dropshadow(gaussian, #4b4b4b, 20, 0, 0, 0);
 }
 
-.label {
-    -fx-text-fill: rgb(66, 65, 54);
-    -fx-font-size: 15;
-}
-
 .MenuButton .label{
     -fx-text-fill: #c5c5c5;
     -fx-font-size: 20;
 }
 
-.MenuButton .menu-item .label{
+.menu-item .label{
     -fx-text-fill: rgb(66, 65, 54);
     -fx-font-size: 15;
 }
 
-.MenuButton .menu-item:hover, .MenuButton .menu-item:focused{
+.menu-item:hover, .menu-item:focused{
     -fx-background-color: rgba(157, 154, 113, 0.89);
+    -fx-border-radius: 13;
+    -fx-background-radius: 13;
 }
 .context-menu {
     -fx-padding: 10 5 10 5;
