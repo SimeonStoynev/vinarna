@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        ViewsManager.changeView(Constants.Values.TITLE, Constants.View.DASHBOARD_VIEW, DashboardController.class, stage);
+        ViewsManager.changeView(Constants.Values.TITLE, Constants.View.LOGIN_VIEW, LoginController.class, stage);
     }
 
     public static void main(String[] args) {

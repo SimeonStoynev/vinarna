@@ -20,7 +20,6 @@ public class UserRepository implements DAORepository<User> {
         public static final UserRepository INSTANCE = new UserRepository();
     }
 
-
     @Override
     public void save(User obj) {
         Session session = Connection.openSession();
@@ -64,7 +63,7 @@ public class UserRepository implements DAORepository<User> {
     }
 
     @Override
-    public Optional<User> getById(Long id) {
+    public Optional<User> getById(int id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<User> user = null;
@@ -106,6 +105,38 @@ public class UserRepository implements DAORepository<User> {
             log.info("Get User by username & password successfully.");
         } catch (Exception ex) {
             log.error("Get user by username & password error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+        return user;
+    }
+
+    public User getByUsername(String username) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        User user = null;
+        try{
+            String jpql = "SELECT u FROM User u WHERE username = '" + username + "'";
+            user = (User) session.createQuery(jpql).getSingleResult();
+            log.info("Get User by username successfully.");
+        } catch (Exception ex) {
+            log.error("Get user by username error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+        return user;
+    }
+
+    public User getByEmail(String email) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        User user = null;
+        try{
+            String jpql = "SELECT u FROM User u WHERE email = '" + email + "'";
+            user = (User) session.createQuery(jpql).getSingleResult();
+            log.info("Get User by email successfully.");
+        } catch (Exception ex) {
+            log.error("Get user by email error: " + ex.getMessage());
         } finally {
             transaction.commit();
         }

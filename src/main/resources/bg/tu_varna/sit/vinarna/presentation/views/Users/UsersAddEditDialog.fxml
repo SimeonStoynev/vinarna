@@ -55,7 +55,7 @@
                   <Insets left="40.0" />
                </padding>
             </PasswordField>
-            <Label fx:id="passwordInfoLabel" layoutX="15.0" layoutY="210.0" text="Leave password fields blank if you do not want to change." textFill="#575757" />
+            <Label fx:id="passwordInfoLabel" layoutX="15.0" layoutY="210.0" style="-fx-font-size: 12;" text="Leave password fields blank if you do not want to change." textFill="#575757" />
             <ComboBox fx:id="rolesComboBox" layoutX="14.0" layoutY="263.0" opacity="0.8" prefHeight="41.0" prefWidth="384.0" promptText="Select Role" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="263.0" />
             <FontAwesomeIconView glyphName="LOCK" layoutX="224.0" layoutY="194.0" size="30" wrappingWidth="23.714285850524902" AnchorPane.rightAnchor="164.2857141494751" AnchorPane.topAnchor="168.2857151031494">
                <font>
@@ -98,6 +98,48 @@
                   <Font size="61.0" />
                </font>
             </FontAwesomeIconView>
+            <Label fx:id="usernameErrorLabel" layoutX="14.0" layoutY="131.0" prefHeight="17.0" prefWidth="384.0" style="-fx-font-size: 12;" text="Username error message" textFill="#575757">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <Label fx:id="passwordErrorLabel" layoutX="14.0" layoutY="227.0" prefHeight="17.0" prefWidth="384.0" style="-fx-font-size: 12;" text="Password error message" textFill="#575757">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <Label fx:id="roleErrorLabel" layoutX="14.0" layoutY="306.0" prefHeight="17.0" prefWidth="384.0" style="-fx-font-size: 12;" text="Role error message" textFill="#575757">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <Label fx:id="fnameErrorLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="381.0" prefHeight="35.0" prefWidth="186.0" style="-fx-font-size: 12;" text="Fname error message" textFill="#575757">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <Label fx:id="lnameErrorLabel" alignment="TOP_LEFT" layoutX="212.0" layoutY="381.0" prefHeight="35.0" prefWidth="186.0" style="-fx-font-size: 12;" text="Lname error message" textFill="#575757">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <Label fx:id="emailErrorLabel" layoutX="15.0" layoutY="457.0" prefHeight="17.0" prefWidth="384.0" style="-fx-font-size: 12;" text="Email error message" textFill="#575757">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <Label fx:id="phoneErrorLabel" layoutX="14.0" layoutY="533.0" prefHeight="17.0" prefWidth="384.0" style="-fx-font-size: 12;" text="Phone error message" textFill="#575757">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
          </children>
       </AnchorPane>
    </children>

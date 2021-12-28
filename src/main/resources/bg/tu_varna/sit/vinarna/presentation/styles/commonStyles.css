@@ -259,3 +259,11 @@
     -fx-background-insets: 2.0, 0.0, 0.0;
     -fx-background-radius: 2.0em;
 }
+
+.bold {
+    -fx-font-weight: bold;
+}
+
+.text-error {
+    -fx-text-fill: rgba(140, 11, 49, 0.76);
+}

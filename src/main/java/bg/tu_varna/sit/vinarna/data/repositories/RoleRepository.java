@@ -65,7 +65,7 @@ public class RoleRepository implements DAORepository<Role>{
     }
 
     @Override
-    public Optional<Role> getById(Long id) {
+    public Optional<Role> getById(int id) {
         Session session=Connection.openSession();
         Transaction transaction=session.beginTransaction();
         Optional<Role> role = null;

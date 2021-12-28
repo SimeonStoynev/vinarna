@@ -2,9 +2,6 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.business.UserService;
 import bg.tu_varna.sit.vinarna.common.Constants;
-import bg.tu_varna.sit.vinarna.common.ViewsManager;
-import bg.tu_varna.sit.vinarna.data.entities.User;
-import bg.tu_varna.sit.vinarna.data.repositories.UserRepository;
 import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +17,6 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 
 public class UsersAnchorPaneController {

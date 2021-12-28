@@ -2,21 +2,16 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.business.RoleService;
 import bg.tu_varna.sit.vinarna.business.UserService;
-import bg.tu_varna.sit.vinarna.data.entities.Role;
-import bg.tu_varna.sit.vinarna.data.entities.User;
-import bg.tu_varna.sit.vinarna.data.repositories.RoleRepository;
-import bg.tu_varna.sit.vinarna.data.repositories.UserRepository;
+import bg.tu_varna.sit.vinarna.common.Hasher;
 import bg.tu_varna.sit.vinarna.presentation.models.RoleModel;
 import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.List;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class UsersAddEditDialogController {
 
@@ -59,21 +54,42 @@ public class UsersAddEditDialogController {
     @FXML
     Button submitButton;
 
+    @FXML
+    Label usernameErrorLabel;
+
+    @FXML
+    Label passwordErrorLabel;
+
+    @FXML
+    Label roleErrorLabel;
+
+    @FXML
+    Label fnameErrorLabel;
+
+    @FXML
+    Label lnameErrorLabel;
+
+    @FXML
+    Label emailErrorLabel;
+
+    @FXML
+    Label phoneErrorLabel;
+
     UserModel user;
     ObservableList<RoleModel> roles;
+    int action = 0;
 
     @FXML
     private void initialize() {
-
+        errorLabelsClear();
     }
 
     public void formInit(UserModel... user) {
         roles = roleService.getAllRoles();
 
-        for(RoleModel role : roles) {
-            if(role.getId() != 1)
-                rolesComboBox.getItems().add(role.getName());
-        }
+        roles.remove(0); // Removing the Admin role from the list, as in the task is specified that only
+                               // operators and warehouse hosts can be created.
+        rolesComboBox.getItems().addAll(roles);
 
         if(user.length == 0) {
 
@@ -82,6 +98,7 @@ public class UsersAddEditDialogController {
             passwordInfoLabel.setVisible(false);
 
         } else {
+            action = 1;
             this.user = user[0];
             titleLabel.setText("Edit User");
             submitButton.setText("Edit User");
@@ -91,15 +108,119 @@ public class UsersAddEditDialogController {
             lastNameTextField.setText(user[0].getLastName());
             emailTextField.setText(user[0].getEmail());
             phoneTextField.setText(user[0].getPhone());
-            rolesComboBox.setValue(user[0].getRole().getName());
+            rolesComboBox.setValue(user[0].getRole());
         }
     }
 
     public void submitForm() {
-        if(this.user == null){
+        errorLabelsClear();
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        String passwordRepeat = passwordRepeatTextField.toString();
+        RoleModel role = (RoleModel)rolesComboBox.getValue();
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String email = emailTextField.getText();
+        String phone = phoneTextField.getText();
+
+        if(formValidate()) {
+            if(user == null) {
+                user = new UserModel();
+                user.setId(0);
+            }
+
+            user.setRole(role);
+            user.setUsername(username);
+            user.setEmail(email);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setPassword(Hasher.MD5.hash(password));
+            user.setPhone(phone);
+            Date date = new Date();
+            user.setCreated_at(new Timestamp(date.getTime()));
+            user.setUpdated_at(new Timestamp(date.getTime()));
+
+            if(action == 0)
+                userService.userAdd(user);
+            else
+                userService.userUpdate(user);
+        }
+
+        /*if(this.user == null){
+
+            UserModel userTemp = new UserModel();
+
+            RoleRepository rep = RoleRepository.getInstance();
+
+
+            userTemp.setId(0);
+            userTemp.setRole(role.toEntity());
+            userTemp.setUsername("test");
+            userTemp.setEmail("test3");
+            userTemp.setFirstName("test1");
+            userTemp.setLastName("test2");
+            userTemp.setPassword("test4");
+            userTemp.setPhone("359");
+            Date date = new Date();
+            userTemp.setCreated_at(new Timestamp(date.getTime()));
+            userTemp.setUpdated_at(new Timestamp(date.getTime()));
+
+            userService.userAdd(userTemp);
+
+
             System.out.println("Nqma");
         } else {
             System.out.println("Ima");
+        }*/
+    }
+
+    private boolean formValidate() {
+        boolean valid = true;
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        String passwordRepeat = passwordRepeatTextField.toString();
+        RoleModel role = (RoleModel)rolesComboBox.getValue();
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String email = emailTextField.getText();
+        String phone = phoneTextField.getText();
+
+        if(!userService.usernameValidate(username)) {
+            usernameErrorLabel.setText("Username is not valid.");
+            valid = false;
+        } else if (userService.isUsernameExists(username)) {
+            usernameErrorLabel.setText("Username is already in use.");
+            valid = false;
         }
+
+        if(!userService.passwordValidate(password)){
+            passwordErrorLabel.setText("Password is not valid.");
+            valid = false;
+        }
+
+        if(!userService.emailValidate(email)) {
+            emailErrorLabel.setText("Email is not valid.");
+            valid = false;
+        } else if(userService.isEmailExists(email)) {
+            emailErrorLabel.setText("Email is already in use.");
+            valid = false;
+        }
+
+        if(role == null) {
+            roleErrorLabel.setText("Role is not selected.");
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    private void errorLabelsClear() {
+        usernameErrorLabel.setText("");
+        passwordErrorLabel.setText("");
+        roleErrorLabel.setText("");
+        fnameErrorLabel.setText("");
+        lnameErrorLabel.setText("");
+        emailErrorLabel.setText("");
+        phoneErrorLabel.setText("");
     }
 }

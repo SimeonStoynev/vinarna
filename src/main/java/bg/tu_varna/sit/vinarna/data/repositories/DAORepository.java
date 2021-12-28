@@ -8,6 +8,6 @@ public interface DAORepository<T> {
     void save(T obj);
     void update(T obj);
     void delete(T obj);
-    Optional<T> getById(Long id);
+    Optional<T> getById(int id);
     List<T> getAll();
 }

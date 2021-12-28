@@ -25,7 +25,9 @@ public class RoleService {
         return FXCollections.observableList(
                 roles.stream().map(u -> new RoleModel(
                         u.getId(),
-                        u.getName()
+                        u.getName(),
+                        u.getCreated_at(),
+                        u.getUpdated_at()
                 )).collect(Collectors.toList())
         );
     }
