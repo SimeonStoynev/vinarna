@@ -16,16 +16,16 @@ public class WineRecipe implements Serializable {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @OneToOne
-    @Column(name = "wine_type_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "wine_type_id", nullable = false)
     private WineType wine_type_id;
 
-    @OneToOne
-    @Column(name = "grape_sort_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "grape_sort_id", nullable = false)
     private GrapeSort grape_sort_id;
 
     @Column(name = "quantity", nullable = false)
-    private Long quantity;
+    private Double quantity;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -57,11 +57,11 @@ public class WineRecipe implements Serializable {
         this.grape_sort_id = grape_sort_id;
     }
 
-    public Long getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 

@@ -19,14 +19,11 @@ public class GrapeStorage implements Serializable {
     @Column(name = "quantity", nullable = false)
     private Double quantity;
 
-    @OneToOne
-<<<<<<< Updated upstream
-    @Column(name = "sort_id", nullable = false)
-    private GrapeSort sort_id;
-=======
+
+    @ManyToOne
     @JoinColumn(name = "sort_id", nullable = false)
     private GrapeSort sort;
->>>>>>> Stashed changes
+
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -50,21 +47,12 @@ public class GrapeStorage implements Serializable {
         this.quantity = quantity;
     }
 
-<<<<<<< Updated upstream
-    public GrapeSort getSort_id() {
-        return sort_id;
-    }
-
-    public void setSort_id(GrapeSort sort_id) {
-        this.sort_id = sort_id;
-=======
     public GrapeSort getSort() {
         return sort;
     }
 
     public void setSort_id(GrapeSort sort) {
         this.sort = sort;
->>>>>>> Stashed changes
     }
 
     public Timestamp getCreated_at() {

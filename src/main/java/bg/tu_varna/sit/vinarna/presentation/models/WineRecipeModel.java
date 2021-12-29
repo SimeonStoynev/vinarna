@@ -10,13 +10,13 @@ public class WineRecipeModel implements EntityModel<WineRecipe> {
     private int id;
     private WineType wine_type_id;
     private GrapeSort grape_sort_id;
-    private Long quantity;
+    private Double quantity;
     private Timestamp created_at;
     private Timestamp updated_at;
 
     public WineRecipeModel() {}
 
-    public WineRecipeModel(int id, WineType wine_type_id, GrapeSort grape_sort_id, Long quantity, Timestamp created_at, Timestamp updated_at) {
+    public WineRecipeModel(int id, WineType wine_type_id, GrapeSort grape_sort_id, Double quantity, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.wine_type_id = wine_type_id;
         this.grape_sort_id = grape_sort_id;
@@ -49,11 +49,11 @@ public class WineRecipeModel implements EntityModel<WineRecipe> {
         this.grape_sort_id = grape_sort_id;
     }
 
-    public Long getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
