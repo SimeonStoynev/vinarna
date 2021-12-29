@@ -26,6 +26,13 @@ public class RoleModel implements EntityModel<Role> {
         this.updated_at = role.getUpdated_at();
     }
 
+    public RoleModel(RoleModel role) {
+        this.id = role.getId();
+        this.name = role.getName();
+        this.created_at = role.getCreated_at();
+        this.updated_at = role.getUpdated_at();
+    }
+
     public int getId() {
         return id;
     }

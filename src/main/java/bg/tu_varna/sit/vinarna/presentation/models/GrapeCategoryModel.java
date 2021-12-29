@@ -20,14 +20,14 @@ public class GrapeCategoryModel implements EntityModel<GrapeCategory> {
         this.updated_at = updated_at;
     }
 
-    public GrapeCategoryModel(GrapeCategoryModel category) {
+    public GrapeCategoryModel(GrapeCategory category) {
         this.id = category.getId();
         this.category = category.getCategory();
         this.created_at = category.getCreated_at();
         this.updated_at = category.getUpdated_at();
     }
 
-    public GrapeCategoryModel(GrapeCategory category) {
+    public GrapeCategoryModel(GrapeCategoryModel category) {
         this.id = category.getId();
         this.category = category.getCategory();
         this.created_at = category.getCreated_at();

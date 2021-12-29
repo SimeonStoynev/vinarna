@@ -42,7 +42,6 @@ public class UserModel implements EntityModel<User> {
         this.phone = user.getPhone();
         this.created_at = user.getCreated_at();
         this.updated_at = user.getUpdated_at();
-
     }
 
     public UserModel(UserModel user) {

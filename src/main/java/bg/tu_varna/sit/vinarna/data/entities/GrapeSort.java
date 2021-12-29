@@ -49,7 +49,7 @@ public class GrapeSort implements Serializable {
         return category;
     }
 
-    public void setCategory_id(GrapeCategory category) {
+    public void setCategory(GrapeCategory category) {
         this.category = category;
     }
 

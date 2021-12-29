@@ -1,11 +1,10 @@
 package bg.tu_varna.sit.vinarna.presentation.models;
 
-import bg.tu_varna.sit.vinarna.data.entities.GrapeCategory;
 import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
 
 import java.sql.Timestamp;
 
-public class GrapeSortModel implements EntityModel<GrapeCategory> {
+public class GrapeSortModel implements EntityModel<GrapeSort> {
 
     private int id;
     private String name;
@@ -25,20 +24,20 @@ public class GrapeSortModel implements EntityModel<GrapeCategory> {
         this.updated_at = updated_at;
     }
 
+    public GrapeSortModel(GrapeSort grapeSort) {
+        this.id = grapeSort.getId();
+        this.name = grapeSort.getName();
+        this.category = new GrapeCategoryModel(grapeSort.getCategory());
+        this.created_at = grapeSort.getCreated_at();
+        this.updated_at = grapeSort.getUpdated_at();
+    }
+
     public GrapeSortModel(GrapeSortModel sortModel) {
         this.id = sortModel.getId();
         this.name = sortModel.getName();
         this.category = sortModel.getCategory();
         this.created_at = sortModel.getCreated_at();
         this.updated_at = sortModel.getUpdated_at();
-    }
-
-    public GrapeSortModel (GrapeSort grapeSort) {
-        this.id = grapeSort.getId();
-        this.name = grapeSort.getName();
-        this.category = new GrapeCategoryModel(grapeSort.getCategory());
-        this.created_at = grapeSort.getCreated_at();
-        this.updated_at = grapeSort.getUpdated_at();
     }
 
     public int getId() {
@@ -87,7 +86,15 @@ public class GrapeSortModel implements EntityModel<GrapeCategory> {
     }
 
     @Override
-    public GrapeCategory toEntity() {
-        return null;
+    public GrapeSort toEntity() {
+        GrapeSort temp = new GrapeSort();
+
+        temp.setId(this.id);
+        temp.setName(this.name);
+        temp.setCategory(this.category.toEntity());
+        temp.setCreated_at(this.created_at);
+        temp.setUpdated_at(this.updated_at);
+
+        return temp;
     }
 }
