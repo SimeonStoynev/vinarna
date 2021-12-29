@@ -41,13 +41,12 @@ public class GrapeTypesAnchorPaneController {
             getGrapeSorts();
             sortRowsAnchorPane.getChildren().clear();
 
-
             int y = 0;
             boolean bg = false;
 
             for(GrapeSortModel grapeSort : grapeSorts) {
 
-                GrapeStorageModel james = grapeStorage.stream()
+                GrapeStorageModel quantity = grapeStorage.stream()
                         .filter(customer -> grapeSort.getId() == customer.getSort().getId())
                         .findFirst()
                         .orElse(null);
@@ -60,8 +59,8 @@ public class GrapeTypesAnchorPaneController {
                 controller.sortNameLabel.setText(grapeSort.getName());
                 controller.sortCategoryLabel.setText(grapeSort.getCategory().getCategory());
 
-                if(james != null) {
-                    controller.sortQuantityLabel.setText(String.valueOf(james.getQuantity())+" kg");
+                if(quantity != null) {
+                    controller.sortQuantityLabel.setText(String.valueOf(quantity.getQuantity())+" kg");
                 } else {
                     controller.sortQuantityLabel.setText("0 kg");
                 }
