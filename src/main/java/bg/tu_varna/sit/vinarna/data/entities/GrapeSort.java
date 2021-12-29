@@ -14,13 +14,14 @@ public class GrapeSort implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "category_id", nullable = false)
-    private Long category_id;
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private GrapeCategory category;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -28,11 +29,11 @@ public class GrapeSort implements Serializable {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -44,12 +45,12 @@ public class GrapeSort implements Serializable {
         this.name = name;
     }
 
-    public Long getCategory_id() {
-        return category_id;
+    public GrapeCategory getCategory() {
+        return category;
     }
 
-    public void setCategory_id(Long category_id) {
-        this.category_id = category_id;
+    public void setCategory_id(GrapeCategory category) {
+        this.category = category;
     }
 
     public Timestamp getCreated_at() {
@@ -73,7 +74,13 @@ public class GrapeSort implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GrapeSort grapeSort = (GrapeSort) o;
-        return Objects.equals(id, grapeSort.id) && Objects.equals(name, grapeSort.name) && Objects.equals(category_id, grapeSort.category_id) && Objects.equals(created_at, grapeSort.created_at) && Objects.equals(updated_at, grapeSort.updated_at);
+
+        // !!!!!!!!!!!!!! Must be edited !!!!!!!!!!!!!!!!!
+        //
+        //
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        return Objects.equals(id, grapeSort.id) && Objects.equals(name, grapeSort.name) && Objects.equals(created_at, grapeSort.created_at) && Objects.equals(updated_at, grapeSort.updated_at);
+        //return Objects.equals(id, grapeSort.id) && Objects.equals(name, grapeSort.name) && Objects.equals(category_id, grapeSort.category_id) && Objects.equals(created_at, grapeSort.created_at) && Objects.equals(updated_at, grapeSort.updated_at);
     }
 
     @Override
@@ -81,7 +88,7 @@ public class GrapeSort implements Serializable {
         return "GrapeSort{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", category_id=" + category_id +
+                ", category=" + category.getCategory() +
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +
                 '}';
