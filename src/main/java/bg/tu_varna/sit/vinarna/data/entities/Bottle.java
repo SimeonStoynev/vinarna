@@ -14,7 +14,7 @@ public class Bottle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @JoinColumn(name = "bottle_type_id", nullable = false)
     private Long bottle_type_id;
@@ -28,11 +28,11 @@ public class Bottle implements Serializable {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

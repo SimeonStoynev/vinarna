@@ -9,7 +9,7 @@ public class GrapeCategoryModel implements EntityModel<GrapeCategory> {
     private int id;
     private String category;
     private Timestamp created_at;
-    private  Timestamp updated_at;
+    private Timestamp updated_at;
 
     public GrapeCategoryModel() {}
 
