@@ -67,6 +67,11 @@ public class GrapeCategoryModel implements EntityModel<GrapeCategory> {
     }
 
     @Override
+    public String toString() {
+        return String.format("%s", this.category);
+    }
+
+    @Override
     public GrapeCategory toEntity() {
         GrapeCategory temp = new GrapeCategory();
         temp.setId(this.id);
