@@ -17,11 +17,16 @@ public class GrapeStorage implements Serializable {
     private int id;
 
     @Column(name = "quantity", nullable = false)
-    private Long quantity;
+    private Double quantity;
 
     @OneToOne
+<<<<<<< Updated upstream
     @Column(name = "sort_id", nullable = false)
     private GrapeSort sort_id;
+=======
+    @JoinColumn(name = "sort_id", nullable = false)
+    private GrapeSort sort;
+>>>>>>> Stashed changes
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -37,20 +42,29 @@ public class GrapeStorage implements Serializable {
         this.id = id;
     }
 
-    public Long getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
+<<<<<<< Updated upstream
     public GrapeSort getSort_id() {
         return sort_id;
     }
 
     public void setSort_id(GrapeSort sort_id) {
         this.sort_id = sort_id;
+=======
+    public GrapeSort getSort() {
+        return sort;
+    }
+
+    public void setSort_id(GrapeSort sort) {
+        this.sort = sort;
+>>>>>>> Stashed changes
     }
 
     public Timestamp getCreated_at() {
@@ -78,7 +92,7 @@ public class GrapeStorage implements Serializable {
 
         return Objects.equals(id, that.id)
                 && Objects.equals(quantity, that.quantity)
-                && Objects.equals(sort_id, that.sort_id)
+                && Objects.equals(sort, that.sort)
                 && Objects.equals(created_at, that.created_at)
                 && Objects.equals(updated_at, that.updated_at);
     }
@@ -88,7 +102,7 @@ public class GrapeStorage implements Serializable {
         return "GrapeStorage{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", sort_id=" + sort_id +
+                ", sort_id=" + sort.toString() +
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +
                 '}';
