@@ -14,7 +14,7 @@ public class GrapeCategory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column(name = "category", nullable = false)
     private String category;
@@ -25,11 +25,11 @@ public class GrapeCategory implements Serializable {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
