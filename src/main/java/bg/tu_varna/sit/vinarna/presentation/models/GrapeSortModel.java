@@ -13,6 +13,8 @@ public class GrapeSortModel implements EntityModel<GrapeCategory> {
     private Timestamp created_at;
     private Timestamp updated_at;
 
+    private Double quantity;
+
     public GrapeSortModel() {}
 
     public GrapeSortModel(int id, String name, GrapeCategoryModel category, Timestamp created_at, Timestamp updated_at) {

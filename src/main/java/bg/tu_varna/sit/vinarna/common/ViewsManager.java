@@ -1,9 +1,6 @@
 package bg.tu_varna.sit.vinarna.common;
 
-import bg.tu_varna.sit.vinarna.presentation.controllers.DashboardController;
-import bg.tu_varna.sit.vinarna.presentation.controllers.LoginController;
-import bg.tu_varna.sit.vinarna.presentation.controllers.UsersAddEditDialogController;
-import bg.tu_varna.sit.vinarna.presentation.controllers.UsersAnchorPaneController;
+import bg.tu_varna.sit.vinarna.presentation.controllers.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
@@ -202,10 +199,10 @@ public class ViewsManager {
                 Constants.View.DASHBOARD_VIEW, DashboardController.class, contentPane));
 
         menuItems.add(new MenuItem("Users", FontAwesomeIcon.USERS, 0, "",
-                "/bg/tu_varna/sit/vinarna/presentation/views/Users/UsersAnchorPane.fxml", UsersAnchorPaneController.class, contentPane));
+                Constants.View.USERSANCHORPANE_VIEW, UsersAnchorPaneController.class, contentPane));
 
         menuItems.add(new MenuItem("Grape", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_GRAPE,
-                Constants.View.LOGIN_VIEW, LoginController.class, contentPane));
+                Constants.View.GRAPETYPESANCHORPANE_VIEW, GrapeTypesAnchorPaneController.class, contentPane));
 
         menuItems.add(new MenuItem("Wine recipes", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
                 Constants.View.LOGIN_VIEW, LoginController.class, contentPane));
