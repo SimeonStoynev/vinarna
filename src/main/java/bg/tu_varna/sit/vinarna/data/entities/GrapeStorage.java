@@ -19,8 +19,9 @@ public class GrapeStorage implements Serializable {
     @Column(name = "quantity", nullable = false)
     private Long quantity;
 
+    @OneToOne
     @Column(name = "sort_id", nullable = false)
-    private Long sort_id;
+    private GrapeSort sort_id;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -44,11 +45,11 @@ public class GrapeStorage implements Serializable {
         this.quantity = quantity;
     }
 
-    public Long getSort_id() {
+    public GrapeSort getSort_id() {
         return sort_id;
     }
 
-    public void setSort_id(Long sort_id) {
+    public void setSort_id(GrapeSort sort_id) {
         this.sort_id = sort_id;
     }
 

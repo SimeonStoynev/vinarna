@@ -1,20 +1,22 @@
 package bg.tu_varna.sit.vinarna.presentation.models;
 
+import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
 import bg.tu_varna.sit.vinarna.data.entities.WineRecipe;
+import bg.tu_varna.sit.vinarna.data.entities.WineType;
 
 import java.sql.Timestamp;
 
 public class WineRecipeModel implements EntityModel<WineRecipe> {
     private int id;
-    private Long wine_type_id;
-    private Long grape_sort_id;
+    private WineType wine_type_id;
+    private GrapeSort grape_sort_id;
     private Long quantity;
     private Timestamp created_at;
     private Timestamp updated_at;
 
     public WineRecipeModel() {}
 
-    public WineRecipeModel(int id, Long wine_type_id, Long grape_sort_id, Long quantity, Timestamp created_at, Timestamp updated_at) {
+    public WineRecipeModel(int id, WineType wine_type_id, GrapeSort grape_sort_id, Long quantity, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.wine_type_id = wine_type_id;
         this.grape_sort_id = grape_sort_id;
@@ -31,19 +33,19 @@ public class WineRecipeModel implements EntityModel<WineRecipe> {
         this.id = id;
     }
 
-    public Long getWine_type_id() {
+    public WineType getWine_type_id() {
         return wine_type_id;
     }
 
-    public void setWine_type_id(Long wine_type_id) {
+    public void setWine_type_id(WineType wine_type_id) {
         this.wine_type_id = wine_type_id;
     }
 
-    public Long getGrape_sort_id() {
+    public GrapeSort getGrape_sort_id() {
         return grape_sort_id;
     }
 
-    public void setGrape_sort_id(Long grape_sort_id) {
+    public void setGrape_sort_id(GrapeSort grape_sort_id) {
         this.grape_sort_id = grape_sort_id;
     }
 

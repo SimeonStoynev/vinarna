@@ -16,11 +16,13 @@ public class WineRecipe implements Serializable {
     @Column(name = "id", nullable = false)
     private int id;
 
+    @OneToOne
     @Column(name = "wine_type_id", nullable = false)
-    private Long wine_type_id;
+    private WineType wine_type_id;
 
+    @OneToOne
     @Column(name = "grape_sort_id", nullable = false)
-    private Long grape_sort_id;
+    private GrapeSort grape_sort_id;
 
     @Column(name = "quantity", nullable = false)
     private Long quantity;
@@ -39,19 +41,19 @@ public class WineRecipe implements Serializable {
         this.id = id;
     }
 
-    public Long getWine_type_id() {
+    public WineType getWine_type_id() {
         return wine_type_id;
     }
 
-    public void setWine_type_id(Long wine_type_id) {
+    public void setWine_type_id(WineType wine_type_id) {
         this.wine_type_id = wine_type_id;
     }
 
-    public Long getGrape_sort_id() {
+    public GrapeSort getGrape_sort_id() {
         return grape_sort_id;
     }
 
-    public void setGrape_sort_id(Long grape_sort_id) {
+    public void setGrape_sort_id(GrapeSort grape_sort_id) {
         this.grape_sort_id = grape_sort_id;
     }
 

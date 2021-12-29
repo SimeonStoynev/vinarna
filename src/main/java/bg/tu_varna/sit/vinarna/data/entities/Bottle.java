@@ -16,8 +16,9 @@ public class Bottle implements Serializable {
     @Column(name = "id", nullable = false)
     private int id;
 
+    @OneToOne
     @JoinColumn(name = "bottle_type_id", nullable = false)
-    private Long bottle_type_id;
+    private BottleType bottle_type_id;
 
     @Column(name = "quantity", nullable = false)
     private Long quantity;
@@ -36,11 +37,11 @@ public class Bottle implements Serializable {
         this.id = id;
     }
 
-    public Long getBottle_type_id() {
+    public BottleType getBottle_type_id() {
         return bottle_type_id;
     }
 
-    public void setBottle_type_id(Long bottle_type_id) {
+    public void setBottle_type_id(BottleType bottle_type_id) {
         this.bottle_type_id = bottle_type_id;
     }
 
