@@ -91,9 +91,9 @@ public class GrapeStorageRepository implements DAORepository<GrapeStorage> {
         try {
             String jpql = "SELECT r FROM GrapeStorage r";
             grapeStorages.addAll(session.createQuery(jpql, GrapeStorage.class).getResultList());
-            log.info("Got all GrapeCategories");
+            log.info("Got all GrapeStorage");
         } catch(Exception ex){
-            log.error("Get GrapeCategories failed: " + ex.getMessage());
+            log.error("Get GrapeStorage failed: " + ex.getMessage());
         } finally {
             transaction.commit();
         }

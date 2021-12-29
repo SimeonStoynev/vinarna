@@ -49,12 +49,12 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <FontAwesomeIconView glyphName="EDIT" size="30" wrappingWidth="23.714285850524902">
+                              <FontAwesomeIconView glyphName="PLUS" size="30" wrappingWidth="23.714285850524902">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </FontAwesomeIconView>
-                              <Label text="Edit" GridPane.columnIndex="1" />
+                              <Label text="Add quantity" GridPane.columnIndex="1" />
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />

@@ -1,11 +1,11 @@
 package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.business.GrapeSortService;
-import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
+import bg.tu_varna.sit.vinarna.business.GrapeStorageService;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
+import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -15,20 +15,25 @@ public class GrapeTypesAnchorPaneController {
     private static final Logger log = Logger.getLogger(GrapeTypesAnchorPaneController.class);
 
     public final GrapeSortService grapeSortService = GrapeSortService.getInstance();
+    public final GrapeStorageService grapeStorageService = GrapeStorageService.getInstance();
+
 
     @FXML
     AnchorPane sortRowsAnchorPane;
 
     ObservableList<GrapeSortModel> grapeSorts;
+    ObservableList<GrapeStorageModel> grapeStorage;
 
     @FXML
     private void initialize() {
         grapeSortsTableViewReload();
-        System.out.println(grapeSorts);
+        //System.out.println(grapeStorage);
     }
 
     public void getGrapeSorts() {
         grapeSorts = grapeSortService.getAllSorts();
+        grapeStorage = grapeStorageService.getAll();
+        FXCollections.reverse(grapeStorage);
     }
 
     public void grapeSortsTableViewReload() {
@@ -36,10 +41,17 @@ public class GrapeTypesAnchorPaneController {
             getGrapeSorts();
             sortRowsAnchorPane.getChildren().clear();
 
+
             int y = 0;
             boolean bg = false;
 
             for(GrapeSortModel grapeSort : grapeSorts) {
+
+                GrapeStorageModel james = grapeStorage.stream()
+                        .filter(customer -> grapeSort.getId() == customer.getSort().getId())
+                        .findFirst()
+                        .orElse(null);
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeTypesTableRow.fxml"));
                 AnchorPane sortRow = loader.load();
                 GrapeTypesTableRowController controller = loader.getController();
@@ -47,6 +59,12 @@ public class GrapeTypesAnchorPaneController {
                 controller.idLabel.setText(String.valueOf(grapeSort.getId()));
                 controller.sortNameLabel.setText(grapeSort.getName());
                 controller.sortCategoryLabel.setText(grapeSort.getCategory().getCategory());
+
+                if(james != null) {
+                    controller.sortQuantityLabel.setText(String.valueOf(james.getQuantity())+" kg");
+                } else {
+                    controller.sortQuantityLabel.setText("0 kg");
+                }
 
                 AnchorPane.setRightAnchor(sortRow, 0.0);
                 AnchorPane.setLeftAnchor(sortRow, 0.0);
@@ -59,7 +77,7 @@ public class GrapeTypesAnchorPaneController {
                 bg=!bg;
             }
         } catch (Exception ex) {
-
+            log.error("GrapeSorts table reload error: " + ex.getMessage());
         }
     }
 }

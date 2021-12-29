@@ -43,7 +43,7 @@
             <String fx:value="success" />
          </styleClass>
       </Button>
-      <Button layoutX="373.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="53.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="14.0">
+      <Button layoutX="656.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="53.0" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
                <children>
@@ -138,5 +138,30 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <Button layoutX="717.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="14.0">
+         <graphic>
+            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
+               <children>
+                  <FontAwesomeIconView glyphName="PLUS" size="30" wrappingWidth="23.714285850524902">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </FontAwesomeIconView>
+                  <Label contentDisplay="TOP" prefHeight="29.0" prefWidth="162.0" text="Add quantity">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </graphic>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="success" />
+         </styleClass>
+      </Button>
    </children>
 </AnchorPane>
