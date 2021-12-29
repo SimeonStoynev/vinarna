@@ -202,7 +202,7 @@ public class ViewsManager {
                 Constants.View.USERSANCHORPANE_VIEW, UsersAnchorPaneController.class, contentPane));
 
         menuItems.add(new MenuItem("Grape", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_GRAPE,
-                Constants.View.GRAPETYPESANCHORPANE_VIEW, GrapeTypesAnchorPaneController.class, contentPane));
+                Constants.View.GRAPETYPESANCHORPANE_VIEW, GrapeSortsAnchorPaneController.class, contentPane));
 
         menuItems.add(new MenuItem("Wine recipes", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
                 Constants.View.LOGIN_VIEW, LoginController.class, contentPane));

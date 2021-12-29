@@ -2,17 +2,27 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.business.GrapeSortService;
 import bg.tu_varna.sit.vinarna.business.GrapeStorageService;
+import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
 
-public class GrapeTypesAnchorPaneController {
-    private static final Logger log = Logger.getLogger(GrapeTypesAnchorPaneController.class);
+import java.net.URL;
+import java.util.Objects;
+
+public class GrapeSortsAnchorPaneController {
+    private static final Logger log = Logger.getLogger(GrapeSortsAnchorPaneController.class);
 
     public final GrapeSortService grapeSortService = GrapeSortService.getInstance();
     public final GrapeStorageService grapeStorageService = GrapeStorageService.getInstance();
@@ -27,13 +37,11 @@ public class GrapeTypesAnchorPaneController {
     @FXML
     private void initialize() {
         grapeSortsTableViewReload();
-        //System.out.println(grapeStorage);
     }
 
     public void getGrapeSorts() {
         grapeSorts = grapeSortService.getAllSorts();
         grapeStorage = grapeStorageService.getAll();
-        FXCollections.reverse(grapeStorage);
     }
 
     public void grapeSortsTableViewReload() {
@@ -51,9 +59,9 @@ public class GrapeTypesAnchorPaneController {
                         .findFirst()
                         .orElse(null);
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeTypesTableRow.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeSortsTableRow.fxml"));
                 AnchorPane sortRow = loader.load();
-                GrapeTypesTableRowController controller = loader.getController();
+                GrapeSortsTableRowController controller = loader.getController();
 
                 controller.idLabel.setText(String.valueOf(grapeSort.getId()));
                 controller.sortNameLabel.setText(grapeSort.getName());
@@ -77,6 +85,46 @@ public class GrapeTypesAnchorPaneController {
             }
         } catch (Exception ex) {
             log.error("GrapeSorts table reload error: " + ex.getMessage());
+        }
+    }
+
+    private void grapeSortAddSortDialogShow(GrapeSortModel grapeSort) {
+        Stage stage = (Stage) sortRowsAnchorPane.getScene().getWindow();
+
+        try {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(stage);
+
+            URL path = UsersAnchorPaneController.class.getResource(Constants.View.USERSADDEDITDIALOG_VIEW);
+            if (path != null) {
+                FXMLLoader loader = new FXMLLoader(UsersAnchorPaneController.class.getResource(Constants.View.USERSADDEDITDIALOG_VIEW));
+                Parent root = loader.load();
+
+
+                Scene scene = new Scene(root);
+                dialog.getIcons().add(new Image(Objects.requireNonNull(UsersAnchorPaneController.class.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.setScene(scene);
+                dialog.setResizable(false);
+                dialog.setTitle("Add Grape Sort");
+
+                UsersAddEditDialogController controller = loader.getController();
+                //controller.formInit(grapeSort);
+                dialog.show();
+
+                dialog.setOnHiding(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        dialog.close();
+                        grapeSortsTableViewReload();
+                    }
+
+                });
+
+            } else {
+                log.error("Dialog couldn't be loaded: " + Constants.View.USERSADDEDITDIALOG_VIEW);
+            }
+        } catch (Exception ex) {
+            log.error("Dialog couldn't be loaded: " + ex);
         }
     }
 }
