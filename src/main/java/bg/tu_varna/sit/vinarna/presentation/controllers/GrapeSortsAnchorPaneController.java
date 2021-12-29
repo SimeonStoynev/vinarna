@@ -88,7 +88,11 @@ public class GrapeSortsAnchorPaneController {
         }
     }
 
-    private void grapeSortAddSortDialogShow(GrapeSortModel grapeSort) {
+    public void grapeSortAddButton() {
+        grapeSortAddSortDialogShow();
+    }
+
+    private void grapeSortAddSortDialogShow() {
         Stage stage = (Stage) sortRowsAnchorPane.getScene().getWindow();
 
         try {
@@ -96,19 +100,19 @@ public class GrapeSortsAnchorPaneController {
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initOwner(stage);
 
-            URL path = UsersAnchorPaneController.class.getResource(Constants.View.USERSADDEDITDIALOG_VIEW);
+            URL path = GrapeSortsAddEditDialogController.class.getResource(Constants.View.GRAOESORTSADDEDITDIALOG_VIEW);
             if (path != null) {
-                FXMLLoader loader = new FXMLLoader(UsersAnchorPaneController.class.getResource(Constants.View.USERSADDEDITDIALOG_VIEW));
+                FXMLLoader loader = new FXMLLoader(GrapeSortsAddEditDialogController.class.getResource(Constants.View.GRAOESORTSADDEDITDIALOG_VIEW));
                 Parent root = loader.load();
 
 
                 Scene scene = new Scene(root);
-                dialog.getIcons().add(new Image(Objects.requireNonNull(UsersAnchorPaneController.class.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.getIcons().add(new Image(Objects.requireNonNull(GrapeSortsAddEditDialogController.class.getResourceAsStream(Constants.Media.APP_ICON))));
                 dialog.setScene(scene);
                 dialog.setResizable(false);
                 dialog.setTitle("Add Grape Sort");
 
-                UsersAddEditDialogController controller = loader.getController();
+                GrapeSortsAddEditDialogController controller = loader.getController();
                 //controller.formInit(grapeSort);
                 dialog.show();
 
@@ -127,4 +131,5 @@ public class GrapeSortsAnchorPaneController {
             log.error("Dialog couldn't be loaded: " + ex);
         }
     }
+
 }
