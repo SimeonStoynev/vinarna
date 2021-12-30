@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.vinarna.data.repositories;
 
 import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
+import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.mysql.Connection;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -100,5 +101,23 @@ public class GrapeSortRepository implements DAORepository<GrapeSort> {
         }
 
         return grapeSorts;
+    }
+
+    public GrapeSort getBySortName(String sortName) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        GrapeSort grapeSort = null;
+
+        try {
+            String jpql = "SELECT r FROM GrapeSort r WHERE name = '" + sortName + "'";
+            grapeSort = (GrapeSort) session.createQuery(jpql).getSingleResult();
+            log.info("Get GrapeSort by name successfully.");
+        } catch(Exception ex) {
+            log.error("Get GrapeSort by name error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return grapeSort;
     }
 }

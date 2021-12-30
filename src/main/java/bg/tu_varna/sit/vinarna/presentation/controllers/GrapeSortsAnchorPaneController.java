@@ -19,6 +19,7 @@ import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.Objects;
 
 public class GrapeSortsAnchorPaneController {
@@ -42,6 +43,8 @@ public class GrapeSortsAnchorPaneController {
     public void getGrapeSorts() {
         grapeSorts = grapeSortService.getAllSorts();
         grapeStorage = grapeStorageService.getAll();
+        Collections.reverse(grapeStorage);
+        Collections.reverse(grapeSorts);
     }
 
     public void grapeSortsTableViewReload() {

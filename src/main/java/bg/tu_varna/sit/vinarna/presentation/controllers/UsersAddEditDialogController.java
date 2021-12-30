@@ -126,16 +126,17 @@ public class UsersAddEditDialogController {
 
     public void submitForm() {
         errorLabelsClear();
-        String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
-        RoleModel role = (RoleModel)rolesComboBox.getValue();
-        String firstName = firstNameTextField.getText();
-        String lastName = lastNameTextField.getText();
-        String email = emailTextField.getText();
-        String phone = phoneTextField.getText();
 
         boolean valid = (action == 0) ? formAddValidate() : formEditValidate();
         if(valid) {
+            String username = usernameTextField.getText();
+            String password = passwordTextField.getText();
+            RoleModel role = (RoleModel)rolesComboBox.getValue();
+            String firstName = firstNameTextField.getText();
+            String lastName = lastNameTextField.getText();
+            String email = emailTextField.getText();
+            String phone = phoneTextField.getText();
+
             if(user == null) {
                 user = new UserModel();
                 user.setId(0);
