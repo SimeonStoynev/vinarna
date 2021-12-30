@@ -35,4 +35,14 @@ public class GrapeStorageService {
                 )).collect(Collectors.toList())
         );
     }
+
+    public int addStorage(GrapeStorageModel grapeStorage) {
+        repository.save(grapeStorage.toEntity());
+        return 0;
+    }
+
+    public GrapeStorageModel getLastRowByGrapeSortId(int grapeSort_id) {
+        GrapeStorage storage = repository.getLastByGrapeSortId(grapeSort_id);
+        return (storage == null) ? null : new GrapeStorageModel(storage);
+    }
 }

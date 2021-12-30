@@ -80,11 +80,6 @@ public class GrapeSortsAddEditDialogController {
             Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
             stage.hide();
         }
-
-
-
-
-
     }
 
     public boolean formValidate() {

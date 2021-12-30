@@ -13,6 +13,8 @@ public class DashboardController {
 
     private static final Logger log = Logger.getLogger(LoginController.class);
 
+    GrapeStorageRepository grapeStorageRepository = GrapeStorageRepository.getInstance();
+
     @FXML
     AnchorPane menuPane;
 
@@ -24,8 +26,8 @@ public class DashboardController {
         menuBuild();
 
         GrapeStorageRepository tep = GrapeStorageRepository.getInstance();
-        List<GrapeStorage> gs = tep.getAll();
-        System.out.println(gs);
+        //List<GrapeStorage> gs = tep.getAll();
+        //System.out.println(tep.getLastByGrapeSortId(1));
     }
 
     private void menuBuild() {

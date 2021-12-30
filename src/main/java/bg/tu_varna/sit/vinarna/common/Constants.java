@@ -9,6 +9,7 @@ public class Constants {
         public static final String USERSADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Users/UsersAddEditDialog.fxml";
         public static final String GRAPESORTSANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeSortsAnchorPane.fxml";
         public static final String GRAOESORTSADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeSortsAddEditDialog.fxml";
+        public static final String GRAPEQUANTITYADDDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeQuantityAddDialog.fxml";
     }
 
     public static class Configurations {

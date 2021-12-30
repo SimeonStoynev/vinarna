@@ -100,4 +100,22 @@ public class GrapeStorageRepository implements DAORepository<GrapeStorage> {
 
         return grapeStorages;
     }
+
+    public GrapeStorage getLastByGrapeSortId(int grapeSortId) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        GrapeStorage grapeStorage = null;
+
+        try{
+            String jpql = "SELECT r FROM GrapeStorage r WHERE sort = '" + grapeSortId + "' ORDER BY id DESC";
+            grapeStorage = (GrapeStorage) session.createQuery(jpql).setMaxResults(1).getSingleResult();
+            log.info("Get User by email successfully.");
+        } catch(Exception ex) {
+            log.error("Get user by email error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return grapeStorage;
+    }
 }

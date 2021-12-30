@@ -6,6 +6,7 @@ import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,11 +70,21 @@ public class GrapeSortsAnchorPaneController {
                 controller.idLabel.setText(String.valueOf(grapeSort.getId()));
                 controller.sortNameLabel.setText(grapeSort.getName());
                 controller.sortCategoryLabel.setText(grapeSort.getCategory().getCategory());
+                controller.addQuantityCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        grapeQuantityAddDialogShow(grapeSort);
+                    }
+                });
 
                 if(quantity != null) {
                     controller.sortQuantityLabel.setText(String.valueOf(quantity.getQuantity())+" kg");
+                    if(quantity.getQuantity() < 50) {
+                        controller.sortQuantityLabel.getStyleClass().add("text-error");
+                    }
                 } else {
                     controller.sortQuantityLabel.setText("0 kg");
+                    controller.sortQuantityLabel.setDisable(true);
                 }
 
                 AnchorPane.setRightAnchor(sortRow, 0.0);
@@ -92,10 +103,14 @@ public class GrapeSortsAnchorPaneController {
     }
 
     public void grapeSortAddButton() {
-        grapeSortAddSortDialogShow();
+        grapeSortAddDialogShow();
     }
 
-    private void grapeSortAddSortDialogShow() {
+    public void grapeQuantityAddButton() {
+        grapeQuantityAddDialogShow();
+    }
+
+    private void grapeSortAddDialogShow() {
         Stage stage = (Stage) sortRowsAnchorPane.getScene().getWindow();
 
         try {
@@ -117,6 +132,46 @@ public class GrapeSortsAnchorPaneController {
 
                 GrapeSortsAddEditDialogController controller = loader.getController();
                 //controller.formInit(grapeSort);
+                dialog.show();
+
+                dialog.setOnHiding(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        dialog.close();
+                        grapeSortsTableViewReload();
+                    }
+
+                });
+
+            } else {
+                log.error("Dialog couldn't be loaded: " + Constants.View.USERSADDEDITDIALOG_VIEW);
+            }
+        } catch (Exception ex) {
+            log.error("Dialog couldn't be loaded: " + ex);
+        }
+    }
+
+    public void grapeQuantityAddDialogShow(GrapeSortModel... grapeSort) {
+        Stage stage = (Stage) sortRowsAnchorPane.getScene().getWindow();
+
+        try {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(stage);
+
+            URL path = GrapeQuantityAddDialogController.class.getResource(Constants.View.GRAPEQUANTITYADDDIALOG_VIEW);
+            if (path != null) {
+                FXMLLoader loader = new FXMLLoader(GrapeQuantityAddDialogController.class.getResource(Constants.View.GRAPEQUANTITYADDDIALOG_VIEW));
+                Parent root = loader.load();
+
+
+                Scene scene = new Scene(root);
+                dialog.getIcons().add(new Image(Objects.requireNonNull(GrapeQuantityAddDialogController.class.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.setScene(scene);
+                dialog.setResizable(false);
+                dialog.setTitle("Add Grape Quantity");
+
+                GrapeQuantityAddDialogController controller = loader.getController();
+                controller.formInit(grapeSort);
                 dialog.show();
 
                 dialog.setOnHiding(new EventHandler<WindowEvent>(){
