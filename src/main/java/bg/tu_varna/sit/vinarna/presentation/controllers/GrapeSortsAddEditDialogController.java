@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.apache.commons.math3.util.Precision;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -27,20 +28,25 @@ public class GrapeSortsAddEditDialogController {
     AnchorPane mainAnchorPanel;
 
     @FXML
+    TextField sortNameTextField;
+
+    @FXML
+    ComboBox grapeCategoriesComboBox;
+
+    @FXML
+    TextField litersPerKgTextField;
+
+    @FXML
+    Button submitButton;
+
+    @FXML
     Label sortNameErrorLabel;
 
     @FXML
     Label grapeTypeErrorLabel;
 
     @FXML
-    TextField sortNameTextField;
-
-    @FXML
-    ComboBox grapeCategoriesComboBox;
-
-
-    @FXML
-    Button submitButton;
+    Label litersPerKgTextFieldErrorLabel;
 
     ObservableList<GrapeCategoryModel> grapeCategories;
 
@@ -65,11 +71,14 @@ public class GrapeSortsAddEditDialogController {
         if(formValidate()) {
             String sortName = sortNameTextField.getText();
             GrapeCategoryModel grapeCategory = (GrapeCategoryModel) grapeCategoriesComboBox.getValue();
+            String litersPerKgS = litersPerKgTextField.getText();
+            Double litersPerKg = Precision.round(Double.parseDouble(litersPerKgS), 2);
 
             GrapeSortModel sortModel = new GrapeSortModel();
             sortModel.setId(0);
             sortModel.setName(sortName);
             sortModel.setCategory(grapeCategory);
+            sortModel.setWine_liters(litersPerKg);
 
             Date date = new Date();
             sortModel.setCreated_at(new Timestamp(date.getTime()));
@@ -86,6 +95,7 @@ public class GrapeSortsAddEditDialogController {
         boolean valid = true;
         String sortName = sortNameTextField.getText();
         GrapeCategoryModel grapeCategory = (GrapeCategoryModel) grapeCategoriesComboBox.getValue();
+        String litersPerKgS = litersPerKgTextField.getText();
 
         if(sortName.length() == 0) {
             sortNameErrorLabel.setText("You must enter a sort name.");
@@ -100,11 +110,31 @@ public class GrapeSortsAddEditDialogController {
             valid = false;
         }
 
+        if(litersPerKgS.length() == 0) {
+            litersPerKgTextFieldErrorLabel.setText("The field can not be empty.");
+            valid = false;
+        } else {
+            try {
+                Double litersPerKg = Double.parseDouble(litersPerKgS);
+                if(litersPerKg <= 0) {
+                    litersPerKgTextFieldErrorLabel.setText("Please enter a positive number.");
+                    valid = false;
+                } else if(litersPerKg > 999999) {
+                    litersPerKgTextFieldErrorLabel.setText("Please enter a number less than 999999.");
+                    valid = false;
+                }
+            } catch (Exception ex) {
+                litersPerKgTextFieldErrorLabel.setText("Please enter a valid number. The decimal separator must be a decimal point.");
+                valid = false;
+            }
+        }
+
         return valid;
     }
 
     private void errorLabelsClear() {
         sortNameErrorLabel.setText("");
         grapeTypeErrorLabel.setText("");
+        litersPerKgTextFieldErrorLabel.setText("");
     }
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPanel" prefHeight="359.0" prefWidth="468.0" styleClass="mainAnchorPanel" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.GrapeSortsAddEditDialogController">
+<AnchorPane fx:id="mainAnchorPanel" prefHeight="425.0" prefWidth="468.0" styleClass="mainAnchorPanel" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.GrapeSortsAddEditDialogController">
    <children>
       <AnchorPane layoutX="38.0" layoutY="32.0" prefHeight="465.0" prefWidth="412.0" styleClass="mainPanel" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0" />
       <AnchorPane fx:id="formAnchorPane" layoutX="28.0" layoutY="22.0" prefHeight="465.0" prefWidth="380.0" style="-fx-background-radius: 50 50 50 50; -fx-border-radius: 0;" styleClass="mainPanelWhite" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0">
@@ -58,6 +58,25 @@
                   <String fx:value="error" />
                </styleClass>
             </Button>
+            <TextField fx:id="litersPerKgTextField" layoutX="15.0" layoutY="223.0" opacity="0.8" prefHeight="41.0" prefWidth="384.0" promptText="Wine liters per Kg" styleClass="text-field">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </TextField>
+            <Label fx:id="litersPerKgTextFieldErrorLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="264.0" prefHeight="41.0" prefWidth="384.0" style="-fx-font-size: 12;" text="SortName error message" textFill="#575757" wrapText="true">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <FontAwesomeIconView glyphName="GLASS" layoutX="25.0" layoutY="254.0" size="30" wrappingWidth="23.714285850524902">
+               <font>
+                  <Font size="61.0" />
+               </font>
+            </FontAwesomeIconView>
          </children>
       </AnchorPane>
    </children>
