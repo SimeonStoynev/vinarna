@@ -41,9 +41,6 @@ public class UsersAnchorPaneController {
         users = userService.getAllUser();
     }
 
-
-
-
     public void userTableViewReload() {
         try {
             getUsers();
