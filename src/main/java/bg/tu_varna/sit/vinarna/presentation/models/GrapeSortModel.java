@@ -9,17 +9,17 @@ public class GrapeSortModel implements EntityModel<GrapeSort> {
     private int id;
     private String name;
     private GrapeCategoryModel category;
+    Double wine_liters;
     private Timestamp created_at;
     private Timestamp updated_at;
 
-    private Double quantity;
-
     public GrapeSortModel() {}
 
-    public GrapeSortModel(int id, String name, GrapeCategoryModel category, Timestamp created_at, Timestamp updated_at) {
+    public GrapeSortModel(int id, String name, GrapeCategoryModel category, Double wine_liters, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.wine_liters = wine_liters;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
@@ -28,6 +28,7 @@ public class GrapeSortModel implements EntityModel<GrapeSort> {
         this.id = grapeSort.getId();
         this.name = grapeSort.getName();
         this.category = new GrapeCategoryModel(grapeSort.getCategory());
+        this.wine_liters = grapeSort.getWine_liters();
         this.created_at = grapeSort.getCreated_at();
         this.updated_at = grapeSort.getUpdated_at();
     }
@@ -36,6 +37,7 @@ public class GrapeSortModel implements EntityModel<GrapeSort> {
         this.id = sortModel.getId();
         this.name = sortModel.getName();
         this.category = sortModel.getCategory();
+        this.wine_liters = sortModel.getWine_liters();
         this.created_at = sortModel.getCreated_at();
         this.updated_at = sortModel.getUpdated_at();
     }
@@ -62,6 +64,14 @@ public class GrapeSortModel implements EntityModel<GrapeSort> {
 
     public void setCategory(GrapeCategoryModel category) {
         this.category = category;
+    }
+
+    public Double getWine_liters() {
+        return wine_liters;
+    }
+
+    public void setWine_liters(Double wine_liters) {
+        this.wine_liters = wine_liters;
     }
 
     public Timestamp getCreated_at() {
@@ -92,6 +102,7 @@ public class GrapeSortModel implements EntityModel<GrapeSort> {
         temp.setId(this.id);
         temp.setName(this.name);
         temp.setCategory(this.category.toEntity());
+        temp.setWine_liters(this.wine_liters);
         temp.setCreated_at(this.created_at);
         temp.setUpdated_at(this.updated_at);
 

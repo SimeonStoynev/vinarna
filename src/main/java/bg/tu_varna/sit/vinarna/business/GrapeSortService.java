@@ -28,6 +28,7 @@ public class GrapeSortService {
                         g.getId(),
                         g.getName(),
                         new GrapeCategoryModel(g.getCategory()),
+                        g.getWine_liters(),
                         g.getCreated_at(),
                         g.getUpdated_at()
                 )).collect(Collectors.toList())

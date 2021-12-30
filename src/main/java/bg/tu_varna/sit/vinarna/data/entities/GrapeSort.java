@@ -23,6 +23,9 @@ public class GrapeSort implements Serializable {
     @JoinColumn(name = "category_id", nullable = false)
     private GrapeCategory category;
 
+    @Column(name = "wine_liters", nullable = false)
+    private Double wine_liters;
+
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
@@ -53,6 +56,14 @@ public class GrapeSort implements Serializable {
         this.category = category;
     }
 
+    public Double getWine_liters() {
+        return wine_liters;
+    }
+
+    public void setWine_liters(Double wine_liters) {
+        this.wine_liters = wine_liters;
+    }
+
     public Timestamp getCreated_at() {
         return created_at;
     }
@@ -72,15 +83,14 @@ public class GrapeSort implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof GrapeSort)) return false;
         GrapeSort grapeSort = (GrapeSort) o;
+        return id == grapeSort.id && name.equals(grapeSort.name) && category.equals(grapeSort.category) && wine_liters.equals(grapeSort.wine_liters) && created_at.equals(grapeSort.created_at) && updated_at.equals(grapeSort.updated_at);
+    }
 
-        // !!!!!!!!!!!!!! Must be edited !!!!!!!!!!!!!!!!!
-        //
-        //
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        return Objects.equals(id, grapeSort.id) && Objects.equals(name, grapeSort.name) && Objects.equals(created_at, grapeSort.created_at) && Objects.equals(updated_at, grapeSort.updated_at);
-        //return Objects.equals(id, grapeSort.id) && Objects.equals(name, grapeSort.name) && Objects.equals(category_id, grapeSort.category_id) && Objects.equals(created_at, grapeSort.created_at) && Objects.equals(updated_at, grapeSort.updated_at);
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, category, wine_liters, created_at, updated_at);
     }
 
     @Override
@@ -88,7 +98,8 @@ public class GrapeSort implements Serializable {
         return "GrapeSort{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", category=" + category.getCategory() +
+                ", category=" + category +
+                ", wine_liters=" + wine_liters +
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +
                 '}';

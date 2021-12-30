@@ -57,7 +57,7 @@ public class GrapeSortsAnchorPaneController {
             boolean bg = false;
 
             for(GrapeSortModel grapeSort : grapeSorts) {
-
+                System.out.println(grapeSort.getWine_liters());
                 GrapeStorageModel quantity = grapeStorage.stream()
                         .filter(customer -> grapeSort.getId() == customer.getSort().getId())
                         .findFirst()
