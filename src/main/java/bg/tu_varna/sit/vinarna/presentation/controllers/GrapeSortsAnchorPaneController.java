@@ -79,7 +79,7 @@ public class GrapeSortsAnchorPaneController {
 
                 if(quantity != null) {
                     controller.sortQuantityLabel.setText(String.valueOf(quantity.getQuantity())+" kg");
-                    if(quantity.getQuantity() < 50) {
+                    if(quantity.getQuantity() < Constants.Minima.GRAPE_MINIMUM) {
                         controller.sortQuantityLabel.getStyleClass().add("text-error");
                     }
                 } else {

@@ -27,4 +27,8 @@ public class Constants {
         public static final String LEFTMENU_GRAPE = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_grape.png";
         public static final String LEFTMENU_BOOK = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_book.png";
     }
+
+    public static class Minima {
+        public static final Double GRAPE_MINIMUM = 50.00;
+    }
 }
