@@ -16,6 +16,9 @@ public class GrapeSortsTableRowController {
     Label sortCategoryLabel;
 
     @FXML
+    Label litersPerKGLabel;
+
+    @FXML
     Label sortQuantityLabel;
 
     @FXML

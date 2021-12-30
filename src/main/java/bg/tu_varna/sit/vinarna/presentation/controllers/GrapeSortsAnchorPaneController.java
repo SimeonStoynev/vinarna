@@ -70,6 +70,7 @@ public class GrapeSortsAnchorPaneController {
                 controller.idLabel.setText(String.valueOf(grapeSort.getId()));
                 controller.sortNameLabel.setText(grapeSort.getName());
                 controller.sortCategoryLabel.setText(grapeSort.getCategory().getCategory());
+                controller.litersPerKGLabel.setText(String.valueOf(grapeSort.getWine_liters()) + " L");
                 controller.addQuantityCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {

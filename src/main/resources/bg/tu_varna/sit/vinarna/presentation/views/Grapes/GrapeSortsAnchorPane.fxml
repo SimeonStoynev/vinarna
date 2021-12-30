@@ -18,7 +18,7 @@
 
 <AnchorPane minHeight="432.0" minWidth="553.0" prefWidth="1000.0" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.GrapeSortsAnchorPaneController">
    <children>
-      <Button onAction="#grapeSortAddButton" layoutX="867.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="116.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
+      <Button layoutX="867.0" layoutY="14.0" mnemonicParsing="false" onAction="#grapeSortAddButton" prefHeight="38.0" prefWidth="116.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
                <children>
@@ -65,11 +65,12 @@
       </Button>
       <GridPane layoutX="10.0" layoutY="66.0" prefHeight="31.0" prefWidth="973.0" style="-fx-background-color: rgba(79,78,47,0.56); -fx-background-radius: 13 13 0 0;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="66.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="70.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="374.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="231.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="154.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="123.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="30.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="140.0" prefWidth="337.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="81.0" prefWidth="185.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="63.0" prefWidth="171.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="94.0" prefWidth="164.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="74.0" prefWidth="74.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -85,7 +86,8 @@
             </Label>
             <Label prefWidth="80.0" style="-fx-font-size: 18;" text="Name" GridPane.columnIndex="1" />
             <Label style="-fx-font-size: 18;" text="Category" GridPane.columnIndex="2" />
-            <Label style="-fx-font-size: 18;" text="Available quantity" GridPane.columnIndex="3" />
+            <Label style="-fx-font-size: 18;" text="Available quantity" GridPane.columnIndex="4" />
+            <Label style="-fx-font-size: 18;" text="Liters per kg" GridPane.columnIndex="3" />
          </children>
       </GridPane>
       <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="97.0" prefHeight="299.0" prefWidth="989.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="97.0">
@@ -94,11 +96,12 @@
                <children>
                   <GridPane prefHeight="31.0" prefWidth="539.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="70.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="374.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="231.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="154.0" />
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="129.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="30.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="140.0" prefWidth="337.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="81.0" prefWidth="185.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="63.0" prefWidth="171.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="94.0" prefWidth="164.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="129.0" minWidth="74.0" prefWidth="74.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -112,7 +115,7 @@
                         <Label prefHeight="21.0" prefWidth="134.0" text="GrapeSortName" GridPane.columnIndex="1" />
                         <Label text="Grape Category" GridPane.columnIndex="2" />
                         <Label text="Available quantity" GridPane.columnIndex="3" />
-                        <MenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="4">
+                        <MenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="5">
                            <items>
                               <MenuItem mnemonicParsing="false" text="Action 1" />
                               <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -129,6 +132,7 @@
                               </HBox>
                            </graphic>
                         </MenuButton>
+                        <Label text="Available quantity" GridPane.columnIndex="4" />
                      </children>
                   </GridPane>
                </children>
@@ -138,7 +142,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button onAction="#grapeQuantityAddButton" layoutX="717.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="14.0">
+      <Button layoutX="717.0" layoutY="14.0" mnemonicParsing="false" onAction="#grapeQuantityAddButton" prefHeight="38.0" prefWidth="142.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
                <children>
