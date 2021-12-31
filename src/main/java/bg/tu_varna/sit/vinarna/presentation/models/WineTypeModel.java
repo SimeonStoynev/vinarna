@@ -98,6 +98,6 @@ public class WineTypeModel implements EntityModel<WineType> {
         temp.setCreated_at(this.created_at);
         temp.setUpdated_at(this.updated_at);
 
-        return null;
+        return temp;
     }
 }
