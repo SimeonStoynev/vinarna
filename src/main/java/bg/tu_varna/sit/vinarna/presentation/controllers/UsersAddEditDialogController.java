@@ -282,6 +282,11 @@ public class UsersAddEditDialogController {
         return valid;
     }
 
+    public void cancelButtonAction() {
+        Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+        stage.hide();
+    }
+
     private void errorLabelsClear() {
         usernameErrorLabel.setText("");
         passwordErrorLabel.setText("");

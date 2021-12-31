@@ -302,6 +302,11 @@ public class WineTypesAddEditDialogController {
         return valid;
     }
 
+    public void cancelButtonAction() {
+        Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+        stage.hide();
+    }
+
     public void errorLabelsClear() {
         wineTypeNameErrorLabel.setText("");
         grapeTypeErrorLabel.setText("");

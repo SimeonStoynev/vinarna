@@ -57,7 +57,7 @@
                         <String fx:value="bold" />
                     </styleClass>
                 </Label>
-                <Button fx:id="submitButton1" layoutX="165.0" layoutY="240.0" mnemonicParsing="false" onAction="#submitForm" prefHeight="41.0" prefWidth="83.0" text="Cancel" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="164.0">
+                <Button fx:id="cancelButton" layoutX="165.0" layoutY="240.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="41.0" prefWidth="83.0" text="Cancel" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="164.0">
                     <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="error" />

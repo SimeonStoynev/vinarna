@@ -22,7 +22,7 @@
                   <Font size="45.0" />
                </font>
             </Label>
-            <Button fx:id="submitButton" layoutX="124.0" layoutY="566.0" mnemonicParsing="false" onAction="#submitForm" prefHeight="41.0" prefWidth="179.0" text="Button" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="122.0">
+            <Button fx:id="submitButton" layoutX="224.0" layoutY="566.0" mnemonicParsing="false" onAction="#submitForm" prefHeight="41.0" prefWidth="179.0" text="Button" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="22.0">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="primary" />
@@ -141,6 +141,12 @@
                   <String fx:value="bold" />
                </styleClass>
             </Label>
+            <Button fx:id="cancelButton" layoutX="129.0" layoutY="566.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="41.0" prefWidth="83.0" text="Cancel">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="error" />
+               </styleClass>
+            </Button>
          </children>
       </AnchorPane>
    </children>

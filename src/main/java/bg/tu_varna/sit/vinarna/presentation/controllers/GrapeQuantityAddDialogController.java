@@ -131,6 +131,11 @@ public class GrapeQuantityAddDialogController {
         return valid;
     }
 
+    public void cancelButtonAction() {
+        Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+        stage.hide();
+    }
+
     private void errorLabelsClear() {
         grapeSortErrorLabel.setText("");
         grapeQuantityErrorLabel.setText("");
