@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.vinarna.business;
 
+import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
 import bg.tu_varna.sit.vinarna.data.entities.GrapeStorage;
 import bg.tu_varna.sit.vinarna.data.repositories.GrapeStorageRepository;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
@@ -37,8 +38,9 @@ public class GrapeStorageService {
     }
 
     public int addStorage(GrapeStorageModel grapeStorage) {
-        repository.save(grapeStorage.toEntity());
-        return 0;
+        GrapeStorage grapeStorageEntity = grapeStorage.toEntity();
+        repository.save(grapeStorageEntity);
+        return grapeStorageEntity.getId();
     }
 
     public GrapeStorageModel getLastRowByGrapeSortId(int grapeSort_id) {

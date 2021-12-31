@@ -59,6 +59,16 @@
     -fx-background-color: rgba(157, 154, 113, 0.89);
 }
 
+.form-control {
+    -fx-pref-height: 41;
+    -fx-max-height: 41;
+}
+
+.form-control.form-control-sm {
+    -fx-pref-height: 30;
+    -fx-max-height: 30;
+}
+
 .button {
     -fx-border-radius: 13 13 13 13;
     -fx-background-radius: 13 13 13 13;
@@ -74,9 +84,14 @@
     -fx-font-weight: bold;
 }
 
+btn.btn-sm {
+    -fx-max-height: 27;
+    -fx-pref-height: 27;
+}
+
 .btn.primary {
     -fx-background-color: rgba(56, 52, 47, 0.6);
-    -fx-text-fill: rgb(222, 222, 222);
+    -fx-text-fill: rgb(197, 197, 197);
 }
 
 .btn.primary:hover {
@@ -135,8 +150,23 @@
 }
 
 .btn.error {
-    -fx-text-fill: rgb(229, 229, 229);
+    -fx-text-fill: rgb(197, 197, 197);
     -fx-background-color: rgba(140, 11, 49, 0.76);
+}
+
+.btn.error:hover {
+    -fx-text-fill: rgb(197, 197, 197);
+    -fx-background-color: rgba(110, 6, 34, 0.76);
+}
+
+.btn.error:pressed {
+    -fx-text-fill: rgb(197, 197, 197);
+    -fx-background-color: rgba(148, 10, 43, 0.76);
+}
+
+.btn.error .glyph-icon{
+    -fx-text-fill: rgb(197, 197, 197);
+    -fx-fill: rgb(197, 197, 197);
 }
 
 .errorColor {

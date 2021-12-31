@@ -1,6 +1,5 @@
 package bg.tu_varna.sit.vinarna.business;
 
-import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.entities.WineRecipe;
 import bg.tu_varna.sit.vinarna.data.repositories.WineRecipeRepository;
 import bg.tu_varna.sit.vinarna.presentation.models.*;
@@ -36,7 +35,7 @@ public class WineRecipeService {
     }
 
     public ObservableList<WineRecipeModel> getAllRecipesByWineType(WineTypeModel wineType) {
-        List<WineRecipe> wineRecipes = repository.getAll();
+        List<WineRecipe> wineRecipes = repository.getAllByWineId(wineType.getId());
         return FXCollections.observableList(
                 wineRecipes.stream().map(w -> new WineRecipeModel(
                         w.getId(),
@@ -47,5 +46,11 @@ public class WineRecipeService {
                         w.getUpdated_at()
                 )).collect(Collectors.toList())
         );
+    }
+
+    public int addWineRecipe(WineRecipeModel wineRecipeModel) {
+        WineRecipe wineRecipe = wineRecipeModel.toEntity();
+        repository.save(wineRecipe);
+        return wineRecipe.getId();
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="50.0" prefWidth="365.0" style="-fx-background-color: rgba(66,65,54,0.09);" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.WineTypeGrapeChoseRowController">
+   <children>
+      <GridPane prefHeight="45.0" prefWidth="359.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="202.0" prefWidth="202.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="91.0" minWidth="91.0" prefWidth="91.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="36.0" minWidth="36.0" prefWidth="36.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="idLabel" text="id">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="grapeNameLabel" prefHeight="21.0" prefWidth="200.0" text="GrapeSort name" GridPane.columnIndex="1" />
+            <Button fx:id="grapeRemoveButton" mnemonicParsing="false" prefHeight="30.0" GridPane.columnIndex="3">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-sm" />
+                  <String fx:value="error" />
+               </styleClass>
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <FontAwesomeIconView glyphName="MINUS" size="15" wrappingWidth="13.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <TextField fx:id="grapeQuantityTextField" opacity="0.8" prefHeight="41.0" prefWidth="128.0" promptText="Quantity" GridPane.columnIndex="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <styleClass>
+                  <String fx:value="form-control" />
+                  <String fx:value="form-control-sm" />
+               </styleClass>
+            </TextField>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

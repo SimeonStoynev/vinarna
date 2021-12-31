@@ -12,6 +12,8 @@ public class Constants {
         public static final String GRAPEQUANTITYADDDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeQuantityAddDialog.fxml";
         public static final String WINETYPESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypesAnchorPane.fxml";
         public static final String WINETYPESTABLEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypesTableRow.fxml";
+        public static final String WINETYPESADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypesAddEditDialog.fxml";
+        public static final String WINETYPESGRAPECHOSEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypeGrapeChoseRow.fxml";
     }
 
     public static class Configurations {

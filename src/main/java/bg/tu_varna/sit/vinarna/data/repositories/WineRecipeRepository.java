@@ -99,4 +99,22 @@ public class WineRecipeRepository implements DAORepository<WineRecipe> {
 
         return wineRecipes;
     }
+
+    public List<WineRecipe> getAllByWineId(int wineId) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<WineRecipe> wineRecipes = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT r FROM WineRecipe r WHERE wine_type_id = '" + wineId + "'";
+            wineRecipes.addAll(session.createQuery(jpql, WineRecipe.class).getResultList());
+            log.info("Got all GrapeCategories");
+        } catch(Exception ex){
+            log.error("Get GrapeCategories failed: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return wineRecipes;
+    }
 }

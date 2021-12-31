@@ -34,7 +34,7 @@
             <Label fx:id="wineTypeNameLabel" text="WineType name" GridPane.columnIndex="1" />
             <MenuButton fx:id="settingsMenuButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="2">
                <items>
-                  <CustomMenuItem fx:id="addQuantityCustomMenuItem" mnemonicParsing="false" text="Unspecified Action">
+                  <CustomMenuItem fx:id="editCustomMenuItem" mnemonicParsing="false" text="Unspecified Action">
                      <content>
                         <GridPane prefHeight="30.0" prefWidth="157.0">
                            <columnConstraints>
@@ -45,12 +45,12 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <FontAwesomeIconView glyphName="PLUS" size="30" wrappingWidth="23.714285850524902">
+                              <FontAwesomeIconView glyphName="EDIT" size="30" wrappingWidth="23.714285850524902">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </FontAwesomeIconView>
-                              <Label text="Add quantity" GridPane.columnIndex="1" />
+                              <Label text="Edit" GridPane.columnIndex="1" />
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />

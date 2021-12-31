@@ -31,4 +31,14 @@ public class WineTypeService {
                 )).collect(Collectors.toList())
         );
     }
+
+    public int addWineType(WineTypeModel wineTypeModel) {
+        WineType wineType = wineTypeModel.toEntity();
+        repository.save(wineType);
+        return wineType.getId();
+    }
+
+    public boolean isWineTypeNameExists(String wineTypeName) {
+        return repository.getByName(wineTypeName) != null;
+    }
 }

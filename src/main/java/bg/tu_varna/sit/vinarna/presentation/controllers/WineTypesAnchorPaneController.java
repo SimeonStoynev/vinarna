@@ -4,10 +4,21 @@ import bg.tu_varna.sit.vinarna.business.WineTypeService;
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.presentation.models.WineTypeModel;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
+
+import java.net.URL;
+import java.util.Objects;
 
 public class WineTypesAnchorPaneController {
     private static final Logger log = Logger.getLogger(UsersAnchorPaneController.class);
@@ -41,6 +52,12 @@ public class WineTypesAnchorPaneController {
 
                 controller.idLabel.setText(String.valueOf(wineType.getId()));
                 controller.wineTypeNameLabel.setText(wineType.getName());
+                controller.editCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        wineTypesAddEditDialogShow(wineType);
+                    }
+                });
 
                 AnchorPane.setRightAnchor(userRow, 0.0);
                 AnchorPane.setLeftAnchor(userRow, 0.0);
@@ -58,6 +75,46 @@ public class WineTypesAnchorPaneController {
     }
 
     public void wineTypeAddButton() {
+        wineTypesAddEditDialogShow();
+    }
 
+    private void wineTypesAddEditDialogShow(WineTypeModel... wineType) {
+        Stage stage = (Stage) wineTypesRowsAnchorPane.getScene().getWindow();
+
+        try {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(stage);
+
+            URL path = WineTypesAddEditDialogController.class.getResource(Constants.View.WINETYPESADDEDITDIALOG_VIEW);
+            if (path != null) {
+                FXMLLoader loader = new FXMLLoader(WineTypesAddEditDialogController.class.getResource(Constants.View.WINETYPESADDEDITDIALOG_VIEW));
+                Parent root = loader.load();
+
+
+                Scene scene = new Scene(root);
+                dialog.getIcons().add(new Image(Objects.requireNonNull(WineTypesAddEditDialogController.class.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.setScene(scene);
+                dialog.setResizable(false);
+                dialog.setTitle("Add wine type");
+
+                WineTypesAddEditDialogController controller = loader.getController();
+                controller.formInit(wineType);
+                dialog.show();
+
+                dialog.setOnHiding(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        dialog.close();
+                        wineTypesTableViewReload();
+                    }
+
+                });
+
+            } else {
+                log.error("Dialog couldn't be loaded: " + Constants.View.USERSADDEDITDIALOG_VIEW);
+            }
+        } catch (Exception ex) {
+            log.error("Dialog couldn't be loaded: " + ex);
+        }
     }
 }

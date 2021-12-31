@@ -99,4 +99,22 @@ public class WineTypeRepository implements DAORepository<WineType> {
 
         return wineTypes;
     }
+
+    public WineType getByName(String name) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        WineType wineType = null;
+
+        try{
+            String jpql = "SELECT r FROM WineType r WHERE name = '" + name + "'";
+            wineType = (WineType) session.createQuery(jpql).getSingleResult();
+            log.info("Get User by email successfully.");
+        } catch(Exception ex) {
+            log.error("Get user by email error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return wineType;
+    }
 }
