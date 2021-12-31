@@ -40,7 +40,7 @@ public class WineRecipeRepository implements DAORepository<WineRecipe> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(obj);
+            session.update(obj);
             log.info("WineRecipe updated successfully");
         } catch(Exception ex) {
             log.error("WineRecipe update error: " + ex.getMessage());
@@ -54,7 +54,7 @@ public class WineRecipeRepository implements DAORepository<WineRecipe> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(obj);
+            session.delete(obj);
             log.info("WineRecipe deleted successfully");
         } catch(Exception ex) {
             log.error("WineRecipe delete error: " + ex.getMessage());

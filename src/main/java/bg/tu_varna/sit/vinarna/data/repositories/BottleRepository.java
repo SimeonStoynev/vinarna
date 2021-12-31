@@ -42,7 +42,7 @@ public class BottleRepository implements DAORepository<Bottle> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.update(obj);
             log.info("Bottle updated successfully");
         } catch (Exception ex) {
             log.error("Bottle update error: " + ex.getMessage());
@@ -57,7 +57,7 @@ public class BottleRepository implements DAORepository<Bottle> {
         Transaction transaction =session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.delete(obj);
             log.info("Bottle deleted successfully");
         } catch (Exception ex) {
             log.error("Bottle delete error: " + ex.getMessage());

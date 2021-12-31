@@ -41,7 +41,7 @@ public class RoleRepository implements DAORepository<Role> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(obj);
+            session.update(obj);
             log.info("Role updated successfully");
         } catch(Exception ex) {
             log.error("Role update error: " + ex.getMessage());
@@ -56,7 +56,7 @@ public class RoleRepository implements DAORepository<Role> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.delete(obj);
             log.info("Role deleted successfully");
         } catch(Exception ex) {
             log.error("Role delete error: " + ex.getMessage());

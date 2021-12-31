@@ -42,7 +42,7 @@ public class GrapeSortRepository implements DAORepository<GrapeSort> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.update(obj);
             log.info("GrapeSort updated successfully");
         } catch (Exception ex) {
             log.error("GrapeSort update error: " + ex.getMessage());
@@ -57,7 +57,7 @@ public class GrapeSortRepository implements DAORepository<GrapeSort> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.delete(obj);
             log.info("GrapeSort deleted successfully");
         } catch (Exception ex) {
             log.error("GrapeSort delete error: " + ex.getMessage());

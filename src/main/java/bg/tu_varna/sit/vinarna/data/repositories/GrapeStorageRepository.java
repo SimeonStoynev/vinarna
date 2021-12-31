@@ -41,7 +41,7 @@ public class GrapeStorageRepository implements DAORepository<GrapeStorage> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.update(obj);
             log.info("GrapeStorage updated successfully");
         } catch (Exception ex) {
             log.error("GrapeStorage update error: " + ex.getMessage());
@@ -55,7 +55,7 @@ public class GrapeStorageRepository implements DAORepository<GrapeStorage> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(obj);
+            session.delete(obj);
             log.info("GrapeStorage deleted successfully");
         } catch (Exception ex) {
             log.error("GrapeStorage delete error: " + ex.getMessage());

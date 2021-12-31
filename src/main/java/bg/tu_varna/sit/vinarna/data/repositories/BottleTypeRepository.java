@@ -41,7 +41,7 @@ public class BottleTypeRepository implements DAORepository<BottleType> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.update(obj);
             log.info("BottleType updated successfully");
         } catch (Exception ex) {
             log.error("BottleType update error: " + ex.getMessage());
@@ -56,7 +56,7 @@ public class BottleTypeRepository implements DAORepository<BottleType> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(obj);
+            session.delete(obj);
             log.info("BottleType deleted successfully");
         } catch (Exception ex) {
             log.error("BottleType delete error: " + ex.getMessage());

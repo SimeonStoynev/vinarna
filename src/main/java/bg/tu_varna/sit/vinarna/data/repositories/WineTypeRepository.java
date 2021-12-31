@@ -40,7 +40,7 @@ public class WineTypeRepository implements DAORepository<WineType> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(obj);
+            session.update(obj);
             log.info("WineType updated successfully");
         } catch (Exception ex) {
             log.error("WineType update error: " + ex.getMessage());
@@ -54,7 +54,7 @@ public class WineTypeRepository implements DAORepository<WineType> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(obj);
+            session.delete(obj);
             log.info("WineType deleted successfully");
         } catch (Exception ex) {
             log.error("WineType delete error: " + ex.getMessage());
@@ -108,9 +108,9 @@ public class WineTypeRepository implements DAORepository<WineType> {
         try{
             String jpql = "SELECT r FROM WineType r WHERE name = '" + name + "'";
             wineType = (WineType) session.createQuery(jpql).getSingleResult();
-            log.info("Get User by email successfully.");
+            log.info("Get Wine Type by name successfully.");
         } catch(Exception ex) {
-            log.error("Get user by email error: " + ex.getMessage());
+            log.error("Get Wine Type by name error: " + ex.getMessage());
         } finally {
             transaction.commit();
         }
