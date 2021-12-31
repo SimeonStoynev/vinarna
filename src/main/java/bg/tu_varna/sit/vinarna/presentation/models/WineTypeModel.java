@@ -5,7 +5,7 @@ import bg.tu_varna.sit.vinarna.data.entities.WineType;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class WineTypeModel {
+public class WineTypeModel implements EntityModel<WineType> {
     private int id;
     private String name;
     private Timestamp created_at;
@@ -87,5 +87,17 @@ public class WineTypeModel {
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +
                 '}';
+    }
+
+    @Override
+    public WineType toEntity() {
+        WineType temp = new WineType();
+
+        temp.setId(this.id);
+        temp.setName(this.name);
+        temp.setCreated_at(this.created_at);
+        temp.setUpdated_at(this.updated_at);
+
+        return null;
     }
 }
