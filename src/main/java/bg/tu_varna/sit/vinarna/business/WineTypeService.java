@@ -41,4 +41,8 @@ public class WineTypeService {
     public boolean isWineTypeNameExists(String wineTypeName) {
         return repository.getByName(wineTypeName) != null;
     }
+
+    public void updateWineType(WineTypeModel wineTypeModel) {
+        repository.update(wineTypeModel.toEntity());
+    }
 }

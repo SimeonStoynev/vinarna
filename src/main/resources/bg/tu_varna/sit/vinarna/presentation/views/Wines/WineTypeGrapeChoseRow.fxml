@@ -41,7 +41,7 @@
                <graphic>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
-                        <FontAwesomeIconView glyphName="MINUS" size="15" wrappingWidth="13.0">
+                        <FontAwesomeIconView glyphName="TRASH" size="15" wrappingWidth="13.0">
                            <font>
                               <Font size="15.0" />
                            </font>

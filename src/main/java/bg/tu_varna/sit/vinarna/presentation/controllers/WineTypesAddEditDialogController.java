@@ -13,12 +13,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.apache.commons.math3.util.Precision;
 import org.apache.log4j.Logger;
 
@@ -36,6 +34,9 @@ public class WineTypesAddEditDialogController {
     AnchorPane mainAnchorPanel;
 
     @FXML
+    Label titleLabel;
+
+    @FXML
     TextField wineTypeNameTextField;
 
     @FXML
@@ -43,6 +44,9 @@ public class WineTypesAddEditDialogController {
 
     @FXML
     AnchorPane grapeTypeListAnchorPane;
+
+    @FXML
+    Button submitButton;
 
     @FXML
     Label wineTypeNameErrorLabel;
@@ -53,9 +57,9 @@ public class WineTypesAddEditDialogController {
     @FXML
     Label grapeRowsErrorLabel;
 
+    int action = 0;
     WineTypeModel wineType;
     ObservableList<GrapeSortModel> allGrapeSorts;
-    ObservableList<GrapeSortModel> grapeSorts;
     ObservableList<WineRecipeModel> dbWineRecipes;
     ObservableList<WineRecipeModel> newWineRecipes;
 
@@ -74,14 +78,22 @@ public class WineTypesAddEditDialogController {
         getGrapeSorts();
 
         if(wineType.length == 0) {
+            titleLabel.setText("Add wine type");
+            submitButton.setText("Add wine");
             this.wineType = new WineTypeModel();
+            dbWineRecipes = FXCollections.observableArrayList();
             grapeCategoriesComboBox.getItems().addAll(allGrapeSorts);
         } else {
+            titleLabel.setText("Edit wine type");
+            submitButton.setText("Edit wine");
+            this.action = 1;
             this.wineType = wineType[0];
+            newWineRecipes = wineRecipeService.getAllRecipesByWineType(this.wineType);
             dbWineRecipes = wineRecipeService.getAllRecipesByWineType(this.wineType);
 
             wineTypeNameTextField.setText(this.wineType.getName());
-            grapeCategoriesComboBox.getItems().addAll(grapeSorts);
+            grapesTableReload();
+            grapeSortsComboBoxReload();
         }
 
     }
@@ -110,7 +122,7 @@ public class WineTypesAddEditDialogController {
     private void grapeSortsComboBoxReload() {
         grapeCategoriesComboBox.getItems().clear();
         for(GrapeSortModel grapeSort : allGrapeSorts) {
-            if(newWineRecipes.stream().filter(carnet -> grapeSort.equals(carnet.getGrape_sort_id())).findFirst().orElse(null) == null) {
+            if(newWineRecipes.stream().filter(g -> grapeSort.getId()==g.getGrape_sort_id().getId()).findFirst().orElse(null) == null) {
                 grapeCategoriesComboBox.getItems().add(grapeSort);
             }
         }
@@ -122,6 +134,16 @@ public class WineTypesAddEditDialogController {
             int y = 0;
             boolean bg = false;
             for(WineRecipeModel wineRecipe : newWineRecipes) {
+                WineRecipeModel finalWineRecipe = wineRecipe;
+                WineRecipeModel temp = dbWineRecipes.stream().filter(g -> g.getGrape_sort_id().getId() == finalWineRecipe.getGrape_sort_id().getId()).findFirst().orElse(null);
+                if(temp != null) {
+                    wineRecipe.setId(temp.getId());
+                    wineRecipe.setWine_type_id(temp.getWine_type_id());
+                    wineRecipe.setQuantity(temp.getQuantity());
+                    wineRecipe.setCreated_at(temp.getCreated_at());
+                    wineRecipe.setUpdated_at(temp.getUpdated_at());
+                }
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(Constants.View.WINETYPESGRAPECHOSEROW_VIEW));
                 AnchorPane wineRow = loader.load();
                 WineTypeGrapeChoseRowController controller = loader.getController();
@@ -130,6 +152,7 @@ public class WineTypesAddEditDialogController {
                 controller.grapeNameLabel.setText(wineRecipe.getGrape_sort_id().getName());
                 if(wineRecipe.getQuantity() != 0)
                     controller.grapeQuantityTextField.setText(String.valueOf(wineRecipe.getQuantity()));
+
                 controller.grapeQuantityTextField.setTextFormatter(new TextFormatter<>((change) -> {
                     String text = change.getControlNewText();
                     if (text.matches("\\d*\\.?\\d*")) {
@@ -138,8 +161,8 @@ public class WineTypesAddEditDialogController {
                         return null;
                     }
                 }));
-                controller.grapeQuantityTextField.setOnKeyReleased(new EventHandler<KeyEvent>() {
 
+                controller.grapeQuantityTextField.setOnKeyReleased(new EventHandler<KeyEvent>() {
                     @Override
                     public void handle(KeyEvent t) {
                         String quantityS = controller.grapeQuantityTextField.getText();
@@ -177,12 +200,11 @@ public class WineTypesAddEditDialogController {
 
     public void submitForm() {
         errorLabelsClear();
+        String wineName = wineTypeNameTextField.getText();
 
-        if(addFormValidate()) {
-            String wineName = wineTypeNameTextField.getText();
+        if(action == 0 && addFormValidate()) {
             this.wineType.setId(0);
             this.wineType.setName(wineName);
-
             Date date = new Date();
             this.wineType.setCreated_at(new Timestamp(date.getTime()));
             this.wineType.setUpdated_at(new Timestamp(date.getTime()));
@@ -194,6 +216,29 @@ public class WineTypesAddEditDialogController {
                     wineRecipeService.addWineRecipe(wineRecipe);
                 }
             }
+
+            Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+            stage.hide();
+        } else if(action == 1 && editFormValidate()) {
+            this.wineType.setName(wineName);
+
+            wineTypeService.updateWineType(this.wineType);
+
+            for(WineRecipeModel wineRecipe : this.newWineRecipes) {
+                if(wineRecipe.getId() == 0) {
+                    wineRecipeService.addWineRecipe(wineRecipe);
+                } else {
+                    WineRecipeModel temp = this.dbWineRecipes.stream().filter(g -> g.getId() == wineRecipe.getId()).findFirst().orElse(null);
+                    this.dbWineRecipes.remove(temp);
+                    wineRecipeService.updateWineRecipe(wineRecipe);
+                }
+            }
+
+            for(WineRecipeModel wineRecipe : this.dbWineRecipes)
+                wineRecipeService.removeWineRecipe(wineRecipe);
+
+            Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+            stage.hide();
         }
     }
 
@@ -208,6 +253,36 @@ public class WineTypesAddEditDialogController {
             wineTypeNameErrorLabel.setText("The field can contain only 100 chars.");
             valid = false;
         } else if(wineTypeService.isWineTypeNameExists(wineName)) {
+            wineTypeNameErrorLabel.setText("There is already wine with this name.");
+            valid = false;
+        }
+
+        if(newWineRecipes.size() == 0) {
+            grapeRowsErrorLabel.setText("You must select at least one grape sort.");
+            valid = false;
+        } else {
+            for(WineRecipeModel wineRecipe : newWineRecipes) {
+                if(wineRecipe.getQuantity() == 0) {
+                    grapeRowsErrorLabel.setText("You must fill all the quantities.");
+                    valid = false;
+                }
+            }
+        }
+
+        return valid;
+    }
+
+    private boolean editFormValidate() {
+        boolean valid = true;
+        String wineName = wineTypeNameTextField.getText();
+
+        if(wineName.length() == 0) {
+            wineTypeNameErrorLabel.setText("The field can not be empty.");
+            valid = false;
+        } else if(wineName.length() > 100) {
+            wineTypeNameErrorLabel.setText("The field can contain only 100 chars.");
+            valid = false;
+        } else if(!this.wineType.getName().equals(wineName) && wineTypeService.isWineTypeNameExists(wineName)) {
             wineTypeNameErrorLabel.setText("There is already wine with this name.");
             valid = false;
         }

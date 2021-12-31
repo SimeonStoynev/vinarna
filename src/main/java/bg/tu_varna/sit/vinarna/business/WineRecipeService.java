@@ -53,4 +53,12 @@ public class WineRecipeService {
         repository.save(wineRecipe);
         return wineRecipe.getId();
     }
+
+    public void updateWineRecipe(WineRecipeModel wineRecipeModel) {
+        repository.update(wineRecipeModel.toEntity());
+    }
+
+    public void removeWineRecipe(WineRecipeModel wineRecipeModel) {
+        repository.delete(wineRecipeModel.toEntity());
+    }
 }
