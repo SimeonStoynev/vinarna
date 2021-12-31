@@ -1,10 +1,7 @@
 package bg.tu_varna.sit.vinarna.business;
 
-import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.entities.WineType;
 import bg.tu_varna.sit.vinarna.data.repositories.WineTypeRepository;
-import bg.tu_varna.sit.vinarna.presentation.models.RoleModel;
-import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import bg.tu_varna.sit.vinarna.presentation.models.WineTypeModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

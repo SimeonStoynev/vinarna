@@ -10,6 +10,8 @@ public class Constants {
         public static final String GRAPESORTSANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeSortsAnchorPane.fxml";
         public static final String GRAOESORTSADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeSortsAddEditDialog.fxml";
         public static final String GRAPEQUANTITYADDDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Grapes/GrapeQuantityAddDialog.fxml";
+        public static final String WINETYPESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypesAnchorPane.fxml";
+        public static final String WINETYPESTABLEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypesTableRow.fxml";
     }
 
     public static class Configurations {

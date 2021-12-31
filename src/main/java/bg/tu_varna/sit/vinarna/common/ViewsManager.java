@@ -188,8 +188,6 @@ public class ViewsManager {
         } catch (Exception ex) {
             log.error("Dialog couldn't be loaded: " + ex);
         }
-
-
     }
 
     public static void leftMenuGenerate(AnchorPane menuPane, AnchorPane contentPane, Class viewClass) {
@@ -201,11 +199,11 @@ public class ViewsManager {
         menuItems.add(new MenuItem("Users", FontAwesomeIcon.USERS, 0, "",
                 Constants.View.USERSANCHORPANE_VIEW, UsersAnchorPaneController.class, contentPane));
 
-        menuItems.add(new MenuItem("Grape", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_GRAPE,
+        menuItems.add(new MenuItem("Grape sorts", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_GRAPE,
                 Constants.View.GRAPESORTSANCHORPANE_VIEW, GrapeSortsAnchorPaneController.class, contentPane));
 
-        menuItems.add(new MenuItem("Wine recipes", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
-                Constants.View.LOGIN_VIEW, LoginController.class, contentPane));
+        menuItems.add(new MenuItem("Wine types", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
+                Constants.View.WINETYPESANCHORPANE_VIEW, WineTypesAnchorPaneController.class, contentPane));
 
         int y = 0;
         menuPane.getChildren().remove(0);
