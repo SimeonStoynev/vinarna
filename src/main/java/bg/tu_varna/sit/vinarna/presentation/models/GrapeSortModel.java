@@ -9,7 +9,7 @@ public class GrapeSortModel implements EntityModel<GrapeSort> {
     private int id;
     private String name;
     private GrapeCategoryModel category;
-    Double wine_liters;
+    private Double wine_liters;
     private Timestamp created_at;
     private Timestamp updated_at;
 
