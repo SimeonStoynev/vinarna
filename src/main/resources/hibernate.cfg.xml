@@ -21,6 +21,7 @@
         <mapping class="bg.tu_varna.sit.vinarna.data.entities.WineRecipe"/>
         <mapping class="bg.tu_varna.sit.vinarna.data.entities.WineType"/>
         <mapping class="bg.tu_varna.sit.vinarna.data.entities.BottleStorage"/>
+        <mapping class="bg.tu_varna.sit.vinarna.data.entities.BottledWineStorage"/>
 
     </session-factory>
 </hibernate-configuration>
