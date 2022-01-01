@@ -42,9 +42,8 @@ public class GrapeSortsAnchorPaneController {
 
     public void getGrapeSorts() {
         grapeSorts = grapeSortService.getAllSorts();
-        grapeStorage = grapeStorageService.getAll();
-        Collections.reverse(grapeStorage);
-        Collections.reverse(grapeSorts);
+        grapeStorage = grapeStorageService.getLatestAll();
+        //Collections.reverse(grapeSorts);
     }
 
     public void grapeSortsTableViewReload() {

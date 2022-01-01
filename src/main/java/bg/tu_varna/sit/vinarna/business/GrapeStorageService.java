@@ -37,6 +37,21 @@ public class GrapeStorageService {
         );
     }
 
+    public ObservableList<GrapeStorageModel> getLatestAll() {
+        List<GrapeStorage> sorts = repository.getLatestAll();
+        return FXCollections.observableList(
+                sorts.stream().map(g -> new GrapeStorageModel(
+                        g.getId(),
+                        g.getQuantity_old(),
+                        g.getQuantity(),
+                        g.getDifference(),
+                        new GrapeSortModel(g.getSort()),
+                        g.getCreated_at(),
+                        g.getUpdated_at()
+                )).collect(Collectors.toList())
+        );
+    }
+
     public int addStorage(GrapeStorageModel grapeStorage) {
         GrapeStorage grapeStorageEntity = grapeStorage.toEntity();
         repository.save(grapeStorageEntity);
@@ -47,4 +62,5 @@ public class GrapeStorageService {
         GrapeStorage storage = repository.getLastByGrapeSortId(grapeSort_id);
         return (storage == null) ? null : new GrapeStorageModel(storage);
     }
+
 }
