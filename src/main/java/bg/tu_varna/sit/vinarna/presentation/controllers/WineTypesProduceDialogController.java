@@ -43,6 +43,9 @@ public class WineTypesProduceDialogController {
     @FXML
     Label quantityErrorLabel;
 
+    @FXML
+    Label commonErrorLabel;
+
 
     WineTypeModel wineType;
     ObservableList<WineRecipeModel> wineRecipes;
@@ -162,12 +165,13 @@ public class WineTypesProduceDialogController {
                     .orElse(null);
 
             if(quantity == null) {
+                commonErrorLabel.setText("The grapes quantity in the storage is not enough.");
                 valid = false;
                 break;
             } else {
                 Double needed = wineRecipe.getQuantity() * this.multiply;
                 if(needed > quantity.getQuantity()) {
-                    System.out.println("NE!");
+                    commonErrorLabel.setText("The grapes quantity in the storage is not enough.");
                     valid = false;
                     break;
                 }
@@ -183,6 +187,7 @@ public class WineTypesProduceDialogController {
     }
 
     private void errorLabelsClear() {
+        commonErrorLabel.setText("");
         wineTypeErrorLabel.setText("");
         quantityErrorLabel.setText("");
     }
