@@ -8,14 +8,16 @@ import java.util.Objects;
 public class WineTypeModel implements EntityModel<WineType> {
     private int id;
     private String name;
+    private Double produced;
     private Timestamp created_at;
     private Timestamp updated_at;
 
     public WineTypeModel() {}
 
-    public WineTypeModel(int id, String name, Timestamp created_at, Timestamp updated_at) {
+    public WineTypeModel(int id, String name, Double produced, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.name = name;
+        this.produced = produced;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
@@ -23,6 +25,7 @@ public class WineTypeModel implements EntityModel<WineType> {
     public WineTypeModel(WineTypeModel wineType) {
         this.id = wineType.getId();
         this.name = wineType.getName();
+        this.produced = wineType.getProduced();
         this.created_at = wineType.getCreated_at();
         this.updated_at = wineType.getUpdated_at();
     }
@@ -30,6 +33,7 @@ public class WineTypeModel implements EntityModel<WineType> {
     public WineTypeModel(WineType wineType) {
         this.id = wineType.getId();
         this.name = wineType.getName();
+        this.produced = wineType.getProduced();
         this.created_at = wineType.getCreated_at();
         this.updated_at = wineType.getUpdated_at();
     }
@@ -48,6 +52,14 @@ public class WineTypeModel implements EntityModel<WineType> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Double getProduced() {
+        return produced;
+    }
+
+    public void setProduced(Double produced) {
+        this.produced = produced;
     }
 
     public Timestamp getCreated_at() {
@@ -71,12 +83,12 @@ public class WineTypeModel implements EntityModel<WineType> {
         if (this == o) return true;
         if (!(o instanceof WineTypeModel)) return false;
         WineTypeModel that = (WineTypeModel) o;
-        return id == that.id && name.equals(that.name) && created_at.equals(that.created_at) && updated_at.equals(that.updated_at);
+        return id == that.id && name.equals(that.name) && produced.equals(that.produced) && created_at.equals(that.created_at) && updated_at.equals(that.updated_at);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, created_at, updated_at);
+        return Objects.hash(id, name, produced, created_at, updated_at);
     }
 
     @Override
@@ -84,6 +96,7 @@ public class WineTypeModel implements EntityModel<WineType> {
         return "WineTypeModel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", produced=" + produced +
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +
                 '}';
@@ -95,6 +108,7 @@ public class WineTypeModel implements EntityModel<WineType> {
 
         temp.setId(this.id);
         temp.setName(this.name);
+        temp.setProduced(this.produced);
         temp.setCreated_at(this.created_at);
         temp.setUpdated_at(this.updated_at);
 

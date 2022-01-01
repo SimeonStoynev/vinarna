@@ -19,6 +19,9 @@ public class WineType implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "produced", nullable = false)
+    private Double produced;
+
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
@@ -41,6 +44,14 @@ public class WineType implements Serializable {
         this.name = name;
     }
 
+    public Double getProduced() {
+        return produced;
+    }
+
+    public void setProduced(Double produced) {
+        this.produced = produced;
+    }
+
     public Timestamp getCreated_at() {
         return created_at;
     }
@@ -60,9 +71,14 @@ public class WineType implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof WineType)) return false;
         WineType wineType = (WineType) o;
-        return Objects.equals(id, wineType.id) && Objects.equals(name, wineType.name) && Objects.equals(created_at, wineType.created_at) && Objects.equals(updated_at, wineType.updated_at);
+        return id == wineType.id && name.equals(wineType.name) && produced.equals(wineType.produced) && created_at.equals(wineType.created_at) && updated_at.equals(wineType.updated_at);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, produced, created_at, updated_at);
     }
 
     @Override
@@ -70,6 +86,7 @@ public class WineType implements Serializable {
         return "WineType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", produced=" + produced +
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +
                 '}';

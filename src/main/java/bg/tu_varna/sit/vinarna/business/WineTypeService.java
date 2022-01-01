@@ -26,6 +26,7 @@ public class WineTypeService {
                 wineTypes.stream().map(w -> new WineTypeModel(
                         w.getId(),
                         w.getName(),
+                        w.getProduced(),
                         w.getCreated_at(),
                         w.getUpdated_at()
                 )).collect(Collectors.toList())
