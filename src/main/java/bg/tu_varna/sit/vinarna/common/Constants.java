@@ -20,6 +20,7 @@ public class Constants {
         public static final String BOTTLETYPESADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleTypesAddEditDialog.fxml";
         public static final String BOTTLEQUANTITYADDDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleQuantityAddDialog.fxml";
         public static final String BOTTLEDWINESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottledWinesAnchorPane.fxml";
+        public static final String BOTTLINGWINEDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottlingWineDialog.fxml";
     }
 
     public static class Configurations {

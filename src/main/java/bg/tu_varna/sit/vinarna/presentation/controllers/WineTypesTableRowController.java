@@ -19,4 +19,7 @@ public class WineTypesTableRowController {
 
     @FXML
     CustomMenuItem produceCustomMenuItem;
+
+    @FXML
+    CustomMenuItem bottlingCustomMenuItem;
 }

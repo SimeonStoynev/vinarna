@@ -54,8 +54,11 @@ public class WineTypesAnchorPaneController {
                 controller.idLabel.setText(String.valueOf(wineType.getId()));
                 controller.wineTypeNameLabel.setText(wineType.getName());
                 controller.producedLabel.setText(String.valueOf(Precision.round(wineType.getProduced(), 3)) + " L");
-                if(wineType.getProduced() == 0)
+                if(wineType.getProduced() == 0) {
                     controller.producedLabel.setDisable(true);
+                    controller.bottlingCustomMenuItem.setDisable(true);
+                }
+
 
                 controller.editCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -68,6 +71,13 @@ public class WineTypesAnchorPaneController {
                     @Override
                     public void handle(ActionEvent event) {
                         wineTypesProduceDialogShow(wineType);
+                    }
+                });
+
+                controller.bottlingCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        wineBottlingDialogShow(wineType);
                     }
                 });
 
@@ -151,6 +161,46 @@ public class WineTypesAnchorPaneController {
                 dialog.setTitle("Wine produce");
 
                 WineTypesProduceDialogController controller = loader.getController();
+                controller.formInit(wineType);
+                dialog.show();
+
+                dialog.setOnHiding(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        dialog.close();
+                        wineTypesTableViewReload();
+                    }
+
+                });
+
+            } else {
+                log.error("Dialog couldn't be loaded: " + Constants.View.USERSADDEDITDIALOG_VIEW);
+            }
+        } catch (Exception ex) {
+            log.error("Dialog couldn't be loaded: " + ex);
+        }
+    }
+
+    private void wineBottlingDialogShow(WineTypeModel wineType) {
+        Stage stage = (Stage) wineTypesRowsAnchorPane.getScene().getWindow();
+
+        try {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(stage);
+
+            URL path = BottlingWineDialogController.class.getResource(Constants.View.BOTTLINGWINEDIALOG_VIEW);
+            if (path != null) {
+                FXMLLoader loader = new FXMLLoader(BottlingWineDialogController.class.getResource(Constants.View.BOTTLINGWINEDIALOG_VIEW));
+                Parent root = loader.load();
+
+
+                Scene scene = new Scene(root);
+                dialog.getIcons().add(new Image(Objects.requireNonNull(BottlingWineDialogController.class.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.setScene(scene);
+                dialog.setResizable(false);
+                dialog.setTitle("Wine bottling");
+
+                BottlingWineDialogController controller = loader.getController();
                 controller.formInit(wineType);
                 dialog.show();
 

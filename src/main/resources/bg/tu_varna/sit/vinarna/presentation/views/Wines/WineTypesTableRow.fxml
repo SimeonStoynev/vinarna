@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -70,12 +72,36 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <FontAwesomeIconView glyphName="INDUSTRY" size="30" wrappingWidth="23.714285850524902">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </FontAwesomeIconView>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../media/wine_produce_64x64.png" />
+                                 </image>
+                              </ImageView>
                               <Label text="Produce wine" GridPane.columnIndex="1" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </GridPane>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem fx:id="bottlingCustomMenuItem" mnemonicParsing="false" text="Unspecified Action">
+                     <content>
+                        <GridPane prefHeight="30.0" prefWidth="157.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="36.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="121.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../media/bottling_64x64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Bottling" GridPane.columnIndex="1" />
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />
