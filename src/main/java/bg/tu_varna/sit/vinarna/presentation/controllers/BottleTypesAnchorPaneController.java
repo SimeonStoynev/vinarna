@@ -42,8 +42,7 @@ public class BottleTypesAnchorPaneController {
 
     public void getBottleTypes() {
         bottleTypes = bottleTypeService.getAll();
-        bottleStorage = bottleStorageService.getAll();
-        Collections.reverse(bottleStorage);
+        bottleStorage = bottleStorageService.getLatestAll();
     }
 
     public void bottleTypesTableViewReload() {

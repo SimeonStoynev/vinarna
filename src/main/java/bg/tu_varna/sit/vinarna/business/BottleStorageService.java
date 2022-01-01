@@ -36,6 +36,21 @@ public class BottleStorageService {
         );
     }
 
+    public ObservableList<BottleStorageModel> getLatestAll() {
+        List<BottleStorage> bottles = repository.getLatestAll();
+        return FXCollections.observableList(
+                bottles.stream().map(b -> new BottleStorageModel(
+                        b.getId(),
+                        new BottleTypeModel(b.getBottle_type_id()),
+                        b.getQuantity_old(),
+                        b.getQuantity(),
+                        b.getDifference(),
+                        b.getCreated_at(),
+                        b.getUpdated_at()
+                )).collect(Collectors.toList())
+        );
+    }
+
     public ObservableList<BottleStorageModel> getAllByBottle(BottleTypeModel bottle) {
         List<BottleStorage> bottles = repository.getAllByBottle(bottle.toEntity());
         return FXCollections.observableList(

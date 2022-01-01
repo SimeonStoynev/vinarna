@@ -102,6 +102,24 @@ public class BottleStorageRepository implements DAORepository<BottleStorage> {
         return bottleStorages;
     }
 
+    public List<BottleStorage> getLatestAll() {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<BottleStorage> bottleStorages = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT r FROM BottleStorage r GROUP BY r.bottle_type_id ORDER BY r.bottle_type_id.id DESC";
+            bottleStorages.addAll(session.createQuery(jpql, BottleStorage.class).getResultList());
+            log.info("Got all BottleStorage");
+        } catch(Exception ex){
+            log.error("Get BottleStorage failed: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return bottleStorages;
+    }
+
     public List<BottleStorage> getAllByBottle(BottleType bottle) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
