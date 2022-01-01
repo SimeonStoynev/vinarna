@@ -67,7 +67,7 @@ public class WineTypesAnchorPaneController {
                 controller.produceCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        wineTypesAddEditDialogShow(wineType);
+                        wineTypesProduceDialogShow(wineType);
                     }
                 });
 
@@ -111,6 +111,46 @@ public class WineTypesAnchorPaneController {
                 dialog.setTitle("Add wine type");
 
                 WineTypesAddEditDialogController controller = loader.getController();
+                controller.formInit(wineType);
+                dialog.show();
+
+                dialog.setOnHiding(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        dialog.close();
+                        wineTypesTableViewReload();
+                    }
+
+                });
+
+            } else {
+                log.error("Dialog couldn't be loaded: " + Constants.View.USERSADDEDITDIALOG_VIEW);
+            }
+        } catch (Exception ex) {
+            log.error("Dialog couldn't be loaded: " + ex);
+        }
+    }
+
+    private void wineTypesProduceDialogShow(WineTypeModel wineType) {
+        Stage stage = (Stage) wineTypesRowsAnchorPane.getScene().getWindow();
+
+        try {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(stage);
+
+            URL path = WineTypesProduceDialogController.class.getResource(Constants.View.WINETYPESPRODUCEDIALOG_VIEW);
+            if (path != null) {
+                FXMLLoader loader = new FXMLLoader(WineTypesProduceDialogController.class.getResource(Constants.View.WINETYPESPRODUCEDIALOG_VIEW));
+                Parent root = loader.load();
+
+
+                Scene scene = new Scene(root);
+                dialog.getIcons().add(new Image(Objects.requireNonNull(WineTypesProduceDialogController.class.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.setScene(scene);
+                dialog.setResizable(false);
+                dialog.setTitle("Wine produce");
+
+                WineTypesProduceDialogController controller = loader.getController();
                 controller.formInit(wineType);
                 dialog.show();
 
