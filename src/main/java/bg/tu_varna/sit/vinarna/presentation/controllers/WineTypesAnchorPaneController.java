@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.apache.commons.math3.util.Precision;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
@@ -52,7 +53,18 @@ public class WineTypesAnchorPaneController {
 
                 controller.idLabel.setText(String.valueOf(wineType.getId()));
                 controller.wineTypeNameLabel.setText(wineType.getName());
+                controller.producedLabel.setText(String.valueOf(Precision.round(wineType.getProduced(), 3)) + " L");
+                if(wineType.getProduced() == 0)
+                    controller.producedLabel.setDisable(true);
+
                 controller.editCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        wineTypesAddEditDialogShow(wineType);
+                    }
+                });
+
+                controller.produceCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
                         wineTypesAddEditDialogShow(wineType);

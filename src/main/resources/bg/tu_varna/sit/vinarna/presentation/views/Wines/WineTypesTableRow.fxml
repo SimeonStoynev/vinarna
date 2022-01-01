@@ -19,7 +19,8 @@
       <GridPane layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="539.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="30.0" prefWidth="50.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="140.0" prefWidth="337.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="140.0" prefWidth="577.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="90.0" prefWidth="300.0" />
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="129.0" minWidth="74.0" prefWidth="74.0" />
          </columnConstraints>
          <rowConstraints>
@@ -32,7 +33,7 @@
                </GridPane.margin>
             </Label>
             <Label fx:id="wineTypeNameLabel" text="WineType name" GridPane.columnIndex="1" />
-            <MenuButton fx:id="settingsMenuButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="2">
+            <MenuButton fx:id="settingsMenuButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="3">
                <items>
                   <CustomMenuItem fx:id="editCustomMenuItem" mnemonicParsing="false" text="Unspecified Action">
                      <content>
@@ -51,6 +52,30 @@
                                  </font>
                               </FontAwesomeIconView>
                               <Label text="Edit" GridPane.columnIndex="1" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </GridPane>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem fx:id="produceCustomMenuItem" mnemonicParsing="false" text="Unspecified Action">
+                     <content>
+                        <GridPane prefHeight="30.0" prefWidth="157.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="36.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="121.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <FontAwesomeIconView glyphName="INDUSTRY" size="30" wrappingWidth="23.714285850524902">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </FontAwesomeIconView>
+                              <Label text="Produce wine" GridPane.columnIndex="1" />
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -80,6 +105,7 @@
                   <Tooltip text="Options" />
                </tooltip>
             </MenuButton>
+            <Label fx:id="producedLabel" text="Produced" GridPane.columnIndex="2" />
          </children>
       </GridPane>
    </children>

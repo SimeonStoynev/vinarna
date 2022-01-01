@@ -12,5 +12,11 @@ public class WineTypesTableRowController {
     Label wineTypeNameLabel;
 
     @FXML
+    Label producedLabel;
+
+    @FXML
     CustomMenuItem editCustomMenuItem;
+
+    @FXML
+    CustomMenuItem produceCustomMenuItem;
 }
