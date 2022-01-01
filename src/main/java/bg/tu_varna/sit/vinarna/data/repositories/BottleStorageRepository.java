@@ -2,7 +2,6 @@ package bg.tu_varna.sit.vinarna.data.repositories;
 
 import bg.tu_varna.sit.vinarna.data.entities.BottleStorage;
 import bg.tu_varna.sit.vinarna.data.entities.BottleType;
-import bg.tu_varna.sit.vinarna.data.entities.GrapeStorage;
 import bg.tu_varna.sit.vinarna.data.mysql.Connection;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -119,5 +118,23 @@ public class BottleStorageRepository implements DAORepository<BottleStorage> {
         }
 
         return bottleStorages;
+    }
+
+    public BottleStorage getLastByBottle(BottleType bottle) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        BottleStorage bottleStorage = null;
+
+        try{
+            String jpql = "SELECT s FROM BottleStorage s WHERE s.bottle_type_id = '" + bottle.getId() + "' ORDER BY id DESC";
+            bottleStorage = (BottleStorage) session.createQuery(jpql).setMaxResults(1).getSingleResult();
+            log.info("Get Bottle storage by bottle successfully.");
+        } catch(Exception ex) {
+            log.error("Get Bottle storage by bottle error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return bottleStorage;
     }
 }

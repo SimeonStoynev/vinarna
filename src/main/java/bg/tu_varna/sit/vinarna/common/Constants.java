@@ -17,6 +17,7 @@ public class Constants {
         public static final String BOTTLETYPESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleTypesAnchorPane.fxml";
         public static final String BOTTLETYPESTABLEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleTypesTableRow.fxml";
         public static final String BOTTLETYPESADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleTypesAddEditDialog.fxml";
+        public static final String BOTTLEQUANTITYADDDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleQuantityAddDialog.fxml";
     }
 
     public static class Configurations {

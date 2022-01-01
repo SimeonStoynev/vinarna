@@ -50,4 +50,15 @@ public class BottleStorageService {
                 )).collect(Collectors.toList())
         );
     }
+
+    public BottleStorageModel getLastByBottle(BottleTypeModel bottle) {
+        BottleStorage storage = repository.getLastByBottle(bottle.toEntity());
+        return (storage == null) ? null : new BottleStorageModel(storage);
+    }
+
+    public int addStorage(BottleStorageModel bottleStorage) {
+        BottleStorage bottleStorageEntity = bottleStorage.toEntity();
+        repository.save(bottleStorageEntity);
+        return bottleStorageEntity.getId();
+    }
 }

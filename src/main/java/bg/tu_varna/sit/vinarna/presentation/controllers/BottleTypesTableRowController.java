@@ -16,5 +16,8 @@ public class BottleTypesTableRowController {
     Label bottleTypeQuantityNameLabel;
 
     @FXML
+    CustomMenuItem addQuantityCustomMenuItem;
+
+    @FXML
     CustomMenuItem editCustomMenuItem;
 }

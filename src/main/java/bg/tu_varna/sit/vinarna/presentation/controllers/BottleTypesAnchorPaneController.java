@@ -75,6 +75,13 @@ public class BottleTypesAnchorPaneController {
                     controller.bottleTypeQuantityNameLabel.setDisable(true);
                 }
 
+                controller.addQuantityCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        bottleQuantityAddDialogShow(bottleType);
+                    }
+                });
+
                 controller.editCustomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -102,11 +109,11 @@ public class BottleTypesAnchorPaneController {
     }
 
     public void bottleTypeTableViewReload() {
-
+        bottleTypesTableViewReload();
     }
 
     public void bottleQuantityAddButton() {
-
+        bottleQuantityAddDialogShow();
     }
 
     public void bottleTypesAddEditDialogShow(BottleTypeModel... bottleType) {
@@ -130,6 +137,46 @@ public class BottleTypesAnchorPaneController {
                 dialog.setTitle("Add Grape Quantity");
 
                 BottleTypesAddEditDialogController controller = loader.getController();
+                controller.formInit(bottleType);
+                dialog.show();
+
+                dialog.setOnHiding(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        dialog.close();
+                        bottleTypesTableViewReload();
+                    }
+
+                });
+
+            } else {
+                log.error("Dialog couldn't be loaded: " + Constants.View.USERSADDEDITDIALOG_VIEW);
+            }
+        } catch (Exception ex) {
+            log.error("Dialog couldn't be loaded: " + ex);
+        }
+    }
+
+    public void bottleQuantityAddDialogShow(BottleTypeModel... bottleType) {
+        Stage stage = (Stage) bottleRowsAnchorPane.getScene().getWindow();
+
+        try {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(stage);
+
+            URL path = BottleQuantityAddDialogController.class.getResource(Constants.View.BOTTLEQUANTITYADDDIALOG_VIEW);
+            if (path != null) {
+                FXMLLoader loader = new FXMLLoader(BottleQuantityAddDialogController.class.getResource(Constants.View.BOTTLEQUANTITYADDDIALOG_VIEW));
+                Parent root = loader.load();
+
+
+                Scene scene = new Scene(root);
+                dialog.getIcons().add(new Image(Objects.requireNonNull(BottleQuantityAddDialogController.class.getResourceAsStream(Constants.Media.APP_ICON))));
+                dialog.setScene(scene);
+                dialog.setResizable(false);
+                dialog.setTitle("Add bottle quantity");
+
+                BottleQuantityAddDialogController controller = loader.getController();
                 controller.formInit(bottleType);
                 dialog.show();
 

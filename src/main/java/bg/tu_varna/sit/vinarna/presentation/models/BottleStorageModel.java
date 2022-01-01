@@ -14,6 +14,8 @@ public class BottleStorageModel implements EntityModel<BottleStorage> {
     Timestamp created_at;
     Timestamp updated_at;
 
+    public BottleStorageModel() {}
+
     public BottleStorageModel(int id, BottleTypeModel bottle_type_id, int quantity_old, int quantity, int difference, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.bottle_type_id = bottle_type_id;

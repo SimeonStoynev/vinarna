@@ -68,12 +68,7 @@ public class BottleTypeModel implements EntityModel<BottleType> {
 
     @Override
     public String toString() {
-        return "BottleTypeModel{" +
-                "id=" + id +
-                ", capacity=" + capacity +
-                ", created_at=" + created_at +
-                ", updated_at=" + updated_at +
-                '}';
+        return String.format("%s", String.format("%.3f",this.capacity));
     }
 
     @Override
