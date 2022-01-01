@@ -205,6 +205,9 @@ public class ViewsManager {
         menuItems.add(new MenuItem("Wine types", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
                 Constants.View.WINETYPESANCHORPANE_VIEW, WineTypesAnchorPaneController.class, contentPane));
 
+        menuItems.add(new MenuItem("Bottle types", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOTLES,
+                Constants.View.BOTTLETYPESANCHORPANE_VIEW, BottleTypesAnchorPaneController.class, contentPane));
+
         int y = 0;
         menuPane.getChildren().remove(0);
         for (MenuItem item : menuItems) {

@@ -17,7 +17,7 @@ public class BottleType implements Serializable {
     private int id;
 
     @Column(name = "capacity", nullable = false)
-    private Long capacity;
+    private Double capacity;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -33,11 +33,11 @@ public class BottleType implements Serializable {
         this.id = id;
     }
 
-    public Long getCapacity() {
+    public Double getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(Long capacity) {
+    public void setCapacity(Double capacity) {
         this.capacity = capacity;
     }
 

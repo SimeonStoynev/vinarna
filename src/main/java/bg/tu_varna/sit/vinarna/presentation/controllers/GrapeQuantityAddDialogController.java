@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.apache.commons.math3.util.Precision;
@@ -49,6 +51,13 @@ public class GrapeQuantityAddDialogController {
 
         grapeSorts = grapeSortService.getAllSorts();
         grapeSortComboBox.getItems().addAll(grapeSorts);
+
+        mainAnchorPanel.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if(keyEvent.getCode() == KeyCode.ENTER){
+                submitButton.fire();
+                keyEvent.consume();
+            }
+        });
     }
 
     public void formInit(GrapeSortModel... grapeSort) {

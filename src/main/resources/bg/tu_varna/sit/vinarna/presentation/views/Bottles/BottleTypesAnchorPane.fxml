@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="432.0" minWidth="553.0" prefWidth="1000.0" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.BottleTypesAnchorPaneController">
+   <children>
+      <Button layoutX="867.0" layoutY="14.0" mnemonicParsing="false" onAction="#bottleTypeAddButton" prefHeight="40.0" prefWidth="129.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
+         <graphic>
+            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
+               <children>
+                  <FontAwesomeIconView glyphName="PLUS" size="30" wrappingWidth="23.714285850524902">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </FontAwesomeIconView>
+                  <Label contentDisplay="TOP" prefHeight="29.0" prefWidth="162.0" text="Add bottle">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </graphic>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="success" />
+         </styleClass>
+      </Button>
+      <Button layoutX="645.0" layoutY="14.0" mnemonicParsing="false" onAction="#bottleTypeTableViewReload" prefHeight="38.0" prefWidth="53.0" AnchorPane.rightAnchor="302.0" AnchorPane.topAnchor="14.0">
+         <graphic>
+            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
+               <children>
+                  <FontAwesomeIconView glyphName="CLOUD_DOWNLOAD" size="30" wrappingWidth="23.714285850524902">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </FontAwesomeIconView>
+               </children>
+            </HBox>
+         </graphic>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="info" />
+         </styleClass>
+         <tooltip>
+            <Tooltip contentDisplay="BOTTOM" text="Refresh table" />
+         </tooltip>
+      </Button>
+      <GridPane layoutX="10.0" layoutY="66.0" prefHeight="31.0" prefWidth="973.0" style="-fx-background-color: rgba(79,78,47,0.56); -fx-background-radius: 13 13 0 0;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="66.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="50.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="140.0" prefWidth="337.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="160.0" prefWidth="164.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="74.0" prefWidth="74.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label style="-fx-font-size: 18;" text="Id">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label prefWidth="80.0" style="-fx-font-size: 18;" text="Capacity" GridPane.columnIndex="1" />
+            <Label style="-fx-font-size: 18;" text="Available quantity" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="97.0" prefHeight="299.0" prefWidth="989.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="97.0">
+         <content>
+            <AnchorPane fx:id="bottleRowsAnchorPane">
+               <children>
+                  <GridPane prefHeight="31.0" prefWidth="539.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="30.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="140.0" prefWidth="337.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="130.0" prefWidth="164.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="129.0" minWidth="74.0" prefWidth="74.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Id">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label prefHeight="21.0" prefWidth="134.0" text="GrapeSortName" GridPane.columnIndex="1" />
+                        <MenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="40.0" style="-fx-border-radius: 8; -fx-background-color: rgba(66,65,54,0.55); -fx-background-radius: 8;" GridPane.columnIndex="3">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
+                                 <children>
+                                    <FontAwesomeIconView glyphName="COG" size="19" wrappingWidth="18.714285850524902">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </FontAwesomeIconView>
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuButton>
+                        <Label text="Available quantity" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Button layoutX="706.0" layoutY="14.0" mnemonicParsing="false" onAction="#bottleQuantityAddButton" prefHeight="38.0" prefWidth="142.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
+         <graphic>
+            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
+               <children>
+                  <FontAwesomeIconView glyphName="PLUS" size="30" wrappingWidth="23.714285850524902">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </FontAwesomeIconView>
+                  <Label contentDisplay="TOP" prefHeight="29.0" prefWidth="162.0" text="Add quantity">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </graphic>
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="success" />
+         </styleClass>
+      </Button>
+   </children>
+</AnchorPane>

@@ -14,6 +14,9 @@ public class Constants {
         public static final String WINETYPESTABLEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypesTableRow.fxml";
         public static final String WINETYPESADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypesAddEditDialog.fxml";
         public static final String WINETYPESGRAPECHOSEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Wines/WineTypeGrapeChoseRow.fxml";
+        public static final String BOTTLETYPESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleTypesAnchorPane.fxml";
+        public static final String BOTTLETYPESTABLEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleTypesTableRow.fxml";
+        public static final String BOTTLETYPESADDEDITDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleTypesAddEditDialog.fxml";
     }
 
     public static class Configurations {
@@ -30,9 +33,11 @@ public class Constants {
         public static final String APP_ICON = "/bg/tu_varna/sit/vinarna/presentation/media/icon.png";
         public static final String LEFTMENU_GRAPE = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_grape.png";
         public static final String LEFTMENU_BOOK = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_book.png";
+        public static final String LEFTMENU_BOTLES = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_botles.png";
     }
 
     public static class Minima {
         public static final Double GRAPE_MINIMUM = 50.00;
+        public static final int BOTTLES_MINIMUM = 100;
     }
 }

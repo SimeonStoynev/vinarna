@@ -29,7 +29,6 @@ public class GrapeSortsAnchorPaneController {
     public final GrapeSortService grapeSortService = GrapeSortService.getInstance();
     public final GrapeStorageService grapeStorageService = GrapeStorageService.getInstance();
 
-
     @FXML
     AnchorPane sortRowsAnchorPane;
 
@@ -58,7 +57,7 @@ public class GrapeSortsAnchorPaneController {
 
             for(GrapeSortModel grapeSort : grapeSorts) {
                 GrapeStorageModel quantity = grapeStorage.stream()
-                        .filter(customer -> grapeSort.getId() == customer.getSort().getId())
+                        .filter(storage -> grapeSort.getId() == storage.getSort().getId())
                         .findFirst()
                         .orElse(null);
 

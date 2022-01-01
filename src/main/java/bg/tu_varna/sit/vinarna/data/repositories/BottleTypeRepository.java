@@ -101,4 +101,22 @@ public class BottleTypeRepository implements DAORepository<BottleType> {
 
         return bottleTypes;
     }
+
+    public BottleType getByCapacity(Double capacity) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        BottleType bottleType = null;
+
+        try{
+            String jpql = "SELECT r FROM BottleType r WHERE capacity = '" + capacity + "'";
+            bottleType = (BottleType) session.createQuery(jpql).getSingleResult();
+            log.info("Get BottleType by capacity successfully.");
+        } catch(Exception ex) {
+            log.error("Get BottleType by capacity error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return bottleType;
+    }
 }
