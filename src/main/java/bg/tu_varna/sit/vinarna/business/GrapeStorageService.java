@@ -8,6 +8,8 @@ import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,6 +63,28 @@ public class GrapeStorageService {
     public GrapeStorageModel getLastRowByGrapeSortId(int grapeSort_id) {
         GrapeStorage storage = repository.getLastByGrapeSortId(grapeSort_id);
         return (storage == null) ? null : new GrapeStorageModel(storage);
+    }
+
+    public GrapeStorageModel addGrapeQuantity(GrapeStorageModel grapeStorage, Double quantity) {
+        GrapeStorageModel newStorage = new GrapeStorageModel();
+
+        Double oldQuantity = grapeStorage.getQuantity();
+        Double newQuantity = grapeStorage.getQuantity() + quantity;
+        Double difference = quantity;
+
+        newStorage.setId(0);
+        newStorage.setQuantity_old(oldQuantity);
+        newStorage.setQuantity(newQuantity);
+        newStorage.setDifference(difference);
+        newStorage.setSort(grapeStorage.getSort());
+
+        Date date = new Date();
+        newStorage.setCreated_at(new Timestamp(date.getTime()));
+        newStorage.setUpdated_at(new Timestamp(date.getTime()));
+
+        addStorage(newStorage);
+
+        return newStorage;
     }
 
 }

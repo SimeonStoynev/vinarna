@@ -1,7 +1,9 @@
 package bg.tu_varna.sit.vinarna.presentation.controllers;
 
+import bg.tu_varna.sit.vinarna.business.GrapeStorageService;
 import bg.tu_varna.sit.vinarna.business.WineRecipeService;
 import bg.tu_varna.sit.vinarna.business.WineTypeService;
+import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
 import bg.tu_varna.sit.vinarna.presentation.models.WineRecipeModel;
 import bg.tu_varna.sit.vinarna.presentation.models.WineTypeModel;
 import javafx.collections.ObservableList;
@@ -21,6 +23,7 @@ public class WineTypesProduceDialogController {
 
     WineTypeService wineTypeService = WineTypeService.getInstance();
     WineRecipeService wineRecipeService = WineRecipeService.getInstance();
+    GrapeStorageService grapeStorageService = GrapeStorageService.getInstance();
 
     @FXML
     AnchorPane mainAnchorPanel;
@@ -43,6 +46,7 @@ public class WineTypesProduceDialogController {
 
     WineTypeModel wineType;
     ObservableList<WineRecipeModel> wineRecipes;
+    ObservableList<GrapeStorageModel> grapeStorage;
     Double wineLiters;
     int multiply = 1;
 
@@ -87,6 +91,7 @@ public class WineTypesProduceDialogController {
     public void formInit(WineTypeModel wineType) {
         this.wineType = wineType;
         this.wineRecipes = wineRecipeService.getAllRecipesByWineType(wineType);
+        this.grapeStorage = grapeStorageService.getLatestAll();
         this.wineLiters = 0.0;
 
         wineTypeTextField.setDisable(true);
@@ -115,6 +120,15 @@ public class WineTypesProduceDialogController {
 
             wineTypeService.updateWineType(this.wineType);
 
+            for(WineRecipeModel wineRecipe : this.wineRecipes) {
+                GrapeStorageModel quantity = grapeStorage.stream()
+                        .filter(storage -> wineRecipe.getGrape_sort_id().getId() == storage.getSort().getId())
+                        .findFirst()
+                        .orElse(null);
+
+                grapeStorageService.addGrapeQuantity(quantity, -(wineRecipe.getQuantity() * this.multiply));
+            }
+
             cancelButtonAction();
         }
     }
@@ -138,6 +152,25 @@ public class WineTypesProduceDialogController {
             } catch (Exception ex) {
                 quantityErrorLabel.setText("The quantity must be an integer.");
                 valid = false;
+            }
+        }
+
+        for(WineRecipeModel wineRecipe : this.wineRecipes) {
+            GrapeStorageModel quantity = grapeStorage.stream()
+                    .filter(storage -> wineRecipe.getGrape_sort_id().getId() == storage.getSort().getId())
+                    .findFirst()
+                    .orElse(null);
+
+            if(quantity == null) {
+                valid = false;
+                break;
+            } else {
+                Double needed = wineRecipe.getQuantity() * this.multiply;
+                if(needed > quantity.getQuantity()) {
+                    System.out.println("NE!");
+                    valid = false;
+                    break;
+                }
             }
         }
 
