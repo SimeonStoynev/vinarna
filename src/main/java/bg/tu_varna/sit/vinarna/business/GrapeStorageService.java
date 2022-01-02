@@ -1,6 +1,5 @@
 package bg.tu_varna.sit.vinarna.business;
 
-import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
 import bg.tu_varna.sit.vinarna.data.entities.GrapeStorage;
 import bg.tu_varna.sit.vinarna.data.repositories.GrapeStorageRepository;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;

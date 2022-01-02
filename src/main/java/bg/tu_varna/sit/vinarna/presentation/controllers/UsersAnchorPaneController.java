@@ -3,8 +3,6 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 import bg.tu_varna.sit.vinarna.business.UserService;
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
-import javafx.beans.InvalidationListener;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

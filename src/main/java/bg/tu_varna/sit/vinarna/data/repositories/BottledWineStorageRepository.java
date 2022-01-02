@@ -4,8 +4,6 @@ import bg.tu_varna.sit.vinarna.data.entities.BottleType;
 import bg.tu_varna.sit.vinarna.data.entities.BottledWineStorage;
 import bg.tu_varna.sit.vinarna.data.entities.WineType;
 import bg.tu_varna.sit.vinarna.data.mysql.Connection;
-import bg.tu_varna.sit.vinarna.presentation.models.BottleTypeModel;
-import bg.tu_varna.sit.vinarna.presentation.models.WineTypeModel;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

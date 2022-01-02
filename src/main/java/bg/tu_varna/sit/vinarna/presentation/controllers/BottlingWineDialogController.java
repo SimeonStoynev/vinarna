@@ -140,7 +140,6 @@ public class BottlingWineDialogController {
         wineTypeTextField.setDisable(true);
         producedLitersLabel.setText(String.valueOf(Precision.round(this.wineType.getProduced(), 3)) + " L");
         bottleTypeComboBox.getItems().addAll(this.bottleTypes);
-
     }
 
     public void submitForm() {
@@ -191,10 +190,6 @@ public class BottlingWineDialogController {
 
             this.wineType.setProduced(this.wineType.getProduced() - neededWineQuantity);
             wineTypeService.updateWineType(this.wineType);
-
-            //System.out.println(this.wineType);
-            //System.out.println(newBottleStorage);
-            //System.out.println(newBottledWineStorage);
 
             cancelButtonAction();
         }

@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import org.apache.commons.math3.util.Precision;
 
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
 import java.util.Date;
 
 public class GrapeQuantityAddDialogController {

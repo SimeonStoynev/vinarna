@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.vinarna.data.repositories;
 
 import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
-import bg.tu_varna.sit.vinarna.data.entities.User;
 import bg.tu_varna.sit.vinarna.data.mysql.Connection;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;

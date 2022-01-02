@@ -1,6 +1,5 @@
 package bg.tu_varna.sit.vinarna.presentation.models;
 
-import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
 import bg.tu_varna.sit.vinarna.data.entities.GrapeStorage;
 
 import java.sql.Timestamp;

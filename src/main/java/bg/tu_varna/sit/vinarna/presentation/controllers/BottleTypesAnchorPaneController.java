@@ -20,7 +20,6 @@ import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
-import java.util.Collections;
 import java.util.Objects;
 
 public class BottleTypesAnchorPaneController {
