@@ -93,13 +93,7 @@ public class WineTypeModel implements EntityModel<WineType> {
 
     @Override
     public String toString() {
-        return "WineTypeModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", produced=" + produced +
-                ", created_at=" + created_at +
-                ", updated_at=" + updated_at +
-                '}';
+        return String.format("%s", this.name);
     }
 
     @Override

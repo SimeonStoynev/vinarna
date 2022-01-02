@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.vinarna.business;
 
+import bg.tu_varna.sit.vinarna.data.entities.BottleStorage;
 import bg.tu_varna.sit.vinarna.data.entities.BottledWineStorage;
 import bg.tu_varna.sit.vinarna.data.repositories.BottledWineStorageRepository;
 import bg.tu_varna.sit.vinarna.presentation.models.*;
@@ -37,10 +38,27 @@ public class BottledWineStorageService {
         );
     }
 
+    public ObservableList<BottledWineStorageModel> getLatestAllByWine(WineTypeModel wine) {
+        List<BottledWineStorage> storage = repository.getLatestAllByWine(wine.toEntity());
+        return FXCollections.observableList(
+                storage.stream().map(b -> new BottledWineStorageModel(
+                        b.getId(),
+                        new BottleTypeModel(b.getBottle_type_id()),
+                        new WineTypeModel(b.getWine_type_id()),
+                        b.getQuantity_old(),
+                        b.getQuantity(),
+                        b.getDifference(),
+                        b.getCreated_at(),
+                        b.getUpdated_at()
+                )).collect(Collectors.toList())
+        );
+    }
+
     public BottledWineStorageModel getLastByBottleAndWine(BottleTypeModel bottle, WineTypeModel wine) {
         BottledWineStorage storage = repository.getLastByBottleTypeAndWineType(bottle.toEntity(), wine.toEntity());
         return (storage == null) ? null : new BottledWineStorageModel(storage);
     }
+
 
     public int addStorage(BottledWineStorageModel storage) {
         BottledWineStorage storageEntity = storage.toEntity();

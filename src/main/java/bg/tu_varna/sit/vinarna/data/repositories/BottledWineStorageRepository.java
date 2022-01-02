@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.vinarna.data.repositories;
 
+import bg.tu_varna.sit.vinarna.data.entities.BottleStorage;
 import bg.tu_varna.sit.vinarna.data.entities.BottleType;
 import bg.tu_varna.sit.vinarna.data.entities.BottledWineStorage;
 import bg.tu_varna.sit.vinarna.data.entities.WineType;
@@ -101,6 +102,24 @@ public class BottledWineStorageRepository implements DAORepository<BottledWineSt
         }
 
         return bottledWineStorages;
+    }
+
+    public List<BottledWineStorage> getLatestAllByWine(WineType wine) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<BottledWineStorage> bottleStorages = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT b FROM BottledWineStorage b WHERE b.wine_type_id.id = '" + wine.getId() + "' GROUP BY b.bottle_type_id.id ORDER BY b.bottle_type_id.id DESC";
+            bottleStorages.addAll(session.createQuery(jpql, BottledWineStorage.class).getResultList());
+            log.info("Got all BottleStorage");
+        } catch(Exception ex){
+            log.error("Get BottleStorage failed: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return bottleStorages;
     }
 
     public BottledWineStorage getLastByBottleTypeAndWineType(BottleType bottle, WineType wine) {

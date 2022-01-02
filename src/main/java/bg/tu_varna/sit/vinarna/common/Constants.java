@@ -21,6 +21,7 @@ public class Constants {
         public static final String BOTTLEQUANTITYADDDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Bottles/BottleQuantityAddDialog.fxml";
         public static final String BOTTLEDWINESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottledWinesAnchorPane.fxml";
         public static final String BOTTLINGWINEDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottlingWineDialog.fxml";
+        public static final String BOTTLEDWINESROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottledWinesRow.fxml";
     }
 
     public static class Configurations {
@@ -39,6 +40,7 @@ public class Constants {
         public static final String LEFTMENU_BOOK = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_book.png";
         public static final String LEFTMENU_BOTLES = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_botles.png";
         public static final String LEFTMENU_WINEBOTTLE = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_wineBottle.png";
+        public static final String LEFTMENU_REFERENCES = "/bg/tu_varna/sit/vinarna/presentation/media/leftMenu_refference.png";
     }
 
     public static class Minima {
