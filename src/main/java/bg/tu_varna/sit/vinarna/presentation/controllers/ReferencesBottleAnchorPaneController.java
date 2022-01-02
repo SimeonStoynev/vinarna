@@ -1,9 +1,9 @@
 package bg.tu_varna.sit.vinarna.presentation.controllers;
 
-import bg.tu_varna.sit.vinarna.business.GrapeStorageService;
+import bg.tu_varna.sit.vinarna.business.BottleStorageService;
 import bg.tu_varna.sit.vinarna.common.Constants;
-import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
-import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
+import bg.tu_varna.sit.vinarna.presentation.models.BottleStorageModel;
+import bg.tu_varna.sit.vinarna.presentation.models.BottleTypeModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +14,10 @@ import org.apache.log4j.Logger;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
-public class ReferencesGrapeAnchorPaneController {
+public class ReferencesBottleAnchorPaneController {
     private static final Logger log = Logger.getLogger(UsersAnchorPaneController.class);
 
-    GrapeStorageService grapeStorageService = GrapeStorageService.getInstance();
+    BottleStorageService bottleStorageService = BottleStorageService.getInstance();
 
     @FXML
     AnchorPane tableAnchorPane;
@@ -25,23 +25,24 @@ public class ReferencesGrapeAnchorPaneController {
     @FXML
     GridPane errorGridPane;
 
-    GrapeSortModel grapeSort;
+    BottleTypeModel bottleType;
     LocalDate startDate;
     LocalDate endDate;
 
-    ObservableList<GrapeStorageModel> grapeStorage;
+    ObservableList<BottleStorageModel> bottleStorage;
 
     @FXML
     public void initialize() {
         errorGridPane.setVisible(false);
     }
 
-    public void init(GrapeSortModel grapeSort, LocalDate startDate, LocalDate endDate) {
-        this.grapeSort = grapeSort;
+    public void init(BottleTypeModel bottleType, LocalDate startDate, LocalDate endDate) {
+        this.bottleType = bottleType;
         this.startDate = startDate;
         this.endDate = endDate;
 
-        grapeStorage = grapeStorageService.getLatestAllByGrapeAndPeriod(grapeSort, startDate, endDate);
+        this.bottleStorage = bottleStorageService.getAllByBottleAndPeriod(bottleType, startDate, endDate);
+
         tableViewReload();
     }
 
@@ -51,12 +52,12 @@ public class ReferencesGrapeAnchorPaneController {
             int y = 0;
             boolean bg = false;
             LocalDate date = new Timestamp(0).toLocalDateTime().toLocalDate();
-            for(GrapeStorageModel storageDay : grapeStorage) {
+            for(BottleStorageModel storageDay : bottleStorage) {
                 /*if(storageDay.getCreated_at().toLocalDateTime().toLocalDate().equals(date))
                     continue;*/
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(Constants.View.REFERENCEGRAPESTORAGEROW_VIEW));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(Constants.View.REFERENCEBOTTLESTORAGEROW_VIEW));
                 AnchorPane userRow = loader.load();
-                ReferencesGrapeStorageRowController controller = loader.getController();
+                ReferencesBottleStorageRowController controller = loader.getController();
 
                 controller.idLabel.setText(String.valueOf(storageDay.getId()));
                 controller.dateLabel.setText(String.valueOf(storageDay.getCreated_at()));
@@ -82,7 +83,7 @@ public class ReferencesGrapeAnchorPaneController {
                 bg=!bg;
             }
 
-            if(grapeStorage.size() == 0) {
+            if(bottleStorage.size() == 0) {
                 errorGridPane.setVisible(true);
             }
         } catch (Exception ex) {

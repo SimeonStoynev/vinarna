@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -127,6 +128,24 @@ public class BottleStorageRepository implements DAORepository<BottleStorage> {
 
         try {
             String jpql = "SELECT r FROM BottleStorage r WHERE r.bottle_type_id = '" + bottle.getId() +"'";
+            bottleStorages.addAll(session.createQuery(jpql, BottleStorage.class).getResultList());
+            log.info("Got all BottleStorage");
+        } catch(Exception ex){
+            log.error("Get BottleStorage failed: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return bottleStorages;
+    }
+
+    public List<BottleStorage> getAllByBottleAndPeriod(BottleType bottle, LocalDate startDate, LocalDate endDate) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<BottleStorage> bottleStorages = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT r FROM BottleStorage r WHERE r.bottle_type_id = '" + bottle.getId() +"' AND (DATE(r.created_at) BETWEEN '" + startDate + "' AND '" + endDate +"')";
             bottleStorages.addAll(session.createQuery(jpql, BottleStorage.class).getResultList());
             log.info("Got all BottleStorage");
         } catch(Exception ex){

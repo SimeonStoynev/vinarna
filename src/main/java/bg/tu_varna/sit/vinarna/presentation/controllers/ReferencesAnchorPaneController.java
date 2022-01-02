@@ -103,6 +103,14 @@ public class ReferencesAnchorPaneController {
             } else if(referenceTypeComboBox.getValue().equals("Bottle types quantity")) {
                 BottleTypeModel bottleType = (BottleTypeModel) referenceByComboBox.getValue();
 
+                FXMLLoader loader = new FXMLLoader(ReferencesBottleAnchorPaneController.class.getResource(Constants.View.REFERENCEBOTTLEANCHORPANE_VIEW));
+                AnchorPane sp = loader.load();
+
+                ReferencesBottleAnchorPaneController controller = loader.getController();
+                controller.init(bottleType, startDate, endDate);
+
+                ViewsManager.loadAnchorPane(sp, tableAnchorPane);
+
             } else if(referenceTypeComboBox.getValue().equals("Bottled wines quantity")) {
                 GrapeSortModel grapeSort = (GrapeSortModel) referenceByComboBox.getValue();
             }
