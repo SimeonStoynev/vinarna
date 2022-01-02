@@ -15,7 +15,7 @@
    <children>
       <GridPane layoutX="10.0" layoutY="66.0" prefHeight="31.0" prefWidth="973.0" style="-fx-background-color: rgba(79,78,47,0.56); -fx-background-radius: 13 13 0 0;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="66.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="30.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="50.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="140.0" prefWidth="577.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="300.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="300.0" />

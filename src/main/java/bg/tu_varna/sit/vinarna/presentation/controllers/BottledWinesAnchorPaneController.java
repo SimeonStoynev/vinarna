@@ -63,7 +63,7 @@ public class BottledWinesAnchorPaneController {
                 controller.idLabel.setText(String.valueOf(bottledWine.getId()));
                 controller.wineTypeLabel.setText(bottledWine.getWine_type_id().getName());
                 controller.bottleTypeLabel.setText(String.format("%.3f",bottledWine.getBottle_type_id().getCapacity()) + " L");
-                controller.quantityLabel.setText(String.valueOf(bottledWine.getQuantity()));
+                controller.quantityLabel.setText(String.valueOf(bottledWine.getQuantity()) + " pic.");
 
                 AnchorPane.setRightAnchor(bottledWineRow, 0.0);
                 AnchorPane.setLeftAnchor(bottledWineRow, 0.0);
