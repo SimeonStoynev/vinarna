@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="45.0" prefHeight="45.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.ReferencesBottledRowController">
+   <children>
+      <GridPane layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="539.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="50.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="160.0" prefWidth="321.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="64.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="300.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="idLabel" text="id">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="dateLabel" text="Wine type" GridPane.columnIndex="1" />
+            <Label fx:id="quantityLabel" text="Quantity" GridPane.columnIndex="4" />
+            <Label fx:id="operationLabel" text="Operation" GridPane.columnIndex="5" />
+            <Label fx:id="quantityOldLabel" text="Quantity old" GridPane.columnIndex="3" />
+            <Label fx:id="bottleTypeLabel" text="Bottle type" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

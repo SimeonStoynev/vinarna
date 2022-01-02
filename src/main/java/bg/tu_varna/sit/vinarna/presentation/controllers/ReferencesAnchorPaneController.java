@@ -2,13 +2,14 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.business.BottleTypeService;
 import bg.tu_varna.sit.vinarna.business.GrapeSortService;
+import bg.tu_varna.sit.vinarna.business.WineTypeService;
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.common.ViewsManager;
 import bg.tu_varna.sit.vinarna.presentation.models.BottleTypeModel;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
+import bg.tu_varna.sit.vinarna.presentation.models.WineTypeModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -18,12 +19,12 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class ReferencesAnchorPaneController {
 
     GrapeSortService grapeStorageService = GrapeSortService.getInstance();
     BottleTypeService bottleTypeService = BottleTypeService.getInstance();
+    WineTypeService wineTypeService = WineTypeService.getInstance();
 
     @FXML
     ComboBox referenceTypeComboBox;
@@ -69,7 +70,7 @@ public class ReferencesAnchorPaneController {
         });
 
         referenceTypeComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-            if(newValue.equals("Grape sorts quantity") || newValue.equals("Bottled wines quantity")) {
+            if(newValue.equals("Grape sorts quantity")) {
                 referenceByLabel.setText("Select grape sort");
                 referenceByComboBox.setPromptText("Select grape sort");
                 referenceByComboBox.getItems().setAll(grapeStorageService.getAllSorts());
@@ -78,6 +79,10 @@ public class ReferencesAnchorPaneController {
                 referenceByLabel.setText("Select bottle type");
                 referenceByComboBox.setPromptText("Select bottle type");
                 referenceByComboBox.getItems().setAll(bottleTypeService.getAll());
+            } else if(newValue.equals("Bottled wines quantity")) {
+                referenceByLabel.setText("Select wine type");
+                referenceByComboBox.setPromptText("Select wine type");
+                referenceByComboBox.getItems().setAll(wineTypeService.getAllWineTypes());
             }
         });
     }
@@ -112,7 +117,15 @@ public class ReferencesAnchorPaneController {
                 ViewsManager.loadAnchorPane(sp, tableAnchorPane);
 
             } else if(referenceTypeComboBox.getValue().equals("Bottled wines quantity")) {
-                GrapeSortModel grapeSort = (GrapeSortModel) referenceByComboBox.getValue();
+                WineTypeModel wineType = (WineTypeModel) referenceByComboBox.getValue();
+
+                FXMLLoader loader = new FXMLLoader(ReferencesBottledAnchorPaneController.class.getResource(Constants.View.REFERENCEBOTTLEDANCHORPANE_VIEW));
+                AnchorPane sp = loader.load();
+
+                ReferencesBottledAnchorPaneController controller = loader.getController();
+                controller.init(wineType, startDate, endDate);
+
+                ViewsManager.loadAnchorPane(sp, tableAnchorPane);
             }
 
         } else {
@@ -126,7 +139,7 @@ public class ReferencesAnchorPaneController {
 
         try {
             if(referenceTypeComboBox.getValue() != null) {
-                if(referenceTypeComboBox.getValue().equals("Grape sorts quantity") || referenceTypeComboBox.getValue().equals("Bottled wines quantity")) {
+                if(referenceTypeComboBox.getValue().equals("Grape sorts quantity")) {
                     GrapeSortModel grapeSort = (GrapeSortModel) referenceByComboBox.getValue();
                     if(grapeSort == null)
                         valid = false;
@@ -134,6 +147,10 @@ public class ReferencesAnchorPaneController {
                 } else if(referenceTypeComboBox.getValue().equals("Bottle types quantity")) {
                     BottleTypeModel bottleType = (BottleTypeModel) referenceByComboBox.getValue();
                     if(bottleType == null)
+                        valid = false;
+                } else if(referenceTypeComboBox.getValue().equals("Bottled wines quantity")) {
+                    WineTypeModel wineType = (WineTypeModel) referenceByComboBox.getValue();
+                    if(wineType == null)
                         valid = false;
                 }
 

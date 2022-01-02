@@ -1,6 +1,5 @@
 package bg.tu_varna.sit.vinarna.data.repositories;
 
-import bg.tu_varna.sit.vinarna.data.entities.BottleStorage;
 import bg.tu_varna.sit.vinarna.data.entities.BottleType;
 import bg.tu_varna.sit.vinarna.data.entities.BottledWineStorage;
 import bg.tu_varna.sit.vinarna.data.entities.WineType;
@@ -9,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -112,9 +112,27 @@ public class BottledWineStorageRepository implements DAORepository<BottledWineSt
         try {
             String jpql = "SELECT b FROM BottledWineStorage b WHERE b.wine_type_id.id = '" + wine.getId() + "' GROUP BY b.bottle_type_id.id ORDER BY b.bottle_type_id.id DESC";
             bottleStorages.addAll(session.createQuery(jpql, BottledWineStorage.class).getResultList());
-            log.info("Got all BottleStorage");
+            log.info("Got all getLatestAllByWine");
         } catch(Exception ex){
-            log.error("Get BottleStorage failed: " + ex.getMessage());
+            log.error("Get getLatestAllByWine failed: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return bottleStorages;
+    }
+
+    public List<BottledWineStorage> getLatestAllByWineAndPeriod(WineType wine, LocalDate startDate, LocalDate endDate) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<BottledWineStorage> bottleStorages = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT b FROM BottledWineStorage b WHERE b.wine_type_id.id = '" + wine.getId() + "' AND (DATE(b.created_at) BETWEEN '" + startDate + "' AND '" + endDate +"')";
+            bottleStorages.addAll(session.createQuery(jpql, BottledWineStorage.class).getResultList());
+            log.info("Got all getLatestAllByWineAndPeriod");
+        } catch(Exception ex){
+            log.error("Get getLatestAllByWineAndPeriod failed: " + ex.getMessage());
         } finally {
             transaction.commit();
         }

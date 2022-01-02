@@ -27,6 +27,8 @@ public class Constants {
         public static final String REFERENCEGRAPESTORAGEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesGrapeStorageRow.fxml";
         public static final String REFERENCEBOTTLEANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesBottleAnchorPane.fxml";
         public static final String REFERENCEBOTTLESTORAGEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesBottleStorageRow.fxml";
+        public static final String REFERENCEBOTTLEDANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesBottledAnchorPane.fxml";
+        public static final String REFERENCEBOTTLEDROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesBottledRow.fxml";
     }
 
     public static class Configurations {
