@@ -1,7 +1,13 @@
 package bg.tu_varna.sit.vinarna.business;
 
+import bg.tu_varna.sit.vinarna.presentation.models.BottledWineStorageModel;
+import bg.tu_varna.sit.vinarna.presentation.models.WineTypeModel;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,17 +28,16 @@ class BottledWineStorageServiceTest {
 
     @Test
     void getAll() {
+        assertTrue(bottledWineStorageService.getAll() instanceof ObservableList<BottledWineStorageModel>);
+        assertNotNull(bottledWineStorageService.getAll());
     }
 
     @Test
     void getLatestAllByWine() {
-    }
+        Timestamp currentTimestamp = new Timestamp(new Date().getTime());
+        WineTypeModel wineTypeModel = new WineTypeModel(1, "Rose", 150.0, currentTimestamp, currentTimestamp);
 
-    @Test
-    void getLastByBottleAndWine() {
-    }
-
-    @Test
-    void addStorage() {
+        assertTrue(bottledWineStorageService.getLatestAllByWine(wineTypeModel) instanceof ObservableList<BottledWineStorageModel>);
+        assertNotNull(bottledWineStorageService.getAll());
     }
 }

@@ -1,5 +1,7 @@
 package bg.tu_varna.sit.vinarna.business;
 
+import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,55 +9,41 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserServiceTest {
 
+    private UserService userService;
+
     @BeforeEach
     void setUp() {
+        userService = UserService.getInstance();
     }
 
     @Test
     void getInstance() {
+        assertTrue(userService instanceof UserService);
+        assertNotNull(userService);
     }
 
     @Test
     void getAllUser() {
-    }
-
-    @Test
-    void getUserByUsername() {
-    }
-
-    @Test
-    void isUsernameExists() {
+        assertTrue(userService.getAllUser() instanceof ObservableList<UserModel>);
+        assertNotNull(userService.getAllUser());
     }
 
     @Test
     void getUserByEmail() {
+        assertNull(userService.getUserByEmail("nonexisting_email@gmail.com"));
     }
 
     @Test
     void isEmailExists() {
-    }
-
-    @Test
-    void userAdd() {
-    }
-
-    @Test
-    void userUpdate() {
+        assertFalse(userService.isEmailExists("nonexisting_email@gmail.com"));
     }
 
     @Test
     void userAuth() {
-    }
+        // Non-existent user
+        assertFalse(userService.userAuth("Empty", "12345"));
 
-    @Test
-    void usernameValidate() {
-    }
-
-    @Test
-    void passwordValidate() {
-    }
-
-    @Test
-    void emailValidate() {
+        // Real user
+        assertTrue(userService.userAuth("simo", "test"));
     }
 }
