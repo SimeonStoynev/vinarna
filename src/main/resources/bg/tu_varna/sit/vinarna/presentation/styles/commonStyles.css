@@ -326,6 +326,10 @@ btn.btn-sm {
     -fx-font-weight: bold;
 }
 
+.text-info {
+    -fx-text-fill: rgba(11, 91, 140, 0.76);
+}
+
 .text-error {
     -fx-text-fill: rgba(140, 11, 49, 0.76);
 }
@@ -333,4 +337,19 @@ btn.btn-sm {
 .tooltip {
     -fx-opacity: 0.9;
     -fx-background-color: #333228;
+}
+
+.date-picker {
+    -fx-background-color: transparent;
+}
+
+.dateTime > .text-field{
+    -fx-border-radius: 13 0 0 13;
+    -fx-background-radius: 13 0 0 13;
+}
+
+.date-picker > .arrow-button {
+    -fx-border-radius: 0 13 13 0;
+    -fx-background-radius: 0 13 13 0;
+    -fx-cursor: hand;
 }

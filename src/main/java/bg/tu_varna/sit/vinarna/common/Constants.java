@@ -22,6 +22,9 @@ public class Constants {
         public static final String BOTTLEDWINESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottledWinesAnchorPane.fxml";
         public static final String BOTTLINGWINEDIALOG_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottlingWineDialog.fxml";
         public static final String BOTTLEDWINESROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/BottledWines/BottledWinesRow.fxml";
+        public static final String REFERENCESANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesAnchorPane.fxml";
+        public static final String REFERENCEGRAPEANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesGrapeAnchorPane.fxml";
+        public static final String REFERENCEGRAPESTORAGEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesGrapeStorageRow.fxml";
     }
 
     public static class Configurations {

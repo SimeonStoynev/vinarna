@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="432.0" minWidth="553.0" prefHeight="432.0" prefWidth="1021.0" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.ReferencesAnchorPaneController">
+   <children>
+      <GridPane layoutX="17.0" layoutY="30.0" prefHeight="30.0" prefWidth="987.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="160.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="160.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="360.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="99.0" prefWidth="99.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <AnchorPane GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <children>
+                  <Label layoutX="36.0" layoutY="6.0" text="Start date" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <children>
+                  <Label layoutX="54.0" layoutY="5.0" text="End date" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <children>
+                  <Label fx:id="referenceByLabel" layoutX="76.0" layoutY="5.0" text="By" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <Label layoutX="40.0" layoutY="7.0" text="Reference for" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <GridPane layoutX="13.0" layoutY="60.0" prefHeight="30.0" prefWidth="987.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="300.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="160.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="160.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="360.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="99.0" prefWidth="99.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane>
+               <children>
+                  <ComboBox fx:id="referenceTypeComboBox" opacity="0.8" prefHeight="31.0" promptText="Reference type" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="1">
+               <children>
+                  <DatePicker fx:id="firstDateDatePicker" prefHeight="31.0" styleClass="dateTime" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="2">
+               <children>
+                  <DatePicker fx:id="lastDateDatePicker" prefHeight="31.0" style="-fx-background-color: transparent;" styleClass="dateTime" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane GridPane.columnIndex="3">
+               <children>
+                  <ComboBox fx:id="referenceByComboBox" opacity="0.8" prefHeight="31.0" promptText="Reference type" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="31.0" prefWidth="88.0" GridPane.columnIndex="4">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="primary" />
+               </styleClass>
+               <graphic>
+                  <GridPane prefHeight="30.0" prefWidth="1.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="20.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.0" minWidth="10.0" prefWidth="48.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <FontAwesomeIconView glyphName="SEARCH" />
+                        <Label text="Search" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+               </graphic>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+      <AnchorPane fx:id="tableAnchorPane" layoutX="14.0" layoutY="110.0" prefHeight="322.0" prefWidth="1021.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0" />
+      <GridPane fx:id="errorGridPane" layoutY="172.0" prefHeight="216.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="172.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="404.0" minWidth="404.0" prefWidth="404.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="185.0" prefWidth="404.0" GridPane.columnIndex="1">
+               <children>
+                  <FontAwesomeIconView glyphName="EXCLAMATION_CIRCLE" layoutX="137.0" layoutY="129.0" size="150" wrappingWidth="130.2857141494751" />
+                  <Label fx:id="errorLabel" alignment="CENTER" layoutX="6.0" layoutY="165.0" prefHeight="67.0" prefWidth="404.0" style="-fx-font-size: 20;" text="Please select a reference type" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

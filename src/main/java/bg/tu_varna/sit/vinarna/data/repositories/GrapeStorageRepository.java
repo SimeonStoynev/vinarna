@@ -1,11 +1,13 @@
 package bg.tu_varna.sit.vinarna.data.repositories;
 
+import bg.tu_varna.sit.vinarna.data.entities.GrapeSort;
 import bg.tu_varna.sit.vinarna.data.entities.GrapeStorage;
 import bg.tu_varna.sit.vinarna.data.mysql.Connection;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -107,7 +109,25 @@ public class GrapeStorageRepository implements DAORepository<GrapeStorage> {
         List<GrapeStorage> grapeStorages = new LinkedList<>();
 
         try {
-            String jpql = "SELECT r FROM GrapeStorage r GROUP BY r.sort ORDER BY r.sort.id desc ";
+            String jpql = "SELECT r FROM GrapeStorage r GROUP BY r.sort ORDER BY r.sort.id desc";
+            grapeStorages.addAll(session.createQuery(jpql, GrapeStorage.class).getResultList());
+            log.info("Got all GrapeStorage");
+        } catch(Exception ex){
+            log.error("Get GrapeStorage failed: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+
+        return grapeStorages;
+    }
+
+    public List<GrapeStorage> getLatestAllByGrapeAndPeriod(GrapeSort grape, LocalDate startDate, LocalDate endDate) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<GrapeStorage> grapeStorages = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT r FROM GrapeStorage r WHERE r.sort.id = '" + grape.getId() + "' AND (DATE(r.created_at) BETWEEN '" + startDate + "' AND '" + endDate +"')";
             grapeStorages.addAll(session.createQuery(jpql, GrapeStorage.class).getResultList());
             log.info("Got all GrapeStorage");
         } catch(Exception ex){
