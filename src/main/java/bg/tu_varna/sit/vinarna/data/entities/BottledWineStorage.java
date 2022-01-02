@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@Table(name = "bottles_wine_storage")
+@Table(name = "bottled_wine_storage")
 @Entity
 public class BottledWineStorage {
     private static final long serialVersionUID = 1L;

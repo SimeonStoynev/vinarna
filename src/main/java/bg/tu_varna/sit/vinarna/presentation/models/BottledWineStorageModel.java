@@ -137,6 +137,7 @@ public class BottledWineStorageModel implements EntityModel<BottledWineStorage> 
         temp.setBottle_type_id(this.bottle_type_id.toEntity());
         temp.setWine_type_id(this.wine_type_id.toEntity());
         temp.setQuantity_old(this.quantity_old);
+        temp.setQuantity(this.quantity);
         temp.setDifference(this.difference);
         temp.setCreated_at(this.created_at);
         temp.setUpdated_at(this.updated_at);

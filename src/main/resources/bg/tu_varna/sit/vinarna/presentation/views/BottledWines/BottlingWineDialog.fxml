@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPanel" prefHeight="575.0" prefWidth="501.0" styleClass="mainAnchorPanel" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.BottlingWineDialogController">
+<AnchorPane fx:id="mainAnchorPanel" prefHeight="683.0" prefWidth="501.0" styleClass="mainAnchorPanel" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.BottlingWineDialogController">
    <children>
       <AnchorPane layoutX="38.0" layoutY="32.0" prefHeight="465.0" prefWidth="412.0" styleClass="mainPanel" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0" />
       <AnchorPane fx:id="formAnchorPane" layoutX="28.0" layoutY="22.0" prefHeight="465.0" prefWidth="380.0" style="-fx-background-radius: 50 50 50 50; -fx-border-radius: 0;" styleClass="mainPanelWhite" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="28.0">
@@ -39,21 +39,29 @@
             <Label layoutX="14.0" layoutY="157.0" prefHeight="27.0" prefWidth="223.0" style="-fx-font-size: 18;" text="Produced wine quantity:" />
             <Label fx:id="producedLitersLabel" layoutX="214.0" layoutY="157.0" prefHeight="27.0" prefWidth="217.0" style="-fx-font-size: 18;" text="xx.xx L" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="14.0" />
             <Label layoutX="14.0" layoutY="80.0" prefHeight="21.0" prefWidth="417.0" text="Wine type" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-            <TextField fx:id="bottlesQuantityTextField" layoutX="14.0" layoutY="297.0" opacity="0.8" prefHeight="41.0" prefWidth="417.0" promptText="Bottles quantity" styleClass="text-field" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+            <TextField fx:id="bottlesQuantityTextField" layoutX="14.0" layoutY="323.0" opacity="0.8" prefHeight="41.0" prefWidth="417.0" promptText="Bottles quantity" styleClass="text-field" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <Label layoutX="14.0" layoutY="271.0" prefHeight="21.0" prefWidth="417.0" text="Bottles quantity" />
+            <Label layoutX="14.0" layoutY="297.0" prefHeight="21.0" prefWidth="417.0" text="Bottles quantity" />
             <ComboBox fx:id="bottleTypeComboBox" layoutX="14.0" layoutY="197.0" opacity="0.8" prefHeight="41.0" prefWidth="384.0" promptText="Select bottle type" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-            <Label layoutX="14.0" layoutY="385.0" text="Optimal bottling advice:" />
-            <Label fx:id="bottleQuantityErrorLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="338.0" prefHeight="41.0" prefWidth="417.0" style="-fx-font-size: 12;" text="Quantity error message" textFill="#575757" wrapText="true">
+            <Label layoutX="14.0" layoutY="406.0" text="Optimal bottling advice:" />
+            <Label fx:id="bottleQuantityErrorLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="364.0" prefHeight="41.0" prefWidth="417.0" style="-fx-font-size: 12;" text="Quantity error message" textFill="#575757" wrapText="true">
                <styleClass>
                   <String fx:value="text-error" />
                   <String fx:value="bold" />
                </styleClass>
             </Label>
             <Label fx:id="bottleTypeErrorLabel" layoutX="20.0" layoutY="238.0" prefHeight="17.0" prefWidth="417.0" style="-fx-font-size: 12;" text="BottleType error message" textFill="#575757" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+               <styleClass>
+                  <String fx:value="text-error" />
+                  <String fx:value="bold" />
+               </styleClass>
+            </Label>
+            <Label layoutX="14.0" layoutY="262.0" prefHeight="27.0" prefWidth="255.0" style="-fx-font-size: 18;" text="Available bottles in the storage:" />
+            <Label fx:id="availableBottlesLabel" layoutX="272.0" layoutY="262.0" prefHeight="27.0" prefWidth="159.0" style="-fx-font-size: 18;" text="xx" />
+            <Label fx:id="commonErrorLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="513.0" prefHeight="41.0" prefWidth="417.0" style="-fx-font-size: 12;" text="Quantity error message" textFill="#575757" wrapText="true">
                <styleClass>
                   <String fx:value="text-error" />
                   <String fx:value="bold" />
