@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="74.0" prefWidth="254.0" style="-fx-border-color: rgba(168,168,168,0.44); -fx-border-width: 0 0 2 0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.NotificationRowController">
+   <children>
+      <FontAwesomeIconView fill="RED" glyphName="WARNING" layoutX="14.0" layoutY="47.0" size="30" />
+      <Label fx:id="timeLabel" layoutX="55.0" layoutY="5.0" style="-fx-text-fill: #a6a6a6; -fx-font-size: 13;" text="December 12, 2021" />
+      <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="55.0" layoutY="22.0" maxHeight="44.0" maxWidth="192.0" minHeight="44.0" minWidth="192.0" prefHeight="44.0" prefWidth="192.0" text="Critical &quot;0.200&quot; bottles quantity" wrapText="true" />
+   </children>
+</AnchorPane>

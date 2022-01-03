@@ -16,6 +16,7 @@ module bg.tu_varna.sit.vinarna {
     requires java.sql;
     requires de.jensd.fx.glyphs.fontawesome;
     requires commons.math3;
+    requires javafx.media;
 
     opens bg.tu_varna.sit.vinarna.data.entities to org.hibernate.orm.core;
     exports bg.tu_varna.sit.vinarna.data.entities;

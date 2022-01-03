@@ -29,6 +29,7 @@ public class Constants {
         public static final String REFERENCEBOTTLESTORAGEROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesBottleStorageRow.fxml";
         public static final String REFERENCEBOTTLEDANCHORPANE_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesBottledAnchorPane.fxml";
         public static final String REFERENCEBOTTLEDROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/References/ReferencesBottledRow.fxml";
+        public static final String NORIFICATIONROW_VIEW = "/bg/tu_varna/sit/vinarna/presentation/views/Notifications/NotificationRow.fxml";
     }
 
     public static class Configurations {

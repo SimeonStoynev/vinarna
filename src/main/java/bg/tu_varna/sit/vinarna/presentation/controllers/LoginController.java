@@ -3,7 +3,9 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 import bg.tu_varna.sit.vinarna.business.UserService;
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.common.Hasher;
+import bg.tu_varna.sit.vinarna.common.UserSession;
 import bg.tu_varna.sit.vinarna.common.ViewsManager;
+import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -72,6 +74,7 @@ public class LoginController {
             messageLabel.setText("There is no user with the entered data.");
             return;
         } else {
+            UserSession.user = userService.getUserByUsername(username);
             Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
             ViewsManager.changeView("Dashboard", Constants.View.DASHBOARD_VIEW, DashboardController.class, stage);
             System.out.println("Successful login.");
