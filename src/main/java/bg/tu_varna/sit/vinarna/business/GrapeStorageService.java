@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.vinarna.business;
 
+import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.data.entities.GrapeStorage;
 import bg.tu_varna.sit.vinarna.data.repositories.GrapeStorageRepository;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
@@ -23,6 +24,8 @@ public class GrapeStorageService {
     private static class GrapeStorageHolder {
         public static final GrapeStorageService INSTANCE = new GrapeStorageService();
     }
+
+    NotificationService notificationService = NotificationService.getInstance();
 
     public ObservableList<GrapeStorageModel> getAll() {
         List<GrapeStorage> sorts = repository.getAll();
@@ -96,6 +99,10 @@ public class GrapeStorageService {
         Date date = new Date();
         newStorage.setCreated_at(new Timestamp(date.getTime()));
         newStorage.setUpdated_at(new Timestamp(date.getTime()));
+
+        if(oldQuantity >= Constants.Minima.GRAPE_MINIMUM && newQuantity < Constants.Minima.GRAPE_MINIMUM) {
+            notificationService.notifyUsers("The grape " + grapeStorage.getSort().getName() + " is below the minimum.");
+        }
 
         addStorage(newStorage);
 

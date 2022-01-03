@@ -1,9 +1,7 @@
 package bg.tu_varna.sit.vinarna.presentation.controllers;
 
-import bg.tu_varna.sit.vinarna.business.BottleStorageService;
-import bg.tu_varna.sit.vinarna.business.BottleTypeService;
-import bg.tu_varna.sit.vinarna.business.BottledWineStorageService;
-import bg.tu_varna.sit.vinarna.business.WineTypeService;
+import bg.tu_varna.sit.vinarna.business.*;
+import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.presentation.models.*;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -24,6 +22,7 @@ public class BottlingWineDialogController {
     BottleStorageService bottleStorageService = BottleStorageService.getInstance();
     BottledWineStorageService bottledWineStorageService = BottledWineStorageService.getInstance();
     WineTypeService wineTypeService = WineTypeService.getInstance();
+    NotificationService notificationService = NotificationService.getInstance();
 
     @FXML
     AnchorPane mainAnchorPanel;
@@ -169,6 +168,10 @@ public class BottlingWineDialogController {
             newBottleStorage.setCreated_at(new Timestamp(date.getTime()));
             newBottleStorage.setUpdated_at(new Timestamp(date.getTime()));
             bottleStorageService.addStorage(newBottleStorage);
+
+            if(oldBottleQuantity >= Constants.Minima.BOTTLES_MINIMUM && newBottleQuantity < Constants.Minima.BOTTLES_MINIMUM) {
+                notificationService.notifyUsers("The bottles " + newBottleStorage.getBottle_type_id().getCapacity() + " is below the minimum.");
+            }
 
             BottledWineStorageModel oldBottledWine = bottledWineStorageService.getLastByBottleAndWine(selectedBottle, this.wineType);
 

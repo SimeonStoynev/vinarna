@@ -55,6 +55,7 @@ public class DashboardController {
     public void notificationButtonClick() {
         if(!notificationAnchorPane.isVisible()) {
             notificationAnchorPane.setVisible(true);
+            norifCountAnchorPane.setVisible(false);
             notificationService.setSeenByUser(UserSession.user);
         } else {
             notificationAnchorPane.setVisible(false);
