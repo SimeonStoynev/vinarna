@@ -199,6 +199,9 @@ public class UsersAddEditDialogController {
         } else if(userService.isEmailExists(email)) {
             emailErrorLabel.setText("Email is already in use.");
             valid = false;
+        } else if(email.length() > 255) {
+            lnameErrorLabel.setText("The email char limit is 255.");
+            valid = false;
         }
 
         if(role == null) {
@@ -209,15 +212,24 @@ public class UsersAddEditDialogController {
         if(firstName.length() == 0) {
             fnameErrorLabel.setText("The first name is required.");
             valid = false;
+        } else if(firstName.length() > 255) {
+            lnameErrorLabel.setText("The first name char limit is 255.");
+            valid = false;
         }
 
         if(lastName.length() == 0) {
             lnameErrorLabel.setText("The last name is required.");
             valid = false;
+        } else if(lastName.length() > 255) {
+            lnameErrorLabel.setText("The last name char limit is 255.");
+            valid = false;
         }
 
         if(phone.length() == 0) {
             phoneErrorLabel.setText("The phone is required.");
+            valid = false;
+        } else if(phone.length() > 15) {
+            phoneErrorLabel.setText("The phone can be max 15 chars.");
             valid = false;
         }
 

@@ -81,7 +81,7 @@ public class UserService {
     }
 
     public boolean usernameValidate(String username) {
-        String regex = "^[A-Za-z]\\w{3,29}$";
+        String regex = "^[A-Za-z]\\w{3,255}$";
         Pattern p = Pattern.compile(regex);
         if(username == null)
             return false;
