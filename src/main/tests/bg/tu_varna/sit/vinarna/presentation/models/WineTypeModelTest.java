@@ -25,4 +25,9 @@ class WineTypeModelTest {
         assertEquals(currentTimestamp, wineTypeModel.getCreated_at());
         assertEquals(currentTimestamp, wineTypeModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(String.format("%s", wineTypeModel.getName()), wineTypeModel.toString());
+    }
 }

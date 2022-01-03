@@ -25,4 +25,12 @@ class RoleModelTest {
         assertEquals(currentTimestamp, roleModel.getCreated_at());
         assertEquals(currentTimestamp, roleModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(
+            String.format("%s", roleModel.getName()),
+            roleModel.toString()
+        );
+    }
 }

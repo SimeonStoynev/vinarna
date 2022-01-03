@@ -32,4 +32,19 @@ class WineRecipeModelTest {
         assertEquals(currentTimestamp, wineRecipeModel.getCreated_at());
         assertEquals(currentTimestamp, wineRecipeModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(
+            "WineRecipeModel{" +
+            "id=" + wineRecipeModel.getId() +
+            ", wine_type_id=" + wineRecipeModel.getWine_type_id() +
+            ", grape_sort_id=" + wineRecipeModel.getGrape_sort_id() +
+            ", quantity=" + wineRecipeModel.getQuantity() +
+            ", created_at=" + wineRecipeModel.getCreated_at() +
+            ", updated_at=" + wineRecipeModel.getUpdated_at() +
+            '}',
+            wineRecipeModel.toString()
+        );
+    }
 }

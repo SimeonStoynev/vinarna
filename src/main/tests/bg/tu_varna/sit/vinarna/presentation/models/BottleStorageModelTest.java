@@ -30,4 +30,20 @@ class BottleStorageModelTest {
         assertEquals(currentTimestamp, bottleStorageModel.getCreated_at());
         assertEquals(currentTimestamp, bottleStorageModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(
+        "BottleStorageModel{" +
+                "id=" + bottleStorageModel.getId() +
+                ", bottle_type_id=" + bottleStorageModel.getBottle_type_id() +
+                ", quantity_old=" + bottleStorageModel.getQuantity_old() +
+                ", quantity=" + bottleStorageModel.getQuantity() +
+                ", difference=" + bottleStorageModel.getDifference() +
+                ", created_at=" + bottleStorageModel.getCreated_at() +
+                ", updated_at=" + bottleStorageModel.getUpdated_at() +
+                '}',
+                bottleStorageModel.toString()
+        );
+    }
 }

@@ -25,4 +25,9 @@ class GrapeCategoryModelTest {
         assertEquals(currentTimestamp, grapeCategoryModel.getCreated_at());
         assertEquals(currentTimestamp, grapeCategoryModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(String.format("%s", grapeCategoryModel.getCategory()), grapeCategoryModel.toString());
+    }
 }

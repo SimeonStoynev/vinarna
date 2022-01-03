@@ -31,4 +31,20 @@ class GrapeStorageModelTest {
         assertEquals(currentTimestamp, grapeSortModel.getCreated_at());
         assertEquals(currentTimestamp, grapeSortModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(
+        "GrapeStorageModel{" +
+            "id=" + grapeStorageModel.getId() +
+            ", quantity_old=" + grapeStorageModel.getQuantity_old() +
+            ", quantity=" + grapeStorageModel.getQuantity() +
+            ", difference=" + grapeStorageModel.getDifference() +
+            ", sort=" + grapeStorageModel.getSort() +
+            ", created_at=" + grapeSortModel.getCreated_at() +
+            ", updated_at=" + grapeSortModel.getUpdated_at() +
+            '}'
+            , grapeStorageModel.toString()
+        );
+    }
 }

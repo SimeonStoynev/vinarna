@@ -25,4 +25,9 @@ class BottleTypeModelTest {
         assertEquals(currentTimestamp, bottleTypeModel.getCreated_at());
         assertEquals(currentTimestamp, bottleTypeModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(String.format("%s", String.format("%.3f", bottleTypeModel.getCapacity())), bottleTypeModel.toString());
+    }
 }

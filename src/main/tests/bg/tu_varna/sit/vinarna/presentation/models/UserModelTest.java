@@ -33,4 +33,12 @@ class UserModelTest {
         assertEquals(currentTimestamp, userModel.getCreated_at());
         assertEquals(currentTimestamp, userModel.getUpdated_at());
     }
+
+    @Test
+    void testToString() {
+        assertEquals(
+            String.format("%s | %s | %s | %s", userModel.getUsername(), userModel.getFirstName(), userModel.getLastName(), userModel.getRole().getName()),
+            userModel.toString()
+        );
+    }
 }

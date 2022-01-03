@@ -23,9 +23,18 @@ class GrapeSortModelTest {
     @Test
     void testGrapeSortModelData() {
         assertEquals(1, grapeSortModel.getId());
+        assertEquals("Muskat", grapeSortModel.getName());
         assertEquals(grapeCategoryModel, grapeSortModel.getCategory());
         assertEquals(2.5, grapeSortModel.getWine_liters());
         assertEquals(currentTimestamp, grapeSortModel.getCreated_at());
         assertEquals(currentTimestamp, grapeSortModel.getUpdated_at());
+    }
+
+    @Test
+    void testToString() {
+        assertEquals(
+            String.format("%s | %s", grapeSortModel.getName(), grapeSortModel.getCategory()),
+            grapeSortModel.toString()
+        );
     }
 }
