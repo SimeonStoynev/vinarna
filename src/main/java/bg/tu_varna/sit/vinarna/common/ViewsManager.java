@@ -193,9 +193,6 @@ public class ViewsManager {
     public static void leftMenuGenerate(AnchorPane menuPane, AnchorPane contentPane, Class viewClass) {
         List<MenuItem> menuItems = new ArrayList<>();
 
-        menuItems.add(new MenuItem("Dashboard", FontAwesomeIcon.HOME, 0, "",
-                Constants.View.DASHBOARD_VIEW, DashboardController.class, contentPane));
-
         if(UserSession.permissions.isUsersMenu())
             menuItems.add(new MenuItem("Users", FontAwesomeIcon.USERS, 0, "",
                 Constants.View.USERSANCHORPANE_VIEW, UsersAnchorPaneController.class, contentPane));
@@ -275,6 +272,9 @@ public class ViewsManager {
             });
 
             menuPane.getChildren().add(button);
+
+            if(y == 0)
+                button.fire();
             y += 55;
         }
     }
