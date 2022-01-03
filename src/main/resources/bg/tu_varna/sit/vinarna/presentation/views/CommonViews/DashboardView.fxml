@@ -35,7 +35,7 @@
                   <Image url="@../../media/Logo_Minified.png" />
                </image>
             </ImageView>
-            <MenuButton ellipsisString=".." layoutX="940.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="177.0" style="-fx-background-color: rgba(0,0,0,0.15); -fx-border-radius: 0 50 0 0; -fx-background-radius: 0 50 0 0;" styleClass="MenuButton" text="Tsvetelin Petrov" textFill="RED" wrapText="true" AnchorPane.rightAnchor="0.0">
+            <MenuButton fx:id="topMenuButton" ellipsisString=".." layoutX="940.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="177.0" style="-fx-background-color: rgba(0,0,0,0.15); -fx-border-radius: 0 50 0 0; -fx-background-radius: 0 50 0 0;" styleClass="MenuButton" text="Tsvetelin Petrov" textFill="RED" wrapText="true" AnchorPane.rightAnchor="0.0">
                <items>
                   <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                      <content>

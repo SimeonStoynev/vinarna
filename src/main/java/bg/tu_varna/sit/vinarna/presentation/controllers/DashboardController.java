@@ -6,6 +6,7 @@ import bg.tu_varna.sit.vinarna.common.UserSession;
 import bg.tu_varna.sit.vinarna.common.ViewsManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
@@ -35,13 +36,16 @@ public class DashboardController {
     @FXML
     Label notifCountLabel;
 
+    @FXML
+    MenuButton topMenuButton;
+
 
     @FXML
     private void initialize() {
         menuBuild();
         notificationAnchorPane.setVisible(false);
         norifCountAnchorPane.setVisible(false);
-
+        topMenuButton.setText(UserSession.user.getFirstName() + " " + UserSession.user.getLastName());
         dashboardService.backgroundWorkerRun(notificationRows, norifCountAnchorPane, notifCountLabel);
     }
 
