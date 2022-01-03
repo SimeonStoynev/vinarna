@@ -205,6 +205,7 @@ public class WineTypesAddEditDialogController {
         if(action == 0 && addFormValidate()) {
             this.wineType.setId(0);
             this.wineType.setName(wineName);
+            this.wineType.setProduced(0.0);
             Date date = new Date();
             this.wineType.setCreated_at(new Timestamp(date.getTime()));
             this.wineType.setUpdated_at(new Timestamp(date.getTime()));
