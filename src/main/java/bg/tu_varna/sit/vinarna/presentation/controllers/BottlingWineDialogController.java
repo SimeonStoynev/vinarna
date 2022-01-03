@@ -170,7 +170,10 @@ public class BottlingWineDialogController {
             bottleStorageService.addStorage(newBottleStorage);
 
             if(oldBottleQuantity >= Constants.Minima.BOTTLES_MINIMUM && newBottleQuantity < Constants.Minima.BOTTLES_MINIMUM) {
-                notificationService.notifyUsers("The bottles " + newBottleStorage.getBottle_type_id().getCapacity() + " is below the minimum.");
+                if(newBottleQuantity == 0)
+                    notificationService.notifyUsers("The bottle " + newBottleStorage.getBottle_type_id().getCapacity() + " is out of stock.");
+                else
+                    notificationService.notifyUsers("The bottle " + newBottleStorage.getBottle_type_id().getCapacity() + " is below the minimum.");
             }
 
             BottledWineStorageModel oldBottledWine = bottledWineStorageService.getLastByBottleAndWine(selectedBottle, this.wineType);

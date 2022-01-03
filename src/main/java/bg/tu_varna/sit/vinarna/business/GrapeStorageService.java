@@ -101,7 +101,10 @@ public class GrapeStorageService {
         newStorage.setUpdated_at(new Timestamp(date.getTime()));
 
         if(oldQuantity >= Constants.Minima.GRAPE_MINIMUM && newQuantity < Constants.Minima.GRAPE_MINIMUM) {
-            notificationService.notifyUsers("The grape " + grapeStorage.getSort().getName() + " is below the minimum.");
+            if(newQuantity == 0)
+                notificationService.notifyUsers("The grape " + grapeStorage.getSort().getName() + " is out of stock.");
+            else
+                notificationService.notifyUsers("The grape " + grapeStorage.getSort().getName() + " is below the minimum.");
         }
 
         addStorage(newStorage);
