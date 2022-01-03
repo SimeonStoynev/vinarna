@@ -3,6 +3,7 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 import bg.tu_varna.sit.vinarna.business.GrapeSortService;
 import bg.tu_varna.sit.vinarna.business.GrapeStorageService;
 import bg.tu_varna.sit.vinarna.common.Constants;
+import bg.tu_varna.sit.vinarna.common.UserSession;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeSortModel;
 import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -32,11 +34,23 @@ public class GrapeSortsAnchorPaneController {
     @FXML
     AnchorPane sortRowsAnchorPane;
 
+    @FXML
+    Button addButton;
+
+    @FXML
+    Button addQuantityButton;
+
     ObservableList<GrapeSortModel> grapeSorts;
     ObservableList<GrapeStorageModel> grapeStorage;
 
     @FXML
     private void initialize() {
+        if(!UserSession.permissions.isGrapeSortsAdd())
+            addButton.setDisable(true);
+
+        if(!UserSession.permissions.isGrapeSortsAddQuantity())
+            addQuantityButton.setDisable(true);
+
         grapeSortsTableViewReload();
     }
 
@@ -73,6 +87,9 @@ public class GrapeSortsAnchorPaneController {
                         grapeQuantityAddDialogShow(grapeSort);
                     }
                 });
+
+                if(!UserSession.permissions.isGrapeSortsAddQuantity())
+                    controller.addQuantityCustomMenuItem.setDisable(true);
 
                 if(quantity != null) {
                     controller.sortQuantityLabel.setText(String.valueOf(quantity.getQuantity())+" kg");

@@ -18,7 +18,7 @@
 
 <AnchorPane minHeight="432.0" minWidth="553.0" prefWidth="1000.0" stylesheets="@../../styles/commonStyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.vinarna.presentation.controllers.BottleTypesAnchorPaneController">
    <children>
-      <Button layoutX="867.0" layoutY="14.0" mnemonicParsing="false" onAction="#bottleTypeAddButton" prefHeight="40.0" prefWidth="129.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
+      <Button fx:id="addButton" layoutX="867.0" layoutY="14.0" mnemonicParsing="false" onAction="#bottleTypeAddButton" prefHeight="40.0" prefWidth="129.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
                <children>
@@ -134,7 +134,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button layoutX="706.0" layoutY="14.0" mnemonicParsing="false" onAction="#bottleQuantityAddButton" prefHeight="38.0" prefWidth="142.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
+      <Button fx:id="addQuantityButton" layoutX="706.0" layoutY="14.0" mnemonicParsing="false" onAction="#bottleQuantityAddButton" prefHeight="38.0" prefWidth="142.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="213.0" spacing="5.0">
                <children>

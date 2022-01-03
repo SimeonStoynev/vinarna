@@ -196,22 +196,28 @@ public class ViewsManager {
         menuItems.add(new MenuItem("Dashboard", FontAwesomeIcon.HOME, 0, "",
                 Constants.View.DASHBOARD_VIEW, DashboardController.class, contentPane));
 
-        menuItems.add(new MenuItem("Users", FontAwesomeIcon.USERS, 0, "",
+        if(UserSession.permissions.isUsersMenu())
+            menuItems.add(new MenuItem("Users", FontAwesomeIcon.USERS, 0, "",
                 Constants.View.USERSANCHORPANE_VIEW, UsersAnchorPaneController.class, contentPane));
 
-        menuItems.add(new MenuItem("Grape sorts", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_GRAPE,
+        if(UserSession.permissions.isGrapeSortsMenu())
+            menuItems.add(new MenuItem("Grape sorts", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_GRAPE,
                 Constants.View.GRAPESORTSANCHORPANE_VIEW, GrapeSortsAnchorPaneController.class, contentPane));
 
-        menuItems.add(new MenuItem("Wine types", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
+        if(UserSession.permissions.isWineTypesMenu())
+            menuItems.add(new MenuItem("Wine types", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOOK,
                 Constants.View.WINETYPESANCHORPANE_VIEW, WineTypesAnchorPaneController.class, contentPane));
 
-        menuItems.add(new MenuItem("Bottle types", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOTLES,
+        if(UserSession.permissions.isBottleTypesMenu())
+            menuItems.add(new MenuItem("Bottle types", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_BOTLES,
                 Constants.View.BOTTLETYPESANCHORPANE_VIEW, BottleTypesAnchorPaneController.class, contentPane));
 
-        menuItems.add(new MenuItem("Bottled wines", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_WINEBOTTLE,
+        if(UserSession.permissions.isBottledWinesMenu())
+            menuItems.add(new MenuItem("Bottled wines", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_WINEBOTTLE,
                 Constants.View.BOTTLEDWINESANCHORPANE_VIEW, BottledWinesAnchorPaneController.class, contentPane));
 
-        menuItems.add(new MenuItem("References", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_REFERENCES,
+        if(UserSession.permissions.isReferencesMenu())
+            menuItems.add(new MenuItem("References", FontAwesomeIcon.USER, 1, Constants.Media.LEFTMENU_REFERENCES,
                 Constants.View.REFERENCESANCHORPANE_VIEW, ReferencesAnchorPaneController.class, contentPane));
 
         int y = 0;

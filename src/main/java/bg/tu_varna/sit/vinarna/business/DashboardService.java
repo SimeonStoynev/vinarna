@@ -2,6 +2,7 @@ package bg.tu_varna.sit.vinarna.business;
 
 import bg.tu_varna.sit.vinarna.common.Constants;
 import bg.tu_varna.sit.vinarna.common.UserSession;
+import bg.tu_varna.sit.vinarna.common.ViewsManager;
 import bg.tu_varna.sit.vinarna.presentation.controllers.LoginController;
 import bg.tu_varna.sit.vinarna.presentation.controllers.NotificationRowController;
 import bg.tu_varna.sit.vinarna.presentation.models.NotificationModel;
@@ -10,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -18,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class DashboardService {
-    private static final Logger log = Logger.getLogger(LoginController.class);
+    private static final Logger log = Logger.getLogger(DashboardService.class);
 
     public static DashboardService getInstance() {
         return DashboardService.DashboardServiceHolder.INSTANCE;
@@ -29,6 +31,7 @@ public class DashboardService {
     }
 
     public class BackgroundWorker extends Thread {
+        private static final Logger bgLog = Logger.getLogger(BackgroundWorker.class);
 
         NotificationService notificationService = NotificationService.getInstance();
 
@@ -53,8 +56,14 @@ public class DashboardService {
 
         public void run(){
             try {
-
+                bgLog.info("Background Thread started");
                 while(true) {
+                    if(UserSession.user == null) {
+                        bgLog.info("Background Thread stopped after log out");
+                        return;
+                    }
+
+
                     int unseen = notificationService.getUnseenCountByUser(UserSession.user);
 
                     if(unseen != unseenNotifications) {
@@ -68,7 +77,7 @@ public class DashboardService {
                     Thread.sleep(5000);
                 }
             } catch (Exception e) {
-                log.error("Background Thread error: " + e.getMessage());
+                bgLog.error("Background Thread error: " + e.getMessage());
             }
 
         }
@@ -116,12 +125,12 @@ public class DashboardService {
                                 mediaPlayer.play();
                                 Thread.sleep(1300);
                             } catch (Exception ex) {
-                                log.error("Playing notification sound error: " + ex.getMessage());
+                                bgLog.error("Playing notification sound error: " + ex.getMessage());
                             }
                         }
 
                     } catch (Exception ex) {
-                        log.error("Notifications row update error: " + ex.getMessage());
+                        bgLog.error("Notifications row update error: " + ex.getMessage());
                     }
 
                 }
@@ -132,5 +141,16 @@ public class DashboardService {
     public void backgroundWorkerRun(AnchorPane notificationAnchorPane, AnchorPane norifCountAnchorPane, Label notifCountLabel) {
         BackgroundWorker thread = new BackgroundWorker(notificationAnchorPane, norifCountAnchorPane, notifCountLabel);
         thread.start();
+    }
+
+    public void logOut(Stage stage) {
+
+        try {
+            UserSession.user = null;
+            ViewsManager.changeView("Login", Constants.View.LOGIN_VIEW, LoginController.class, stage);
+        } catch (Exception ex) {
+            log.error("Log out error: " + ex.getMessage());
+        }
+
     }
 }

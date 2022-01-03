@@ -7,10 +7,11 @@ import bg.tu_varna.sit.vinarna.common.ViewsManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
 public class DashboardController {
-    private static final Logger log = Logger.getLogger(LoginController.class);
+    private static final Logger log = Logger.getLogger(DashboardController.class);
 
     NotificationService notificationService = NotificationService.getInstance();
 
@@ -50,6 +51,11 @@ public class DashboardController {
 
     public void appExit() {
         System.exit(1);
+    }
+
+    public void logOut() {
+        Stage stage = (Stage) mainContentPane.getScene().getWindow();
+        dashboardService.logOut(stage);
     }
 
     public void notificationButtonClick() {

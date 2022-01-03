@@ -2,6 +2,7 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 
 import bg.tu_varna.sit.vinarna.business.UserService;
 import bg.tu_varna.sit.vinarna.common.Constants;
+import bg.tu_varna.sit.vinarna.common.UserSession;
 import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -28,10 +30,16 @@ public class UsersAnchorPaneController {
     @FXML
     AnchorPane userRowsAnchorPane;
 
+    @FXML
+    Button addButton;
+
     ObservableList<UserModel> users;
 
     @FXML
     private void initialize() {
+        if(!UserSession.permissions.isUsersAddEdit())
+            addButton.setDisable(true);
+
         userTableViewReload();
     }
 
@@ -65,6 +73,8 @@ public class UsersAnchorPaneController {
                 });
                 if(user.getRole().getId() == 1)
                     controller.settingsMenuButton.setVisible(false);
+                if(!UserSession.permissions.isUsersAddEdit())
+                    controller.editCustomMenuItem.setDisable(true);
 
                 AnchorPane.setRightAnchor(userRow, 0.0);
                 AnchorPane.setLeftAnchor(userRow, 0.0);

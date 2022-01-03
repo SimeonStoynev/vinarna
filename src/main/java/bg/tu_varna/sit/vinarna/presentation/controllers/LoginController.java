@@ -74,10 +74,16 @@ public class LoginController {
             messageLabel.setText("There is no user with the entered data.");
             return;
         } else {
-            UserSession.user = userService.getUserByUsername(username);
-            Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
-            ViewsManager.changeView("Dashboard", Constants.View.DASHBOARD_VIEW, DashboardController.class, stage);
-            System.out.println("Successful login.");
+            UserModel user = userService.getUserByUsername(username);
+            if(userService.loginProcedure(user)) {
+                Stage stage = (Stage) mainAnchorPanel.getScene().getWindow();
+                ViewsManager.changeView("Dashboard", Constants.View.DASHBOARD_VIEW, DashboardController.class, stage);
+            } else {
+                messageLabel.setStyle("-fx-text-fill: " + Constants.Values.ERROR_COLOR + ";");
+                messageLabel.setText("Something went wrong..");
+                return;
+            }
+
         }
     }
 }

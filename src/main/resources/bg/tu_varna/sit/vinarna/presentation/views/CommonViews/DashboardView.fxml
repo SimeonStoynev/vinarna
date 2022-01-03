@@ -86,7 +86,7 @@
                      </content>
                   </CustomMenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <CustomMenuItem mnemonicParsing="false" onAction="#appExit" text="Unspecified Action">
+                  <CustomMenuItem mnemonicParsing="false" onAction="#logOut" text="Unspecified Action">
                      <content>
                         <GridPane prefHeight="30.0" prefWidth="157.0">
                            <columnConstraints>

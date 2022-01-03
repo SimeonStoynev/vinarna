@@ -3,6 +3,7 @@ package bg.tu_varna.sit.vinarna.presentation.controllers;
 import bg.tu_varna.sit.vinarna.business.BottleStorageService;
 import bg.tu_varna.sit.vinarna.business.BottleTypeService;
 import bg.tu_varna.sit.vinarna.common.Constants;
+import bg.tu_varna.sit.vinarna.common.UserSession;
 import bg.tu_varna.sit.vinarna.presentation.models.BottleStorageModel;
 import bg.tu_varna.sit.vinarna.presentation.models.BottleTypeModel;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -31,11 +33,23 @@ public class BottleTypesAnchorPaneController {
     @FXML
     AnchorPane bottleRowsAnchorPane;
 
+    @FXML
+    Button addButton;
+
+    @FXML
+    Button addQuantityButton;
+
     ObservableList<BottleTypeModel> bottleTypes;
     ObservableList<BottleStorageModel> bottleStorage;
 
     @FXML
     public void initialize() {
+        if(!UserSession.permissions.isBottleTypesAddEdit())
+            addButton.setDisable(true);
+
+        if(!UserSession.permissions.isBottleTypesAddQuantity())
+            addQuantityButton.setDisable(true);
+
         bottleTypesTableViewReload();
     }
 
@@ -86,6 +100,12 @@ public class BottleTypesAnchorPaneController {
                         bottleTypesAddEditDialogShow(bottleType);
                     }
                 });
+
+                if(!UserSession.permissions.isBottleTypesAddEdit())
+                    controller.editCustomMenuItem.setDisable(true);
+
+                if(!UserSession.permissions.isBottleTypesAddQuantity())
+                    controller.addQuantityCustomMenuItem.setDisable(true);
 
                 AnchorPane.setRightAnchor(bottleRow, 0.0);
                 AnchorPane.setLeftAnchor(bottleRow, 0.0);
