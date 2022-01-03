@@ -48,6 +48,7 @@ public class DashboardService {
             this.unseenNotificationsOld = 0;
 
             notifications = notificationService.getDescByUser(UserSession.user, 500);
+            notificationsUiUpdate();
         }
 
         public void run(){
