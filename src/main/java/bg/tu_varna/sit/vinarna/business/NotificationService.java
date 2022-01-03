@@ -1,20 +1,24 @@
 package bg.tu_varna.sit.vinarna.business;
 
-import bg.tu_varna.sit.vinarna.data.entities.GrapeStorage;
 import bg.tu_varna.sit.vinarna.data.entities.Notification;
 import bg.tu_varna.sit.vinarna.data.repositories.NotificationRepository;
-import bg.tu_varna.sit.vinarna.presentation.models.GrapeStorageModel;
 import bg.tu_varna.sit.vinarna.presentation.models.NotificationModel;
 import bg.tu_varna.sit.vinarna.presentation.models.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.apache.log4j.Logger;
 
+import java.io.OutputStream;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class NotificationService {
+    private static final Logger log = Logger.getLogger(NotificationService.class);
+
     private final NotificationRepository repository = NotificationRepository.getInstance();
 
     public static NotificationService getInstance() {
@@ -71,6 +75,19 @@ public class NotificationService {
             notification.setUpdated_at(new Timestamp(date.getTime()));
 
             addNotification(notification);
+
+            try {
+                Socket socket = new Socket("127.0.0.1", 5555);
+                OutputStream output = socket.getOutputStream();
+
+                String smsText = user.getPhone() + "/|/" + text;
+                byte[] data = smsText.getBytes(StandardCharsets.UTF_8);
+                output.write(data);
+                socket.close();
+            } catch (Exception ex) {
+                log.error("TCP Send SMS Error: " + ex.getMessage());
+            }
+
         }
     }
 }

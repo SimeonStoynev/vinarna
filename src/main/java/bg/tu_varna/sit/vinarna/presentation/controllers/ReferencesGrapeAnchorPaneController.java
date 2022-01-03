@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 
 public class ReferencesGrapeAnchorPaneController {
-    private static final Logger log = Logger.getLogger(UsersAnchorPaneController.class);
+    private static final Logger log = Logger.getLogger(ReferencesGrapeAnchorPaneController.class);
 
     GrapeStorageService grapeStorageService = GrapeStorageService.getInstance();
 
